@@ -1,0 +1,30 @@
+.icon{
+  width: 36px;
+  height: 36px;
+  border-radius: 100px;
+}
+
+.hamburger{
+  width: 30px;
+  height: 100%;
+  &:focus, &:hover .hamburgerItemCenter {
+    transform: scaleX(1);
+  }
+}
+
+.hamburgerItem{
+  margin-top: 5px;
+  width: 100%;
+  background-color: white;
+  height: 4px;
+  border-radius: 100px;
+
+
+}
+
+.hamburgerItemCenter{
+  transform: scaleX(0.65);
+  transition: transform 0.1s ease-in-out;
+  transform-origin: right;
+  margin-left: auto;
+}

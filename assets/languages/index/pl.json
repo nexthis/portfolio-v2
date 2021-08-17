@@ -1,0 +1,23 @@
+{
+
+  "seo": {
+    "title": "full stack developer: nowoczesne strony internetowe, ecommerce, blogi i inne",
+    "description": ""
+  },
+
+  "home": {
+    "subTitle": "Czejść, jestem Paweł",
+    "title": "I’m rady to create your website and make it owesome!",
+    "description": "Full-stac developer from Poland. I create custom website to help buisinesses to better online",
+    "contact": {
+      "text": "Jeśli jesteś zainteresowany współpracą",
+      "link": "Kontakt"
+    }
+  },
+  "skills": {
+
+  },
+  "contact": {
+
+  }
+}
