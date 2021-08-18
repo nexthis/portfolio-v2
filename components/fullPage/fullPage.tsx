@@ -1,7 +1,7 @@
 import {motion, AnimatePresence, useAnimation} from "framer-motion";
 import type {FunctionComponent, ReactElement, ReactFragment, ReactNode, ReactNodeArray} from 'react'
 import {useEffect, Children, isValidElement, cloneElement, useState} from "react";
-
+import {debounce} from "../../helpers/event";
 
 
 const swipeConfidenceThreshold = 10000;
@@ -16,7 +16,36 @@ export const FullPage: FunctionComponent = ({children}) => {
 
     useEffect(() => {
         calculateHeight();
+        window.addEventListener('resize', debounce(calculateHeight, 100))
+        window.addEventListener('wheel', debounce(onChangeEvent, 10))
+        window.addEventListener('keydown', onChangeEvent)
+        return () => {
+            window.removeEventListener('resize', calculateHeight)
+            window.removeEventListener('wheel', onChangeEvent)
+            window.removeEventListener('keydown', onChangeEvent)
+        }
     }, [])
+
+    useEffect(() => {
+        paginate(0, true);
+    }, [height]);
+
+    const onChangeEvent = (e: WheelEvent | KeyboardEvent) => {
+        if (e instanceof WheelEvent) {
+            if (e.deltaY > 0) {
+                paginate(1)
+            } else {
+                paginate(-1)
+            }
+        } else {
+            console.log(e)
+            if (e.key === 'ArrowUp') {
+                paginate(-1)
+            } else if (e.key === 'ArrowDown') {
+                paginate(1)
+            }
+        }
+    }
 
     const calculateHeight = () => {
         const element = document.querySelector<HTMLDivElement>('.hook_nav')!;
@@ -35,20 +64,24 @@ export const FullPage: FunctionComponent = ({children}) => {
     });
 
     //ANIMATION
-    const paginate = (newDirection: number) => {
-        if(childrenWithProps === null){
+    const paginate = (newDirection: number, set: boolean = false) => {
+        if (childrenWithProps === null) {
             throw Error('')
         }
         let result = page + newDirection;
-        if(result >= childrenWithProps!.length){
+        if (result >= childrenWithProps!.length) {
             result -= 1
-        }
-        else if(result < 0) {
+        } else if (result < 0) {
             result += 1
         }
 
         setPage([result, newDirection]);
-        controls.start({y: -height * result})
+        if (set) {
+            controls.set({y: -height * result})
+        } else {
+            controls.start({y: -height * result})
+        }
+
     };
 
 
@@ -58,22 +91,21 @@ export const FullPage: FunctionComponent = ({children}) => {
                 <motion.div className="flex flex-col"
                             custom={direction}
                             animate={controls}
+                            style={{willChange: 'transition'}}
                             transition={{
-                                y: {type: "spring", stiffness: 100, damping: 30},
-                                opacity: {duration: 0.2}
+                                y: {type: "spring", stiffness: 100, damping: 30}
                             }}
                             drag="y"
-                            dragConstraints={{ left: 0, right: 0 }}
+                            dragConstraints={{left: 0, right: 0}}
                             dragElastic={1}
-                            onDragEnd={(e, { offset, velocity }) => {
+                            onDragEnd={(e, {offset, velocity}) => {
                                 const swipe = swipePower(offset.y, velocity.y);
 
                                 if (swipe < -swipeConfidenceThreshold) {
                                     paginate(1);
                                 } else if (swipe > swipeConfidenceThreshold) {
                                     paginate(-1);
-                                }
-                                else {
+                                } else {
                                     paginate(0);
                                 }
                             }}

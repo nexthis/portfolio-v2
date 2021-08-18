@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prismicio/client": "^5.1.0",
     "clsx": "^1.1.1",
     "framer-motion": "^4.1.17",
     "next": "11.0.1",
+    "prismic-reactjs": "^1.3.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "sass": "^1.37.5"
@@ -26,5 +28,9 @@
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.7",
     "typescript": "4.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexthis/portfolio-v2"
   }
 }

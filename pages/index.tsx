@@ -1,12 +1,14 @@
 import type {FunctionComponent} from 'react'
-import type {GetStaticProps} from 'next'
+import type {GetServerSideProps, GetStaticProps} from 'next'
 import Image from 'next/image'
 import Head from '../components/head/head'
 import {FullPage, FullPageItem} from '../components/fullPage/fullPage'
 import clsx from 'clsx'
+import style from '../styles/index.module.scss'
 import Layout from "../components/layout/base";
 import ContentInterface from '@assets/languages/index/type'
 import profilePic from '@assets/image/me.jpg'
+import {Client} from '../helpers/prismic'
 
 type props = {
     content: ContentInterface,
@@ -18,23 +20,26 @@ const Home: FunctionComponent<props> = ({content}) => {
             <Head seo={content.seo}/>
             <FullPage>
                 <FullPageItem>
-                    <div className="h-full flex flex-col">
-                        <div className='h-40 w-40 relative'>
-                            <Image src={profilePic}  layout="responsive" alt="Picture of the author"  />
+                    <div className="h-full flex flex-col justify-around md:flex-row-reverse md:items-center">
+                        <div className='flex justify-center flex-1'>
+                            <div className={style.image}>
+                                <Image src={profilePic} className='rounded-full md:rounded-none' alt="Picture of the author"/>
+                            </div>
                         </div>
-                        <div>
-                            <h2>
+                        <div className="mb-9 flex-1">
+                            <h2 className="font-display text-lg">
                                 {content.home.subTitle}
                             </h2>
-                            <h1>
+                            <h1 className={clsx(style.h1, 'font-display tracking-wider')}>
                                 {content.home.title}
                             </h1>
-                            <p>
+                            <p className="text-lg tracking-tight md:w-1/2">
                                 {content.home.description}
                             </p>
-                            <p>
+                            <p className="mt-3 text-sm">
                                 <span>{content.home.contact.text}</span>
-                                <a href="#">{content.home.contact.link}</a>
+                                <br/>
+                                <a href="#contact" className="text-accent">{content.home.contact.link}</a>
                             </p>
                         </div>
                     </div>
@@ -59,7 +64,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
     }
 }
-
-
 
 
