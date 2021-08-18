@@ -3,7 +3,7 @@
     "title": "Full stack developer: modern website, ecommerce, blogs and other",
     "description": "Hello. My name is Paweł Romanowski and I have been programming websites for several years. I encourage you to browse my portfolio and get to know me better.",
     "image": {
-      "src": "/image/seo/index.png?webp",
+      "src": "/image/seo/index.png",
       "alt": "Paweł Romanowski Full-stac developer"
     }
   },
