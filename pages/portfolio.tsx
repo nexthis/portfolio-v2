@@ -2,7 +2,7 @@ import type {FunctionComponent} from 'react'
 import type {GetStaticProps} from 'next'
 import Head from '../components/head/head'
 import Layout from "../components/layout/base";
-import ContentInterface from '@assets/languages/index/type'
+import ContentInterface from '../public/languages/index/type'
 
 type props = {
     //content: ContentInterface,

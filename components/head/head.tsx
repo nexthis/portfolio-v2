@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import type {FunctionComponent} from 'react'
 import { useRouter } from 'next/router'
+import {getAbsoluteURL} from "../../helpers/url";
 
 type props  = {
     seo: seo['seo'],
@@ -10,45 +11,43 @@ type props  = {
 const HeadComponent: FunctionComponent<props> = (
     {seo, type = 'website', children}) => {
     const baseName = process.env.NEXT_PUBLIC_APP_NAME;
-    const router = useRouter()
+    const router = useRouter();
+    const lang = router.locale === 'pl' ? ['pl_PL', 'en_US'] : ['en_US', 'pl_PL'] ;
     return (
         <Head>
             {/*Base*/}
             <title>{baseName} - {seo.title}</title>
             <meta charSet="UTF-8"/>
-            <meta name="viewport"
-                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
             <meta name="description" content={seo.description}/>
 
             {/*Phone color bar*/}
-            <meta name="theme-color" content="#4285f4"/>
+            <meta name="theme-color" content="#24262E"/>
 
             {/*Control the behavior of search engine crawling and indexing*/}
             <meta name="robots" content="index,follow"/>
             <meta name="googlebot" content="index,follow"/>
 
             {/*Facebook Open Graph*/}
-            <meta property="og:url" content="https://example.com/page.html"/>
-            <meta property="og:type" content="website"/>
+            <meta property="og:url" content={getAbsoluteURL(router.pathname)}/>
+            <meta property="og:type" content={type}/>
             <meta property="og:title" content={seo.title}/>
-            <meta property="og:image" content="https://example.com/image.jpg"/>
-            <meta property="og:image:alt" content="A description of what is in the image (not a caption)"/>
+            <meta property="og:image" content={getAbsoluteURL(seo.image.src)}/>
+            <meta property="og:image:alt" content={seo.image.alt}/>
             <meta property="og:description" content={seo.description}/>
-            <meta property="og:site_name" content="Site Name"/>
-            <meta property="og:locale" content="en_US"/>
+            <meta property="og:locale" content={lang[0]}/>
+            <meta property="og:locale:alternate" content={lang[1]} />
+            <meta property="og:site_name" content="Paweł Romanowski - Portfolio" />
             <meta property="article:author" content="Paweł Romanowski"/>
 
             {/* Twitter Card */}
-            <meta name="twitter:card" content="summary"/>
-            <meta name="twitter:site" content="@site_account"/>
-            <meta name="twitter:creator" content="@individual_account"/>
-            <meta name="twitter:url" content="https://example.com/page.html"/>
-            <meta name="twitter:title" content="Content Title"/>
+            <meta name="twitter:card" content="summary_large_image"/>
+            <meta name="twitter:url" content={getAbsoluteURL(router.pathname)}/>
+            <meta name="twitter:title" content={seo.title}/>
             <meta name="twitter:description" content={seo.description}/>
-            <meta name="twitter:image" content="https://example.com/image.jpg"/>
-            <meta name="twitter:image:alt"
-                  content="A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters."/>
+            <meta name="twitter:image" content={getAbsoluteURL(seo.image.src)}/>
+            <meta name="twitter:image:alt" content={seo.image.alt}/>
             <link rel="icon" href="/favicon.ico"/>
             {/*Fonts*/}
             <link

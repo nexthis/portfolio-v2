@@ -1,7 +1,11 @@
 {
   "seo": {
-    "title": "full stack developer: modern website, ecommerce website, blogs and other",
-    "description": ""
+    "title": "Full stack developer: modern website, ecommerce, blogs and other",
+    "description": "Hello. My name is Paweł Romanowski and I have been programming websites for several years. I encourage you to browse my portfolio and get to know me better.",
+    "image": {
+      "src": "/image/seo/index.png?webp",
+      "alt": "Paweł Romanowski Full-stac developer"
+    }
   },
   "home": {
     "subTitle": "Hi, I’m Paul",

@@ -1,8 +1,8 @@
 import type {FunctionComponent} from 'react'
 import Link from "next/link";
 import clsx from 'clsx'
-import Icon from '/assets/icons/icon-blod.svg'
-import IconGit from '/assets/icons/github.svg'
+import Icon from '/public/icons/icon-blod.svg'
+import IconGit from '/public/icons/github.svg'
 import styles from './style.module.scss'
 import {useRouter} from 'next/router'
 
@@ -41,7 +41,7 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className="ml-3 h-full">
-                        <button type="button" className={styles.hamburger}>
+                        <button type="button" aria-label="menu" className={styles.hamburger}>
                             <div className={styles.hamburgerItem}/>
                             <div className={clsx(styles.hamburgerItemCenter, styles.hamburgerItem)}/>
                             <div className={styles.hamburgerItem}/>

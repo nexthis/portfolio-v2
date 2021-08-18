@@ -6,8 +6,8 @@ import {FullPage, FullPageItem} from '../components/fullPage/fullPage'
 import clsx from 'clsx'
 import style from '../styles/index.module.scss'
 import Layout from "../components/layout/base";
-import ContentInterface from '@assets/languages/index/type'
-import profilePic from '@assets/image/me.jpg'
+import ContentInterface from '../public/languages/index/type'
+import profilePic from '../public/image/me.jpg'
 import {Client} from '../helpers/prismic'
 
 type props = {
@@ -57,7 +57,7 @@ const Home: FunctionComponent<props> = ({content}) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const data = await import(`/assets/languages/index/${context.locale}.json`);
+    const data = await import(`public/languages/index/${context.locale}.json`);
     return {
         props: {
             content: data.default,
