@@ -21,13 +21,12 @@ const Home: FunctionComponent<props> = ({content}) => {
             <FullPage>
                 <FullPageItem>
                     <div className="h-full flex flex-col justify-around md:flex-row-reverse md:items-center">
-                        <div className='flex justify-center flex-1 h-full'>
-                            <div className="h-full w-2/3">
-                                <div className="aspect-w-4 aspect-h-5">
-                                    <Image src={profilePic} className='rounded-full md:rounded-none' layout="fill" objectFit="fill"
-                                           alt="Picture of the author"/>
-                                </div>
-                            </div>
+                        <div className='flex justify-center flex-1 relative h-full'>
+                            <Image src={profilePic} className='rounded-full md:rounded-none' objectFit="contain"
+                                   layout="fill"
+
+                                   loading="eager"
+                                   alt="Picture of the author"/>
                         </div>
                         <div className="mb-9 flex-1">
                             <h2 className="font-display text-lg">
