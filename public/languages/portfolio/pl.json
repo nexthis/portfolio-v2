@@ -1,0 +1,11 @@
+{
+
+  "seo": {
+    "title": "Full stack developer: nowoczesne strony internetowe, ecommerce, blogi i inne",
+    "description": "Witam. Nazywam się Paweł Romanowski od kilku lat zajmuję się programowaniem stron internetowych. Zachęcam cię do przejrzenia mojego portfolio i poznania mnie lepiej.",
+    "image": {
+      "src": "/image/seo/index.png",
+      "alt": "Paweł Romanowski Full-stac developer"
+    }
+  }
+}
