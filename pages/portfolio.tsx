@@ -8,14 +8,14 @@ type props = {
     //content: ContentInterface,
 }
 
-const Home: FunctionComponent<props> = ({}) => {
+const Portfolio: FunctionComponent<props> = ({}) => {
     return (
         <Layout>
 
         </Layout>
     )
 }
-export default Home;
+export default Portfolio;
 
 // export const getStaticProps: GetStaticProps = async (context) => {
 //     const data = await import(`/assets/languages/index/${context.locale}.json`);

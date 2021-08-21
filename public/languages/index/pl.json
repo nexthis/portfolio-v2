@@ -18,9 +18,33 @@
       "link": "Kontakt"
     }
   },
-  "skills": {
-
-  },
+  "skills": [
+    {
+      "name": "javascript",
+      "image": {
+        "src": "/image/seo/index.png",
+        "alt": "Paweł Romanowski Full-stac developer"
+      },
+      "items": [
+        {
+          "name": "vue",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "react",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        }
+      ]
+    }
+  ],
   "contact": {
 
   }

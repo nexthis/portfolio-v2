@@ -21,10 +21,10 @@ const Home: FunctionComponent<props> = ({content}) => {
             <FullPage>
                 <FullPageItem>
                     <div className="h-full flex flex-col justify-around md:flex-row-reverse md:items-center">
-                        <div className='flex justify-center flex-1 relative h-full'>
-                            <Image src={profilePic} className='rounded-full md:rounded-none' objectFit="contain"
+                        <div className='flex justify-center flex-1 relative h-full w-full'>
+                            <Image src={profilePic} className='rounded-full md:rounded-none pointer-events-none' objectFit="contain"
                                    layout="fill"
-
+                                   quality={90}
                                    loading="eager"
                                    alt="Picture of the author"/>
                         </div>
