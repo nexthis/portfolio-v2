@@ -16,9 +16,172 @@
       "link": "Conntact"
     }
   },
-  "skills": {
-
-  },
+  "skills": [
+    {
+      "name": "Javascript",
+      "image": {
+        "src": "/icons/skills/js.png",
+        "alt": "Paweł Romanowski Full-stac developer"
+      },
+      "items": [
+        {
+          "name": "vue",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "react",
+          "description": "Jeden z 10",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "typescript",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "nextJs",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "gsap",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PHP",
+      "image": {
+        "src": "/icons/skills/php.png",
+        "alt": "Paweł Romanowski Full-stac developer"
+      },
+      "items": [
+        {
+          "name": "laravel",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "symfony",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "Lumen",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "php websockets",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Workflow",
+      "image": {
+        "src": "/icons/skills/workflow.png",
+        "alt": "Paweł Romanowski Full-stac developer"
+      },
+      "items": [
+        {
+          "name": "Linux",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "GIT",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "GIT",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "Webpack",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Database",
+      "image": {
+        "src": "/icons/skills/database.png",
+        "alt": "Paweł Romanowski Full-stac developer"
+      },
+      "items": [
+        {
+          "name": "MySQL",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "Redis",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "Mongo DB",
+          "description": "",
+          "image": {
+            "src": "/image/seo/index.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        }
+      ]
+    }
+  ],
   "contact": {
 
   }

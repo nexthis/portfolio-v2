@@ -87,6 +87,7 @@ export const FullPage: FunctionComponent = ({children}) => {
 
     return (
         <div className="overflow-hidden" style={{height: height}}>
+            <Paginattor page={page} maxPage={childrenWithProps!.length}/>
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div className="flex flex-col"
                             custom={direction}
@@ -124,3 +125,11 @@ export const FullPageItem: FunctionComponent<{ height?: number }> = ({height, ch
     )
 }
 
+const Paginattor = ({page, maxPage} : {page: number, maxPage: number}) => {
+
+    return(
+        <ul>
+
+        </ul>
+    )
+}

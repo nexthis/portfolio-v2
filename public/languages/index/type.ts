@@ -8,4 +8,19 @@ export default interface type extends seo{
             "link": string
         }
     },
+    "skills": Array<{
+        "name": string,
+        "image": {
+            "src": string,
+            "alt": string
+        },
+        "items":  Array<{
+            "name": string,
+            "description": string,
+            "image": {
+                "src": string,
+                "alt": string
+            },
+        }>
+    }>,
 }

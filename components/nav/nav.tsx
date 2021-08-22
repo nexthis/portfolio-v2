@@ -5,6 +5,9 @@ import Icon from '/public/icons/icon-blod.svg'
 import IconGit from '/public/icons/github.svg'
 import styles from './style.module.scss'
 import {useRouter} from 'next/router'
+import {useState} from "react";
+import {motion, useCycle} from "framer-motion";
+import Menu from "./menu";
 
 const Nav = () => {
     const {asPath, locale} = useRouter();
@@ -35,11 +38,7 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className="ml-3 h-full">
-                        <button type="button" aria-label="menu" className={styles.hamburger}>
-                            <div className={styles.hamburgerItem}/>
-                            <div className={clsx(styles.hamburgerItemCenter, styles.hamburgerItem)}/>
-                            <div className={styles.hamburgerItem}/>
-                        </button>
+                        <Menu/>
                     </div>
                 </div>
             </nav>
@@ -63,14 +62,5 @@ const ChangeLanguage = ({asPath, locale}: { asPath: string, locale: string | und
     </>
 )
 
-const Menu = () => {
-    return (
-        <button type="button" aria-label="menu" className={styles.hamburger}>
-            <div className={styles.hamburgerItem}/>
-            <div className={clsx(styles.hamburgerItemCenter, styles.hamburgerItem)}/>
-            <div className={styles.hamburgerItem}/>
-        </button>
-    )
-}
 
 export default Nav;

@@ -9,6 +9,7 @@ import Layout from "../components/layout/base";
 import ContentInterface from '../public/languages/index/type'
 import profilePic from '../public/image/me.png'
 import {Client} from '../helpers/prismic'
+import Skills from "../components/layouts/index/skills";
 
 type props = {
     content: ContentInterface,
@@ -24,6 +25,7 @@ const Home: FunctionComponent<props> = ({content}) => {
                         <div className='flex justify-center flex-1 relative h-full w-full'>
                             <Image src={profilePic} className='rounded-full md:rounded-none pointer-events-none' objectFit="contain"
                                    layout="fill"
+                                    // width={750}
                                    quality={90}
                                    loading="eager"
                                    alt="Picture of the author"/>
@@ -47,7 +49,7 @@ const Home: FunctionComponent<props> = ({content}) => {
                     </div>
                 </FullPageItem>
                 <FullPageItem>
-                    <div>Test1</div>
+                    <Skills content={content.skills}/>
                 </FullPageItem>
                 <FullPageItem>
                     <div>Test2</div>
