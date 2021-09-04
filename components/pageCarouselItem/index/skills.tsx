@@ -41,28 +41,38 @@ const Skills: FunctionComponent<props> = ({content}) => {
         setSelectedItem(item);
     }
 
-    const imageLoader: ImageLoader = ({ src, width, quality }) => {
+    const imageLoader: ImageLoader = ({src, width, quality}) => {
         return `${src}?w=${width}&q=${quality || 75}`
     }
 
     return (
-        <div className="flex flex-wrap h-full">
+        <div className="flex flex-col justify-between h-full w-full ">
 
-            <div className="w-1/2">
-                {selected.items.map((item, key) => (
-                    <div onClick={() => onItemChange(item)} key={key}>
-                        <div> {item.name} </div>
-                    </div>
-                ))}
+            <div className="flex ">
+                <div>
+                    {selected.items.map((item, key) => (
+                        <div onClick={() => onItemChange(item)} key={key}>
+                            <div> {item.name} </div>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <div>{selectedItem.name}</div>
+                    <div>{selectedItem.description}</div>
+                </div>
             </div>
-            <div className="w-1/2">
-                <div>{selectedItem.name}</div>
-                <div>{selectedItem.description}</div>
-            </div>
-            <div className="w-full max-h-32">
-                {useMemo(() => content.map((item, key) => (
-                    <Image loader={imageLoader} src={item.image.src} width={100} height={100} alt={item.image.alt} onClick={() => onSkillChange(item)} key={key}/>
-                )), [])}
+            <div className="col-span-2 max-h-32">
+                <ul className="flex justify-center">
+
+                    {useMemo(() => content.map((item, key) => (
+                        <li className={key !== 0 ? "ml-5" : ''} key={key}>
+                            <Image loader={imageLoader} src={item.image.src} width={100} height={100}
+                                   alt={item.image.alt}
+                                   onClick={() => onSkillChange(item)} key={key}/>
+                        </li>
+                    )), [])}
+
+                </ul>
             </div>
 
         </div>

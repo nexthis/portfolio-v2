@@ -1,60 +1,37 @@
 import type {FunctionComponent} from 'react'
-import type {GetServerSideProps, GetStaticProps} from 'next'
-import Image from 'next/image'
+import type {GetStaticProps} from 'next'
 import Head from '../components/head/head'
-import {FullPage, FullPageItem} from '../components/fullPage/fullPage'
-import clsx from 'clsx'
-import style from '../styles/index.module.scss'
+import PageCarousel from '../components/pageCarousel/pageCarusel'
 import Layout from "../components/layout/base";
 import ContentInterface from '../public/languages/index/type'
-import profilePic from '../public/image/me.png'
-import {Client} from '../helpers/prismic'
-import Skills from "../components/layouts/index/skills";
+import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
+import About from "../components/pageCarouselItem/index/about";
+import Skills from "../components/pageCarouselItem/index/skills";
+
 
 type props = {
     content: ContentInterface,
 }
 
 const Home: FunctionComponent<props> = ({content}) => {
+    const items: ReactSpringCarouselItem[] = [
+        {
+            id: '1',
+            renderItem: (<About content={content.home}/>)
+        },
+        {
+            id: '2',
+            renderItem: (<Skills content={content.skills}/>)
+        }
+    ]
+
+
     return (
         <Layout>
             <Head seo={content.seo}/>
-            <FullPage>
-                <FullPageItem>
-                    <div className="h-full flex flex-col justify-around md:flex-row-reverse md:items-center">
-                        <div className='flex justify-center flex-1 relative h-full w-full'>
-                            <Image src={profilePic} className='rounded-full md:rounded-none pointer-events-none' objectFit="contain"
-                                   layout="fill"
-                                    // width={750}
-                                   quality={90}
-                                   loading="eager"
-                                   alt="Picture of the author"/>
-                        </div>
-                        <div className="mb-9 flex-1">
-                            <h2 className="font-display text-lg">
-                                {content.home.subTitle}
-                            </h2>
-                            <h1 className={clsx(style.h1, 'font-display tracking-wider')}>
-                                {content.home.title}
-                            </h1>
-                            <p className="text-lg tracking-tight md:w-1/2">
-                                {content.home.description}
-                            </p>
-                            <p className="mt-3 text-sm">
-                                <span>{content.home.contact.text}</span>
-                                <br/>
-                                <a href="#contact" className="text-accent">{content.home.contact.link}</a>
-                            </p>
-                        </div>
-                    </div>
-                </FullPageItem>
-                <FullPageItem>
-                    <Skills content={content.skills}/>
-                </FullPageItem>
-                <FullPageItem>
-                    <div>Test2</div>
-                </FullPageItem>
-            </FullPage>
+            <PageCarousel items={items}>
+
+            </PageCarousel>
         </Layout>
     )
 }
