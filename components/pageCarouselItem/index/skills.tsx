@@ -41,9 +41,6 @@ const Skills: FunctionComponent<props> = ({content}) => {
         setSelectedItem(item);
     }
 
-    const imageLoader: ImageLoader = ({src, width, quality}) => {
-        return `${src}?w=${width}&q=${quality || 75}`
-    }
 
     return (
         <div className="flex flex-col justify-between h-full w-full ">
@@ -51,9 +48,10 @@ const Skills: FunctionComponent<props> = ({content}) => {
             <div className="flex ">
                 <div>
                     {selected.items.map((item, key) => (
-                        <div onClick={() => onItemChange(item)} key={key}>
-                            <div> {item.name} </div>
+                        <div key={key} onClick={() => onItemChange(item)}>
+                            <Image src={item.image.src} height={50} width={50}  key={key}/>
                         </div>
+
                     ))}
                 </div>
                 <div>
@@ -66,7 +64,7 @@ const Skills: FunctionComponent<props> = ({content}) => {
 
                     {useMemo(() => content.map((item, key) => (
                         <li className={key !== 0 ? "ml-5" : ''} key={key}>
-                            <Image loader={imageLoader} src={item.image.src} width={100} height={100}
+                            <Image src={item.image.src} width={100} height={100}
                                    alt={item.image.alt}
                                    onClick={() => onSkillChange(item)} key={key}/>
                         </li>

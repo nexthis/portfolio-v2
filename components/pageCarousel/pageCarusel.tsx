@@ -52,7 +52,7 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
     }
 
     return (
-        <div className="grid gap-7 grid-cols-none w-full" style={{height: height}}>
+        <div className="grid gap-7 grid-cols-none w-full z-10" style={{height: height}}>
             {carouselFragment}
         </div>
     )
