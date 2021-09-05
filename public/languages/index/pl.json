@@ -28,9 +28,9 @@
       "items": [
         {
           "name": "vue",
-          "description": "",
+          "description": "Tłumaczenie z języka angielskiego-Vue.js to front-endowy framework JavaScript typu open source model-view-viewmodel do tworzenia interfejsów użytkownika i aplikacji jednostronicowych. Został stworzony przez Evana You i jest utrzymywany przez niego i pozostałych aktywnych członków zespołu.",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/vue.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },

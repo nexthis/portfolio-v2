@@ -45,7 +45,7 @@ const Skills: FunctionComponent<props> = ({content}) => {
     return (
         <div className="flex flex-col justify-between h-full w-full ">
 
-            <div className="flex ">
+            <div className="flex justify-between">
                 <div>
                     {selected.items.map((item, key) => (
                         <div key={key} onClick={() => onItemChange(item)}>
