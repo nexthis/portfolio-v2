@@ -6,21 +6,29 @@ import ContentInterface from '../public/languages/index/type'
 import {Client} from "../helpers/prismic";
 import Prismic from "@prismicio/client";
 import {RichText} from 'prismic-reactjs';
+import PageCarousel from "../components/pageCarousel/pageCarusel";
+import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
+import Project from "../components/pageCarouselItem/portfolio/project";
 
 type props = {
     //content: ContentInterface,
 }
 
 // @ts-ignore
-const Portfolio: FunctionComponent<props> = ({content}) => {
+const Portfolio: FunctionComponent<props> = ({content, staticContent}) => {
     console.log(content)
+    // @ts-ignore
+    const items: ReactSpringCarouselItem[] = content.results.map((item,key) =>({
+        id: key,
+        renderItem: (<Project item={item}/>)
+    }))
 
     return (
         <Layout>
-            {/*@ts-ignore*/}
-            {content.results.map((item, key)=>(
-                <div key={key}>{RichText.asText(item.data.title)}</div>
-            ))}
+            <Head seo={staticContent.seo}/>
+            <PageCarousel items={items}>
+
+            </PageCarousel>
         </Layout>
     )
 }
@@ -28,15 +36,17 @@ export default Portfolio;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const client = Client();
+    const staticContent = await import(`public/languages/index/${context.locale}.json`);
 
     const data = await client.query(
         Prismic.Predicates.at('document.type', 'portfolio'),
-        { orderings : '[my.portfolio.created desc]', lang: context.locale === 'pl' ? 'pl' : 'en-eu' }
+        { orderings : '[my.portfolio.created desc]', lang: context.locale ?? 'pl' }
     );
 
     return {
         props: {
             content: data,
+            staticContent: staticContent.default
         },
     }
 }

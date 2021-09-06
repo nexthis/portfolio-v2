@@ -7,6 +7,8 @@ import ContentInterface from '../public/languages/index/type'
 import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
 import About from "../components/pageCarouselItem/index/about";
 import Skills from "../components/pageCarouselItem/index/skills";
+import {getAbsoluteURL} from "../helpers/url";
+import Contact from "../components/pageCarouselItem/index/contact";
 
 
 type props = {
@@ -22,6 +24,10 @@ const Home: FunctionComponent<props> = ({content}) => {
         {
             id: '2',
             renderItem: (<Skills content={content.skills}/>)
+        },
+        {
+            id: '3',
+            renderItem: (<Contact/>)
         }
     ]
 
