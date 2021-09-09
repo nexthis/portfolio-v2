@@ -1,12 +1,14 @@
 import type {FunctionComponent, ReactElement, ReactFragment, ReactNode, ReactNodeArray} from 'react'
 import {useSpringCarousel} from "react-spring-carousel-js";
 import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
-import {useEffect, useState} from "react";
-import {debounce} from "../../helpers/event";
+import {createContext, useCallback, useEffect, useState} from "react";
+import {debounce, throttle} from "../../helpers/event";
+
+export const PageCarouselContex = createContext(0);
 
 const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({items}) => {
     const [height, setHeight] = useState(0);
-    const {carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
+    const {carouselFragment, slideToPrevItem, slideToNextItem, slideToItem } = useSpringCarousel({
         items,
         carouselSlideAxis: "y",
         springConfig:{
@@ -16,10 +18,19 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
     })
 
 
+//    useEffect(() => {
+//        calculateHeight();
+//        console.log(items[0].id)
+//        setTimeout(() => {
+//            slideToItem(items[0].id);
+//        }, 200)
+//
+//    }, [items])
+
     useEffect(() => {
         calculateHeight();
         window.addEventListener('resize', debounce(calculateHeight, 100))
-        window.addEventListener('wheel', debounce(onChangeEvent, 10))
+        window.addEventListener('wheel', debounce(onChangeEvent, 50))
         window.addEventListener('keydown', onChangeEvent)
         return () => {
             window.removeEventListener('resize', calculateHeight)

@@ -1,21 +1,22 @@
 import type {FunctionComponent} from 'react'
 import type {GetServerSideProps, GetStaticProps} from 'next'
-import Head from '../components/head/head'
-import Layout from "../components/layout/base";
-import ContentInterface from '../public/languages/index/type'
-import {Client} from "../helpers/prismic";
+import Head from '../../components/head/head'
+import Layout from "../../components/layout/base";
+import ContentInterface from '../../public/languages/index/type'
+import {Client} from "../../helpers/prismic";
 import Prismic from "@prismicio/client";
 import {RichText} from 'prismic-reactjs';
-import PageCarousel from "../components/pageCarousel/pageCarusel";
+import PageCarousel from "../../components/pageCarousel/pageCarusel";
 import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
-import Project from "../components/pageCarouselItem/portfolio/project";
+import Project from "../../components/pageCarouselItem/portfolio/project";
+
 
 type props = {
     //content: ContentInterface,
 }
 
 // @ts-ignore
-const Portfolio: FunctionComponent<props> = ({content, staticContent}) => {
+const Index: FunctionComponent<props> = ({content, staticContent}) => {
     console.log(content)
     // @ts-ignore
     const items: ReactSpringCarouselItem[] = content.results.map((item,key) =>({
@@ -32,7 +33,7 @@ const Portfolio: FunctionComponent<props> = ({content, staticContent}) => {
         </Layout>
     )
 }
-export default Portfolio;
+export default Index;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const client = Client();

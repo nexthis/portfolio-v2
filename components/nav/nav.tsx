@@ -5,6 +5,8 @@ import Icon from '/public/icons/icon-blod.svg'
 import IconGit from '/public/icons/github.svg'
 import styles from './style.module.scss'
 import {useRouter} from 'next/router'
+// @ts-ignore
+// import {createPortal} from "react-dom";
 
 const Nav = () => {
     const {asPath, locale} = useRouter();
@@ -21,7 +23,9 @@ const Nav = () => {
                     </a>
                 </Link>
                 <div>
-                    <div className="hidden sm:inline text-2xl font-normal tracking-wide">HOME</div>
+                    <div className="hidden sm:inline text-2xl font-normal tracking-wide">
+                        Home
+                    </div>
                 </div>
                 <div className="flex justify-between items-center">
                     <a rel="noreferrer" target="_blank" href="https://github.com/nexthis"

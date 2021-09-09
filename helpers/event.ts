@@ -10,7 +10,7 @@ export function throttle<F extends (...params: any[]) => void>(fn: F, delay: num
     let waiting : boolean = false;
     return function(this: any, ...args: any[]) {
         if (!waiting) {
-            fn.apply(this);
+            fn.apply(this, args);
             waiting = true;
             setTimeout(function () {
                 waiting = false;
