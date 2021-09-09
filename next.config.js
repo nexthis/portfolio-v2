@@ -17,6 +17,21 @@ module.exports = withPlugins([
         reactStrictMode: true,
         images: {
             domains: ['images.prismic.io'],
-        }
+        },
+
+
+        async headers() {
+            return [
+                {
+                    source: '/portfolio',
+                    headers: [
+                        {
+                            key: 'Cache-Control',
+                            value: 'public, max-age=3600, must-revalidate',
+                        },
+                    ],
+                },
+            ]
+        },
     }
 ])
