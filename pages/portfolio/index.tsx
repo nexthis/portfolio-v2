@@ -36,6 +36,8 @@ const Index: FunctionComponent<props> = ({content, staticContent}) => {
 export default Index;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    context.res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
+
     const client = Client();
     const staticContent = await import(`public/languages/index/${context.locale}.json`);
 
