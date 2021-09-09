@@ -27,6 +27,7 @@ const View: FunctionComponent<props> = ({content, staticContent}) => {
 export default View;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    context.res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
 
     // @ts-ignore
     const {uid} = context.params;
