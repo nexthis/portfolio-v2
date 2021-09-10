@@ -1,7 +1,6 @@
 const withPlugins = require("next-compose-plugins");
 const withSvgr = require("next-svgr");
 const withPWA = require("next-pwa");
-const runtimeCaching = require('next-pwa/cache')
 module.exports = withPlugins([
     withSvgr,
     withPWA,
@@ -12,7 +11,6 @@ module.exports = withPlugins([
         },
         pwa: {
             dest: 'public',
-            runtimeCaching,
         },
         reactStrictMode: true,
         images: {
