@@ -1,0 +1,20 @@
+.title {
+  color: #fff;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+  z-index: 20;
+  margin-left: 11%;
+}
+
+.image {
+  display: block;
+  position: relative;
+  width: 53.125%;
+  height: 74.81%;
+  margin: 0 8% 0 auto;
+  -webkit-box-shadow: 0 80px 140px -40px rgb(0 0 0 / 60%);
+  box-shadow: 0 80px 140px -40px rgb(0 0 0 / 60%);
+}

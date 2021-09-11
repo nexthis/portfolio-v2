@@ -5,6 +5,7 @@ import Icon from '/public/icons/icon-blod.svg'
 import IconGit from '/public/icons/github.svg'
 import styles from './style.module.scss'
 import {useRouter} from 'next/router'
+import Menu from './menu'
 // @ts-ignore
 // import {createPortal} from "react-dom";
 
@@ -39,7 +40,7 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className="ml-3 h-full">
-                        {/*<Menu/>*/}
+                        <Menu/>
                     </div>
                 </div>
             </nav>
