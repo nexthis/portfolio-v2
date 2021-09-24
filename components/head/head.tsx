@@ -5,11 +5,11 @@ import {getAbsoluteURL} from "../../helpers/url";
 
 type props = {
     seo: seo['seo'],
-    type?: 'website' | 'article' | 'video',
+    type?: 'person' | 'article' | 'video',
 }
 
 const HeadComponent: FunctionComponent<props> = (
-    {seo, type = 'website', children}) => {
+    {seo, type = 'person', children}) => {
     const baseName = process.env.NEXT_PUBLIC_APP_NAME;
     const router = useRouter();
     const lang = router.locale === 'pl' ? ['pl_PL', 'en_US'] : ['en_US', 'pl_PL'];
@@ -53,15 +53,65 @@ const HeadComponent: FunctionComponent<props> = (
             <meta name="twitter:description" content={seo.description}/>
             <meta name="twitter:image" content={getAbsoluteURL(seo.image.src)}/>
             <meta name="twitter:image:alt" content={seo.image.alt}/>
+
+            {/* Schema JSON LD */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(generateJsonLD(seo, type))}}
+            />
+
             {/*Fonts*/}
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={undefined}/>
             <link
-                href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+                href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap"
                 rel="stylesheet"/>
-            <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet"/>
 
             {children}
         </Head>
     )
+}
+
+const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
+    switch (type) {
+        case "article":
+            return {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": seo.title,
+                "description": seo.description,
+                "image": getAbsoluteURL(seo.image.src),
+                "author": {
+                    "@type": "Person",
+                    "name": "Paweł Romanowski"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": ""
+                    }
+                },
+                "datePublished": ""
+            }
+        case "video":
+            return {}
+        case "person":
+        default:
+            return {
+                "@context": "https://schema.org/",
+                "@type": "Person",
+                "name": "Paweł Romanowski",
+                "url": getAbsoluteURL('/'),
+                "image": getAbsoluteURL(seo.image.src),
+                "sameAs": [
+                    getAbsoluteURL('/'),
+                    "https://github.com/nexthis"
+                ],
+                "jobTitle": "Full-Stack Developer"
+            }
+    }
 }
 
 export default HeadComponent;

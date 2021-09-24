@@ -1,7 +1,7 @@
 import type {FunctionComponent} from 'react'
 import Link from "next/link";
 import clsx from 'clsx'
-import Icon from '/public/icons/icon-blod.svg'
+import Icon from '/public/icons/logo.svg'
 import IconGit from '/public/icons/github.svg'
 import styles from './style.module.scss'
 import {useRouter} from 'next/router'
@@ -19,21 +19,22 @@ const Nav = () => {
                     <a>
                         <div className="flex items-center">
                             <Icon className={styles.icon}/>
-                            <span className="ml-3 font-medium text-sm sm:text-xl">Paweł Romanowski</span>
+                            <div className="ml-3 font-light uppercase text-xs sm:text-xl">Paweł <span
+                                className="text-accent font-medium"> Romanowski</span></div>
                         </div>
                     </a>
                 </Link>
                 <div>
-                    <div className="hidden sm:inline text-2xl font-normal tracking-wide">
-                        Home
-                    </div>
+                    {/*<div className="hidden sm:inline text-2xl font-normal tracking-wide">*/}
+                    {/*    Home*/}
+                    {/*</div>*/}
                 </div>
                 <div className="flex justify-between items-center">
-                    <a rel="noreferrer" target="_blank" href="https://github.com/nexthis"
-                       className="rounded-full bg-secondary flex items-center p-2  focus:bg-accent hover:bg-accent focus:text-secondary hover:text-secondary transition-colors">
-                        <span className="sr-only">GitHub</span>
-                        <IconGit/>
-                    </a>
+                    {/*<a rel="noreferrer" target="_blank" href="https://github.com/nexthis"*/}
+                    {/*   className="rounded-full bg-secondary flex items-center p-2  focus:bg-accent hover:bg-accent focus:text-secondary hover:text-secondary transition-colors">*/}
+                    {/*    <span className="sr-only">GitHub</span>*/}
+                    {/*    <IconGit/>*/}
+                    {/*</a>*/}
                     <div className="ml-3">
                         <div className="flex bg-primary rounded-full px-2 py-0.5">
                             <ChangeLanguage asPath={asPath} locale={locale}/>
@@ -53,11 +54,11 @@ const ChangeLanguage = ({asPath, locale}: { asPath: string, locale: string | und
         <Link href={asPath} locale="pl">
             <a
                 className={clsx(
-                    "cursor-pointer flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-sm leading-none font-display", locale === "pl" ? 'bg-accent text-secondary' : '')}>PL</a>
+                    "cursor-pointer flex font-medium items-center justify-center w-8 h-8 rounded-full bg-secondary text-sm leading-none font-display", locale === "pl" ? 'bg-accent text-secondary' : '')}>PL</a>
         </Link>
         <Link href={asPath} locale="en">
             <a
-                className={clsx(`cursor-pointer flex items-center justify-center w-8 h-8 items-center
+                className={clsx(`cursor-pointer flex items-center justify-center w-8 h-8 items-center font-medium
                                         rounded-full bg-secondary ml-2 text-sm leading-none font-display`, locale === "en" ?
                     'bg-accent text-secondary' : '')}>EN</a>
         </Link>

@@ -41,9 +41,9 @@ const Hamburger: FunctionComponent<{ open: boolean, hover: boolean }> = ({open, 
 
     return (
         <>
-            <animated.div style={first} className={styles.hamburgerItem}/>
-            <animated.div style={second} className={clsx(styles.hamburgerItem, 'ml-auto')}/>
-            <animated.div style={third} className={styles.hamburgerItem}/>
+            <animated.div style={first} className={clsx(styles.hamburgerItem, 'bg-accent')}/>
+            <animated.div style={second} className={clsx(styles.hamburgerItem, 'ml-auto bg-accent')}/>
+            <animated.div style={third} className={clsx(styles.hamburgerItem, 'bg-accent')}/>
         </>
     )
 }

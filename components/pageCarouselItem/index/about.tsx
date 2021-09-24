@@ -1,6 +1,7 @@
 import type {FunctionComponent} from "react";
 import ContentInterface from "../../../public/languages/index/type";
 import Image from "next/image";
+import Circle from "../../circle/circle";
 import profilePic from "../../../public/image/me.png";
 import clsx from "clsx";
 import style from "../../../styles/index.module.scss";
@@ -38,6 +39,8 @@ const About: FunctionComponent<props> = ({content}) => {
                     <a href="#contact" className="text-accent">{content.contact.link}</a>
                 </p>
             </div>
+
+            <Circle x={0} y={"calc(50% - 500px/2)"} size={500}/>
         </div>
     )
 }

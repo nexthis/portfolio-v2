@@ -3,12 +3,16 @@ import {useSpringCarousel} from "react-spring-carousel-js";
 import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
 import {createContext, useCallback, useEffect, useState} from "react";
 import {debounce, throttle} from "../../helpers/event";
+import {log} from "util";
+import clsx from "clsx";
+import {animated, useSpring} from '@react-spring/web';
 
 export const PageCarouselContex = createContext(0);
 
 const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({items}) => {
     const [height, setHeight] = useState(0);
-    const {carouselFragment, slideToPrevItem, slideToNextItem, slideToItem } = useSpringCarousel({
+    const [activeItem, setActiveItem] = useState(0);
+    const {carouselFragment, slideToPrevItem, slideToNextItem, slideToItem, getCurrentActiveItem, useListenToCustomEvent } = useSpringCarousel({
         items,
         carouselSlideAxis: "y",
         springConfig:{
@@ -17,7 +21,11 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
         },
     })
 
-
+    // useListenToCustomEvent((data) => {
+    //     if (data.eventName === "onSlideChange") {
+    //         setActiveItem(data.currentItem);
+    //     }
+    // })
 //    useEffect(() => {
 //        calculateHeight();
 //        console.log(items[0].id)
@@ -38,6 +46,7 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
             window.removeEventListener('keydown', onChangeEvent)
         }
     }, []);
+
 
     const onChangeEvent = (e: WheelEvent | KeyboardEvent) => {
         if (e instanceof WheelEvent) {
@@ -63,8 +72,39 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
     }
 
     return (
-        <div className="grid gap-7 grid-cols-none w-full z-10" style={{height: height}}>
+        <div className="flex w-full z-10" style={{height: height, touchAction: 'none'}}>
             {carouselFragment}
+            {/*<Paginator active={activeItem} count={items.length}/>*/}
+        </div>
+    )
+}
+
+
+const Paginator: FunctionComponent<{count: number, active: number}> = ({count, active}) => {
+    const items = Array.from(Array(count).keys())
+    const TIME = 1000;
+    const [isChange, setChange] = useState(false);
+    const props = useSpring({
+        reverse: !isChange,
+        transform: 'rotate(90deg)',
+        from: {
+            transform: 'rotate(0deg)',
+        }
+    })
+
+    useEffect(() => {
+        setChange(true)
+        setTimeout(() => {
+            setChange(false)
+        }, TIME)
+    },[active])
+
+    return (
+        <div className="fixed left-0 top-1/2">
+            {items.map((item) => (
+                <animated.div key={item} style={props} className={clsx("w-1 h-10 bg-white origin-bottom", item !== 0 ? 'mt-2' : '', active === item ? 'bg-accent' : '')}/>
+            ))}
+
         </div>
     )
 }
