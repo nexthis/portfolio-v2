@@ -18,15 +18,15 @@ type props = {
 const Home: FunctionComponent<props> = ({content}) => {
     const items: ReactSpringCarouselItem[] = [
         {
-            id: '1',
+            id: 'Home',
             renderItem: (<About content={content.home}/>)
         },
         {
-            id: '2',
+            id: 'Skills',
             renderItem: (<Skills content={content.skills}/>)
         },
         {
-            id: '3',
+            id: 'Contact',
             renderItem: (<Contact/>)
         }
     ]

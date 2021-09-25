@@ -40,7 +40,7 @@ const About: FunctionComponent<props> = ({content}) => {
                 </p>
             </div>
 
-            <Circle x={0} y={"calc(50% - 500px/2)"} size={500}/>
+            {/*<Circle x={0} y={"calc(50% - 500px/2)"} size={500}/>*/}
         </div>
     )
 }
