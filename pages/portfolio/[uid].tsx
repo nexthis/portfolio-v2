@@ -24,7 +24,7 @@ const View: FunctionComponent<props> = ({content}) => {
     const seoData: seo['seo'] = {
         title: RichText.asText(item.seo_title),
         description: RichText.asText(item.seo_description),
-        image: {src: item.image.url, alt: item.image.alt},
+        image: {src: item.seo_image.url, alt: item.seo_image.alt},
     }
 
     useEffect(() => {
