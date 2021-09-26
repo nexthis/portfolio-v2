@@ -1,7 +1,7 @@
 @import "mixin";
 .h1 {
   @include css-lock(1.56, 3, 70, 100);
-  @include css-lock(1.56, 3.6, 70, 100, line-height)
+  @include css-lock(1.7, 3.6, 70, 100, line-height)
 }
 
 .image {

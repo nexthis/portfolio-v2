@@ -123,7 +123,7 @@ const ThumbItem: FunctionComponent<{ title: string, number: number, active?: boo
             {/*{title}  {active ? "active" : "disabled"}*/}
             <div className="flex items-center">
                 <div
-                    className={clsx("w-8 sm:w-20 h-3 rounded-tr-full rounded-br-full border-accent border", active ? "bg-accent w-10 sm:w-24" : null)}/>
+                    className={clsx("w-8 sm:w-20 h-3 rounded-tr-full rounded-br-full border-l-0 border-accent border", active ? "bg-accent w-10 sm:w-24" : null)}/>
                 <div className={clsx("ml-1 hidden sm:block text-xs", active ? "text-sm" : null)}>{title}</div>
             </div>
         </div>
