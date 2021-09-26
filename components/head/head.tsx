@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import type {FunctionComponent} from 'react'
 import {useRouter} from 'next/router'
-import {getAbsoluteURL} from "../../helpers/url";
+import {getAbsoluteURL, isURL} from "../../helpers/url";
 
 type props = {
     seo: seo['seo'],
@@ -38,7 +38,7 @@ const HeadComponent: FunctionComponent<props> = (
             <meta property="og:url" content={getAbsoluteURL(router.pathname)}/>
             <meta property="og:type" content={type}/>
             <meta property="og:title" content={seo.title}/>
-            <meta property="og:image" content={getAbsoluteURL(seo.image.src)}/>
+            <meta property="og:image" content={getImageUrl(seo.image.src)}/>
             <meta property="og:image:alt" content={seo.image.alt}/>
             <meta property="og:description" content={seo.description}/>
             <meta property="og:locale" content={lang[0]}/>
@@ -51,7 +51,7 @@ const HeadComponent: FunctionComponent<props> = (
             <meta name="twitter:url" content={getAbsoluteURL(router.pathname)}/>
             <meta name="twitter:title" content={seo.title}/>
             <meta name="twitter:description" content={seo.description}/>
-            <meta name="twitter:image" content={getAbsoluteURL(seo.image.src)}/>
+            <meta name="twitter:image" content={getImageUrl(seo.image.src)}/>
             <meta name="twitter:image:alt" content={seo.image.alt}/>
 
             {/* Schema JSON LD */}
@@ -80,7 +80,7 @@ const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
                 "@type": "Article",
                 "headline": seo.title,
                 "description": seo.description,
-                "image": getAbsoluteURL(seo.image.src),
+                "image": getImageUrl(seo.image.src),
                 "author": {
                     "@type": "Person",
                     "name": "Paweł Romanowski"
@@ -104,7 +104,7 @@ const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
                 "@type": "Person",
                 "name": "Paweł Romanowski",
                 "url": getAbsoluteURL('/'),
-                "image": getAbsoluteURL(seo.image.src),
+                "image": getImageUrl(seo.image.src),
                 "sameAs": [
                     getAbsoluteURL('/'),
                     "https://github.com/nexthis"
@@ -112,6 +112,12 @@ const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
                 "jobTitle": "Full-Stack Developer"
             }
     }
+}
+
+
+const getImageUrl = (src: string): string => {
+    console.log(isURL(src) ? "yes" : "no", src)
+    return isURL(src) ? src : getAbsoluteURL(src);
 }
 
 export default HeadComponent;
