@@ -23,3 +23,10 @@ a {
   background: linear-gradient(77deg, #131A24 0%, #2B323C 100%) no-repeat fixed;
   z-index: -100;
 }
+
+.default-carousel-height {
+  height: calc(100vh - 72px);
+  @media (min-width: 640px) {
+    height: calc(100vh - 96px);
+  }
+}
