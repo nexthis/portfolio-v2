@@ -35,7 +35,7 @@ const HeadComponent: FunctionComponent<props> = (
             <meta name="googlebot" content="index,follow"/>
 
             {/*Facebook Open Graph*/}
-            <meta property="og:url" content={getAbsoluteURL(router.pathname)}/>
+            <meta property="og:url" content={getAbsoluteURL(router.asPath)}/>
             <meta property="og:type" content={type}/>
             <meta property="og:title" content={seo.title}/>
             <meta property="og:image" content={getImageUrl(seo.image.src)}/>
@@ -48,7 +48,7 @@ const HeadComponent: FunctionComponent<props> = (
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image"/>
-            <meta name="twitter:url" content={getAbsoluteURL(router.pathname)}/>
+            <meta name="twitter:url" content={getAbsoluteURL(router.asPath)}/>
             <meta name="twitter:title" content={seo.title}/>
             <meta name="twitter:description" content={seo.description}/>
             <meta name="twitter:image" content={getImageUrl(seo.image.src)}/>
@@ -116,7 +116,6 @@ const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
 
 
 const getImageUrl = (src: string): string => {
-    console.log(isURL(src) ? "yes" : "no", src)
     return isURL(src) ? src : getAbsoluteURL(src);
 }
 
