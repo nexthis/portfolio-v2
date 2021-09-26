@@ -44,7 +44,7 @@ const View: FunctionComponent<props> = ({content}) => {
 
     return (
         <Layout padding={false} fluid={true}>
-            <Head seo={seoData}/>
+            <Head seo={seoData} type="article"/>
 
             <div className="w-full flex flex-col justify-between" style={{height: height}}>
                 <Container className="mt-5">
