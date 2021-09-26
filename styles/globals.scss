@@ -8,7 +8,6 @@ body {
   margin: 0;
   font-family: 'Jost', sans-serif;
   color: #F9FAFB;
-  background: linear-gradient(77deg, #131A24 0%, #2B323C 100%) no-repeat fixed;
 }
 
 a {
@@ -18,4 +17,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.background-gradient {
+  background: linear-gradient(77deg, #131A24 0%, #2B323C 100%) no-repeat fixed;
+  z-index: -100;
 }

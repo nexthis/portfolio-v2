@@ -1,19 +1,29 @@
 import Nav from "../nav/nav";
 import Background from "./background";
 import type {FunctionComponent} from 'react'
+import clsx from "clsx";
+import Container from "../container/container";
 
-const Layout: FunctionComponent = ({children}) => {
+type props = {
+    fluid?: boolean,
+    padding?: boolean,
+}
+const Layout: FunctionComponent<props> = ({children, fluid = false, padding = true}) => {
     return (
         <>
-            <div className="container mx-auto md:px-0 px-6">
+
+            <Container>
                 <Nav/>
+            </Container>
+            <Container fluid={fluid} padding={padding}>
                 <main>
                     {children}
                 </main>
-            </div>
+            </Container>
+
+
             <Background/>
         </>
     )
 }
-
 export default Layout;

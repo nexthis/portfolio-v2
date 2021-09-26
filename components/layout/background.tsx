@@ -5,7 +5,7 @@ import clsx from "clsx";
 const Background: FunctionComponent = () => {
 
     return (
-        <div className="w-screen h-screen absolute top-0 left-0 pointer-events-none z-0">
+        <div className="w-screen h-screen fixed top-0 left-0 pointer-events-none background-gradient">
             <div className="w-full h-full relative overflow-hidden">
 
                 {/*BIG*/}
