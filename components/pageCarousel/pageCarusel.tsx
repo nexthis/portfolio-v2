@@ -83,7 +83,7 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
                 {carouselFragment}
             </div>
             {/*<ThumbWraper useListenToCustomEvent={useListenToCustomEvent} thumbsFragment={thumbsFragment}/>*/}
-            <div className="fixed left-0 top-3/4 sm:top-1/2 sm:transform translate-y-1/2">
+            <div className="fixed left-0 top-3/4 sm:top-1/2 sm:transform translate-y-1/2 z-10">
                 {thumbsFragment}
             </div>
         </>

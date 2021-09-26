@@ -1,7 +1,6 @@
 import type {FunctionComponent} from "react";
 import ContentInterface from "../../../public/languages/index/type";
 import Image from "next/image";
-import Circle from "../../circle/circle";
 import profilePic from "../../../public/image/me.png";
 import clsx from "clsx";
 import style from "../../../styles/index.module.scss";

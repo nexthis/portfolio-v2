@@ -36,7 +36,7 @@ const Nav = () => {
                     {/*    <IconGit/>*/}
                     {/*</a>*/}
                     <div className="ml-3">
-                        <div className="flex bg-primary rounded-full px-2 py-0.5">
+                        <div className="flex bg-primary rounded-full px-1 py-0.5">
                             <ChangeLanguage asPath={asPath} locale={locale}/>
                         </div>
                     </div>
@@ -56,10 +56,11 @@ const ChangeLanguage = ({asPath, locale}: { asPath: string, locale: string | und
                 className={clsx(
                     "cursor-pointer flex font-medium items-center justify-center w-8 h-8 rounded-full bg-secondary text-sm leading-none font-display", locale === "pl" ? 'bg-accent text-secondary' : '')}>PL</a>
         </Link>
+        <div className="w-1"/>
         <Link href={asPath} locale="en">
             <a
                 className={clsx(`cursor-pointer flex items-center justify-center w-8 h-8 items-center font-medium
-                                        rounded-full bg-secondary ml-2 text-sm leading-none font-display`, locale === "en" ?
+                                        rounded-full bg-secondary text-sm leading-none font-display`, locale === "en" ?
                     'bg-accent text-secondary' : '')}>EN</a>
         </Link>
     </>
