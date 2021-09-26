@@ -31,7 +31,6 @@ type props = {
 }
 
 const Project: FunctionComponent<props> = ({item}) => {
-    console.log(item)
 
     return (
         <div className="h-full w-full relative flex items-center">

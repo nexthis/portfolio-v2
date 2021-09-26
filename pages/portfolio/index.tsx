@@ -20,7 +20,7 @@ const Index: FunctionComponent<props> = ({content, staticContent}) => {
     console.log(content)
     // @ts-ignore
     const items: ReactSpringCarouselItem[] = content.results.map((item,key) =>({
-        id: key,
+        id: RichText.asText(item.data.title),
         renderItem: (<Project item={item}/>)
     }))
 
