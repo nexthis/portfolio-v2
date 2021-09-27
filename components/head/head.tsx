@@ -13,6 +13,7 @@ const HeadComponent: FunctionComponent<props> = (
     const baseName = process.env.NEXT_PUBLIC_APP_NAME;
     const router = useRouter();
     const lang = router.locale === 'pl' ? ['pl_PL', 'en_US'] : ['en_US', 'pl_PL'];
+    console.log(seo.dateModified)
     return (
         <Head>
             {/*Base*/}
@@ -81,17 +82,19 @@ const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
                 "image": getImageUrl(seo.image.src),
                 "author": {
                     "@type": "Person",
-                    "name": "Paweł Romanowski"
+                    "name": "Paweł Romanowski",
+                    "url": getAbsoluteURL('/'),
                 },
                 "publisher": {
-                    "@type": "Organization",
-                    "name": "",
+                    "@type": "Person",
+                    "name": "Paweł Romanowski",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": ""
+                        "url": getAbsoluteURL('/image/seo/logo.png')
                     }
                 },
-                "datePublished": ""
+                "datePublished": new Date(seo.datePublished!).toISOString().slice(0, 10),
+                "dateModified": new Date(seo.dateModified!).toISOString().slice(0, 10)
             }
         case "video":
             return {}
@@ -107,7 +110,9 @@ const generateJsonLD = (seo: props['seo'], type: props['type']): object => {
                     getAbsoluteURL('/'),
                     "https://github.com/nexthis"
                 ],
-                "jobTitle": "Full-Stack Developer"
+                "jobTitle": "Full-Stack Developer",
+                "email": "pawel.romanowski000@gmail.com",
+                "telephone": "502572544"
             }
     }
 }

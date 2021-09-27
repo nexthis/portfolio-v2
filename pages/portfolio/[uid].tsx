@@ -24,6 +24,8 @@ const View: FunctionComponent<props> = ({content}) => {
         title: RichText.asText(item.seo_title),
         description: RichText.asText(item.seo_description),
         image: {src: item.seo_image.url, alt: item.seo_image.alt},
+        dateModified: content.first_publication_date,
+        datePublished: content.last_publication_date,
     }
 
     return (

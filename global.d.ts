@@ -5,6 +5,8 @@ interface seo {
         "image": {
             "src": string,
             "alt": string
-        }
+        },
+        datePublished?: string | null,
+        dateModified?: string | null,
     }
 }
