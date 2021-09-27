@@ -24,7 +24,7 @@ a {
   z-index: -100;
 }
 
-.default-carousel-height {
+.default-screen-height {
   height: calc(100vh - 72px);
   @media (min-width: 640px) {
     height: calc(100vh - 116px);

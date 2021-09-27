@@ -19,7 +19,6 @@ type props = {
 
 // @ts-ignore
 const View: FunctionComponent<props> = ({content}) => {
-    const [height, setHeight] = useState(0);
     const item = content.data;
     const seoData: seo['seo'] = {
         title: RichText.asText(item.seo_title),
@@ -27,26 +26,11 @@ const View: FunctionComponent<props> = ({content}) => {
         image: {src: item.seo_image.url, alt: item.seo_image.alt},
     }
 
-    useEffect(() => {
-        calculateHeight();
-        window.addEventListener('resize', debounce(calculateHeight, 100))
-        return () => {
-            window.removeEventListener('resize', calculateHeight)
-        }
-    }, []);
-
-    const calculateHeight = () => {
-        const element = document.querySelector<HTMLDivElement>('.hook_nav')!;
-        const style = getComputedStyle(element);
-        const height = element.clientHeight + parseInt(style.marginTop) + parseInt(style.marginBottom)
-        setHeight(window.innerHeight - height)
-    }
-
     return (
         <Layout padding={false} fluid={true}>
             <Head seo={seoData} type="article"/>
 
-            <div className="w-full flex flex-col justify-between" style={{height: height}}>
+            <div className="w-full flex flex-col justify-between default-screen-height">
                 <Container className="mt-5">
 
                     <h1 className="font-display font-semibold text-2xl">{RichText.asText(item.title)}</h1>

@@ -79,7 +79,7 @@ const PageCarousel: FunctionComponent<{ items: ReactSpringCarouselItem[] }> = ({
 
     return (
         <>
-            <div className="flex w-full default-carousel-height z-10" style={{height: height, touchAction: 'none'}}>
+            <div className="flex w-full default-screen-height z-10" style={{height: height, touchAction: 'none'}}>
                 {carouselFragment}
             </div>
             {/*<ThumbWraper useListenToCustomEvent={useListenToCustomEvent} thumbsFragment={thumbsFragment}/>*/}
