@@ -60,7 +60,15 @@ const HeadComponent: FunctionComponent<props> = (
             <meta property="og:locale" content={lang[0]}/>
             <meta property="og:locale:alternate" content={lang[1]}/>
             <meta property="og:site_name" content="Paweł Romanowski - Portfolio"/>
-            <meta property="article:author" content="Paweł Romanowski"/>
+            {type === 'article' ? (
+                <>
+                    <meta property="article:author" content="Paweł Romanowski"/>
+                    <meta property="article:modified_time"
+                          content={new Date(seo.dateModified!).toISOString().slice(0, 10)}/>
+                    <meta property="article:published_time"
+                          content={new Date(seo.datePublished!).toISOString().slice(0, 10)}/>
+                </>
+            ) : null}
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image"/>
