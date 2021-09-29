@@ -7,8 +7,8 @@ import {Client} from "../../helpers/prismic";
 import Prismic from "@prismicio/client";
 import {RichText} from 'prismic-reactjs';
 import PageCarousel from "../../components/pageCarousel/pageCarusel";
-import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
 import Project from "../../components/pageCarouselItem/portfolio/project";
+import {CarouselItem} from "../../types/carusel";
 
 
 type props = {
@@ -19,8 +19,9 @@ type props = {
 const Index: FunctionComponent<props> = ({content, staticContent}) => {
     console.log(content)
     // @ts-ignore
-    const items: ReactSpringCarouselItem[] = content.results.map((item,key) =>({
-        id: RichText.asText(item.data.title),
+    const items: CarouselItem[] = content.results.map((item, key) => ({
+        id: key,
+        name: RichText.asText(item.data.title),
         renderItem: (<Project item={item}/>)
     }))
 
