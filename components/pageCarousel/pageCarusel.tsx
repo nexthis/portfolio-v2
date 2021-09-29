@@ -34,7 +34,6 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
 
     return (
         <>
-
             <div ref={sliderRef} className="embla overflow-hidden" style={{height: height}}>
                 <div className="embla__container w-full h-full">
                     {items.map((item, index) =>
