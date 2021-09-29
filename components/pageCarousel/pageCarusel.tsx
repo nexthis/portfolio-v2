@@ -59,6 +59,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
 //getCurrentActiveItem: () => {id: string, index: number}
 const ThumbItem: FunctionComponent<{ title: string, number: number, active?: boolean }> = ({title, number, active}) => {
 
+    
     return (
         <div className="mt-1 sm:mt-3">
             <div
