@@ -4,16 +4,16 @@ import {debounce, throttle} from "../../helpers/event";
 import clsx from "clsx";
 import {CarouselItem} from "../../types/carusel";
 // import Swiper core and required modules
-import {Navigation, Pagination, Scrollbar, A11y} from 'swiper';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import useEmblaCarousel from 'embla-carousel-react'
 
 // export const PageCarouselContex = createContext(0);
 
 const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
+
+    const [sliderRef] = useEmblaCarousel({
+        axis: 'y',
+        loop: false,
+    })
     const [height, setHeight] = useState(0);
 
     useEffect(() => {
@@ -34,13 +34,19 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
 
     return (
         <>
-            <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} direction="vertical">
-                {items.map((item, index) => {
-                    <SwiperSlide key={index}>
-                        {item}
-                    </SwiperSlide>
-                })}
-            </Swiper>
+
+            <div ref={sliderRef} className="embla overflow-hidden" style={{height: height}}>
+                <div className="embla__container w-full h-full">
+                    {items.map((item, index) =>
+                        (
+                            <div className={`embla__slide h-full number-slide-${index + 1}`} key={index}>
+                                {item.renderItem}
+                            </div>
+                        )
+                    )}
+                </div>
+            </div>
+
             {/*<ThumbWraper useListenToCustomEvent={useListenToCustomEvent} thumbsFragment={thumbsFragment}/>*/}
             <div className="fixed left-0 top-3/4 sm:top-1/2 sm:transform translate-y-1/2 z-10">
                 {/*{thumbsFragment}*/}
