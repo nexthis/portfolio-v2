@@ -7,8 +7,9 @@ import Container from "../container/container";
 type props = {
     fluid?: boolean,
     padding?: boolean,
+    backgroundEffect?: boolean,
 }
-const Layout: FunctionComponent<props> = ({children, fluid = false, padding = true}) => {
+const Layout: FunctionComponent<props> = ({children, fluid = false, padding = true, backgroundEffect = true}) => {
     return (
         <>
 
@@ -21,8 +22,7 @@ const Layout: FunctionComponent<props> = ({children, fluid = false, padding = tr
                 </main>
             </Container>
 
-
-            <Background/>
+            <Background backgroundEffect={backgroundEffect}/>
         </>
     )
 }

@@ -1,0 +1,36 @@
+@import "mixin";
+
+.content {
+  @include css-lock(1, 1.25, 47, 96);
+  @include css-lock(1.3, 1.5, 47, 96, line-height);
+
+  ul, ol {
+    margin-left: 12px;
+    padding: 6px;
+    list-style-type: circle;
+    padding-inline-start: 10px;
+    font-weight: 600;
+
+    > * {
+      margin-top: 5px;
+    }
+  }
+
+  ol {
+    list-style: decimal
+  }
+
+  pre {
+    padding: 10px;
+    background-color: #282c34;
+    margin: 15px 0;
+    border-radius: 5px;
+
+    [class] {
+      padding: 0 !important;
+      background: #282c34;
+    }
+  }
+
+
+}

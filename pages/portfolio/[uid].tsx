@@ -1,16 +1,19 @@
-import type {FunctionComponent} from 'react'
+import type {FunctionComponent, ReactElement, ReactNode} from 'react'
 import type {GetServerSideProps, GetStaticProps} from 'next'
 import Head from '../../components/head/head'
 import Layout from "../../components/layout/base";
 import ContentInterface from '../../public/languages/index/type'
 import {Client} from "../../helpers/prismic";
 import Prismic from "@prismicio/client";
-import {RichText} from 'prismic-reactjs';
+import styles from '../../styles/portfolioView.module.scss'
+import {RichText, RichTextBlock} from 'prismic-reactjs';
 import Container from "../../components/container/container";
 import Image from "next/image";
 import type {PrismicDataInterface, PrismicDataPortfolio} from "../../types/prismic";
-import {useEffect, useState} from "react";
-import {debounce} from "../../helpers/event";
+import {cloneElement, isValidElement, useEffect, useState} from "react";
+import highlight from 'highlight.js'
+import 'highlight.js/styles/atom-one-dark.css'
+import clsx from "clsx";
 
 
 type props = {
@@ -28,8 +31,12 @@ const View: FunctionComponent<props> = ({content}) => {
         datePublished: content.last_publication_date,
     }
 
+    useEffect(() => {
+        highlight.highlightAll();
+    }, [])
+
     return (
-        <Layout padding={false} fluid={true}>
+        <Layout padding={false} fluid={true} backgroundEffect={false}>
             <Head seo={seoData} type="article"/>
 
             <div className="w-full flex flex-col justify-between default-screen-height">
@@ -44,25 +51,73 @@ const View: FunctionComponent<props> = ({content}) => {
                 </div>
             </div>
 
-            <div className="bg-white">
+            <div className="bg-white py-8">
                 <Container>
-                    <div className="text-primary">
-                        <div className="uppercase">
-                            Role
+                    <div className="text-secondary flex flex-wrap">
+                        <div className="w-1/2 sm:w-1/4">
+                            <p className="uppercase font-semibold text-xl">
+                                Role
+                            </p>
+                            <p className="font-normal">{item.type}</p>
+                        </div>
+
+                        <div className="w-1/2 sm:w-1/4">
+                            <p className="uppercase font-semibold text-xl">
+                                Date
+                            </p>
+                            <p>{new Date(item.created).toISOString().slice(0, 10)}</p>
+                        </div>
+
+                        <div className="w-1/2 sm:w-1/4 mt-3 sm:mt-0">
+                            <p className="uppercase font-semibold text-xl">
+                                Overview
+                            </p>
+                            <p className="font-normal">{RichText.asText(item.seo_title)}</p>
+                        </div>
+
+                        <div className="w-1/2 sm:w-1/4 mt-3 sm:mt-0">
+                            <p className="uppercase font-semibold text-xl">
+                                Technology
+                            </p>
+                            <p>{new Date(item.created).toISOString().slice(0, 10)}</p>
                         </div>
                     </div>
-
-                    <Image src={item.responsive_device_mockup.url} alt={item.responsive_device_mockup.alt}
-                           width={1800} height={633} layout="responsive" objectFit="contain"/>
+                    <div className="mt-4">
+                        <Image src={item.responsive_device_mockup.url} alt={item.responsive_device_mockup.alt}
+                               width={1800} height={633} layout="responsive" objectFit="contain"/>
+                    </div>
                 </Container>
+
             </div>
             <Container>
-                <RichText render={item.content}/>
+                <div className={clsx("py-8 max-w-5xl mx-auto", styles.content)}>
+                    {/*@ts-ignore*/}
+                    <RichText htmlSerializer={htmlSerializer} render={item.content}/>
+                </div>
             </Container>
         </Layout>
     )
 }
-export default View;
+
+// @ts-ignore
+const htmlSerializer = (type, element, content, children, index) => {
+    //console.log(type, element, content, children, index)
+    if (type === 'preformatted') {
+        const items = children.flat();
+        if (items.length === 0) return;
+        const isCode = items[0].toString().includes('code');
+        if (isCode) {
+            const lang = items.shift().toString().replace('code:', '');
+            return (
+                <pre className={clsx(lang, 'code')}>
+                    <code>
+                        {items}
+                    </code>
+                </pre>
+            )
+        }
+    }
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
@@ -80,5 +135,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 
-
+export default View;
 
