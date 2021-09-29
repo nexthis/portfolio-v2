@@ -4,11 +4,11 @@ import Head from '../components/head/head'
 import PageCarousel from '../components/pageCarousel/pageCarusel'
 import Layout from "../components/layout/base";
 import ContentInterface from '../public/languages/index/type'
-import {ReactSpringCarouselItem} from "react-spring-carousel-js/dist/types";
 import About from "../components/pageCarouselItem/index/about";
 import Skills from "../components/pageCarouselItem/index/skills";
 import {getAbsoluteURL} from "../helpers/url";
 import Contact from "../components/pageCarouselItem/index/contact";
+import {CarouselItem} from "../types/carusel";
 
 
 type props = {
@@ -16,17 +16,20 @@ type props = {
 }
 
 const Home: FunctionComponent<props> = ({content}) => {
-    const items: ReactSpringCarouselItem[] = [
+    const items: CarouselItem[] = [
         {
-            id: 'Home',
+            id: 1,
+            name: 'Home',
             renderItem: (<About content={content.home}/>)
         },
         {
-            id: 'Skills',
+            id: 2,
+            name: 'Skills',
             renderItem: (<Skills content={content.skills}/>)
         },
         {
-            id: 'Contact',
+            id: 3,
+            name: 'Contact',
             renderItem: (<Contact/>)
         }
     ]
