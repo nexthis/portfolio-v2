@@ -10,7 +10,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 
 const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
 
-    const [sliderRef] = useEmblaCarousel({
+    const [sliderRef, sliderApi] = useEmblaCarousel({
         axis: 'y',
         loop: false,
     })
@@ -19,6 +19,9 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
     useEffect(() => {
         calculateHeight();
         window.addEventListener('resize', debounce(calculateHeight, 100))
+        if (sliderApi) {
+            //sliderApi.on('')
+        }
         return () => {
             window.removeEventListener('resize', calculateHeight)
         }

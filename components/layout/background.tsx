@@ -11,6 +11,10 @@ const Background: FunctionComponent<props> = ({backgroundEffect}) => {
         <div className="w-full h-full fixed top-0 left-0 pointer-events-none background-gradient">
             <div className="w-full h-full relative overflow-hidden">
                 {backgroundEffect ? <Effect/> : null}
+
+                <div style={{top: '10%', left: '8%'}}
+                     className="sr-only sm:not-sr-only sm:absolute   background-text">PORT <br/> FOLIO
+                </div>
             </div>
 
         </div>

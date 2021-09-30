@@ -1,12 +1,7 @@
+@import "../../../styles/mixin";
 .title {
-  color: #fff;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  -webkit-transform: translate3d(0, -50%, 0);
-  transform: translate3d(0, -50%, 0);
-  z-index: 20;
-  margin-left: 11%;
+  @include css-lock(2, 5, 47, 96);
+  // @include css-lock(1.3, 1.5, 47, 96, line-height);
 }
 
 .image {
