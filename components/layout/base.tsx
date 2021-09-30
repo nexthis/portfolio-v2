@@ -8,8 +8,18 @@ type props = {
     fluid?: boolean,
     padding?: boolean,
     backgroundEffect?: boolean,
+    text?: {
+        text: string,
+        align: 'left' | 'right'
+    }
 }
-const Layout: FunctionComponent<props> = ({children, fluid = false, padding = true, backgroundEffect = true}) => {
+const Layout: FunctionComponent<props> = ({
+                                              children,
+                                              fluid = false,
+                                              padding = true,
+                                              backgroundEffect = true,
+                                              text = {text: "Web \n Master", align: 'right'}
+                                          }) => {
     return (
         <>
 
@@ -22,7 +32,7 @@ const Layout: FunctionComponent<props> = ({children, fluid = false, padding = tr
                 </main>
             </Container>
 
-            <Background backgroundEffect={backgroundEffect}/>
+            <Background text={text} backgroundEffect={backgroundEffect}/>
         </>
     )
 }

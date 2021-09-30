@@ -34,3 +34,12 @@
 
 
 }
+
+.overview {
+  //max-width: 250px;
+}
+
+.title {
+  @include css-lock(2, 5, 47, 96);
+
+}

@@ -26,7 +26,7 @@ const Index: FunctionComponent<props> = ({content, staticContent}) => {
     }))
 
     return (
-        <Layout fluid={true} padding={false}>
+        <Layout fluid={true} padding={false} text={{text: 'PORT \n FOLIO', align: 'left'}}>
             <Head seo={staticContent.seo}/>
 
             <PageCarousel items={items}/>
