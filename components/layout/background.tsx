@@ -10,14 +10,17 @@ type props = {
 }
 
 const Background: FunctionComponent<props> = ({backgroundEffect, text = {text: "Web \n Master", align: 'right'}}) => {
-
+    const bgStyle = {top: '10%'};
+    // @ts-ignore
+    bgStyle[text.align] = '5%';
     return (
         <div className="w-full h-full fixed top-0 left-0 pointer-events-none background-gradient">
             <div className="w-full h-full relative overflow-hidden">
                 {backgroundEffect ? <Effect/> : null}
 
-                <div style={{top: '10%', left: '5%'}}
-                     className="sr-only sm:not-sr-only sm:absolute uppercase background-text">{text.text}</div>
+                {/*@ts-ignore*/}
+                <div style={bgStyle}
+                     className="sr-only sm:not-sr-only sm:absolute uppercase font-extrabold background-text">{text.text}</div>
             </div>
 
         </div>
