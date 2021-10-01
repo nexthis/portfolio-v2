@@ -38,7 +38,7 @@
           "name": "react",
           "description": "Jeden z 10",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/vue.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
@@ -46,7 +46,7 @@
           "name": "typescript",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/vue.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
@@ -54,7 +54,7 @@
           "name": "nextJs",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/vue.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
@@ -62,7 +62,7 @@
           "name": "gsap",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/vue.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         }

@@ -31,11 +31,11 @@ const About: FunctionComponent<props> = ({content}) => {
                 <p className="text-md tracking-tight sm:ml-auto sm:text-right uppercase md:w-1/2">
                     {content.description}
                 </p>
-                <p className="mt-3 text-sm">
-                    <span>{content.contact.text}</span>
-                    <br/>
-                    <a href="#contact" className="text-accent">{content.contact.link}</a>
-                </p>
+                {/*<p className="mt-3 text-sm">*/}
+                {/*    <span>{content.contact.text}</span>*/}
+                {/*    <br/>*/}
+                {/*    <a href="#contact" className="text-accent">{content.contact.link}</a>*/}
+                {/*</p>*/}
             </div>
         </div>
     )

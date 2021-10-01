@@ -9,7 +9,14 @@
     padding: 6px;
     list-style-type: circle;
     padding-inline-start: 10px;
-    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+
+    @media (min-width: 815px) {
+      font-size: 1.5rem;
+      padding-inline-start: 15px;
+      margin-top: 10px;
+    }
 
     > * {
       margin-top: 5px;
@@ -33,6 +40,9 @@
   }
 
 
+  a {
+    //color: blue;
+  }
 }
 
 .overview {

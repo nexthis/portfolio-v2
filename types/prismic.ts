@@ -42,5 +42,6 @@ export interface PrismicDataPortfolio {
             width: number
         }
     },
+    technologies: Array<{ technology: string }>
     seo_title: RichTextBlock[]
 }

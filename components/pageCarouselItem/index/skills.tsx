@@ -2,6 +2,7 @@ import type {FunctionComponent} from "react";
 import ContentInterface from "../../../public/languages/index/type";
 import Image, {ImageLoader} from 'next/image'
 import {useMemo, useState} from "react";
+import clsx from "clsx";
 
 
 type props = {
@@ -13,31 +14,10 @@ const Skills: FunctionComponent<props> = ({content}) => {
     const [selected, setSelected] = useState(content[0]);
     const [selectedItem, setSelectedItem] = useState(content[0].items[0]);
 
-    const onSkillChange = (item: {
-        "name": string,
-        "image": {
-            "src": string,
-            "alt": string
-        },
-        "items": Array<{
-            "name": string,
-            "description": string,
-            "image": {
-                "src": string,
-                "alt": string
-            },
-        }>
-    }) => {
+    const onSkillChange = (item: ContentInterface['skills'][0]) => {
         setSelected(item);
     }
-    const onItemChange = (item: {
-        "name": string,
-        "description": string,
-        "image": {
-            "src": string,
-            "alt": string
-        },
-    }) => {
+    const onItemChange = (item: ContentInterface['skills'][0]['items'][0]) => {
         setSelectedItem(item);
     }
 
@@ -49,26 +29,27 @@ const Skills: FunctionComponent<props> = ({content}) => {
                 <div>
                     {selected.items.map((item, key) => (
                         <div key={key} onClick={() => onItemChange(item)}>
-                            <Image src={item.image.src} height={50} width={50}  key={key}/>
+                            <Image src={item.image.src} alt={item.image.alt} height={50} width={50} key={key}/>
                         </div>
 
                     ))}
                 </div>
-                <div>
-                    <div>{selectedItem.name}</div>
-                    <div>{selectedItem.description}</div>
-                </div>
+                {/*<div>*/}
+                {/*    <div>{selectedItem.name}</div>*/}
+                {/*    <div>{selectedItem.description}</div>*/}
+                {/*</div>*/}
             </div>
             <div className="col-span-2 max-h-32">
-                <ul className="flex justify-center">
+                <ul className="flex flex-wrap justify-around mb-5">
 
                     {useMemo(() => content.map((item, key) => (
-                        <li className={key !== 0 ? "ml-5" : ''} key={key}>
-                            <Image src={item.image.src} width={100} height={100}
-                                   alt={item.image.alt}
-                                   onClick={() => onSkillChange(item)} key={key}/>
+                        <li onClick={() => onSkillChange(item)}
+                            className={clsx('w-28 py-0.5 mt-3 border-accent border rounded-full text-center', item === selected ? 'bg-accent text-primary' : null)}
+                            key={key}>
+
+                            {item.name}
                         </li>
-                    )), [])}
+                    )), [selected])}
 
                 </ul>
             </div>

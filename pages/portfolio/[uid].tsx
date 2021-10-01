@@ -26,6 +26,7 @@ type props = {
 const View: FunctionComponent<props> = ({content}) => {
     const [height, setHeight] = useState(0);
     const item = content.data;
+    console.log(item)
     const seoData: seo['seo'] = {
         title: RichText.asText(item.seo_title),
         description: RichText.asText(item.seo_description),
@@ -104,7 +105,17 @@ const View: FunctionComponent<props> = ({content}) => {
                             <p className="uppercase font-semibold text-xl lg:text-2xl">
                                 Technology
                             </p>
-                            <p className="lg:text-lg">{new Date(item.created).toISOString().slice(0, 10)}</p>
+                            <div className="flex flex-wrap">
+                                {item.technologies.map((item, index) => (
+
+                                    <div key={index} className={index !== 0 ? "ml-1" : ''}>
+                                        <Image src={`/icons/skills/${item.technology}.png`}
+                                               alt={item.technology}
+                                               className="rounded-full"
+                                               width={32} height={32} layout="fixed" objectFit="contain"/>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="w-1/2 md:w-auto mt-3 md:mt-0">
@@ -152,6 +163,15 @@ const htmlSerializer = (type, element, content, children, index) => {
             )
         }
     }
+
+    // if(type === 'embed'){
+    //     console.log(element, content, children, index)
+    //     return (
+    //         <iframe src={element.oembed.embed_url}/>
+    //     )
+    // }
+
+    console.log(type)
 }
 
 const getMobileDetect = (userAgent: NavigatorID['userAgent']) => {
