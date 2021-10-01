@@ -19,8 +19,8 @@ const Nav = () => {
                     <a>
                         <div className="flex items-center">
                             <Icon className={styles.icon}/>
-                            <div className="ml-3 font-light uppercase text-xs sm:text-xl">Paweł <span
-                                className="text-accent font-medium"> Romanowski</span></div>
+                            <h5 className="ml-3 font-light uppercase text-xs sm:text-xl">Paweł <span
+                                className="text-accent font-medium"> Romanowski</span></h5>
                         </div>
                     </a>
                 </Link>

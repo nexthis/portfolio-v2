@@ -24,7 +24,7 @@ const Skills: FunctionComponent<props> = ({content}) => {
 
     return (
         <div className="flex flex-col justify-between h-full w-full ">
-
+            <h2 className="sr-only">Skills</h2>
             <div className="flex justify-between">
                 <div>
                     {selected.items.map((item, key) => (
