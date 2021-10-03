@@ -25,6 +25,8 @@ const HeadComponent: FunctionComponent<props> = (
 
             {/*PWA*/}
             <link rel="manifest" href="/manifest.json"/>
+            <meta name="mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
             <link rel="apple-touch-icon" sizes="57x57" href="/icons/pwa/icon-57x57.png"/>
             <link rel="apple-touch-icon" sizes="60x60" href="/icons/pwa/icon-60x60.png"/>
             <link rel="apple-touch-icon" sizes="72x72" href="/icons/pwa/icon-72x72.png"/>
