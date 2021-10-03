@@ -26,42 +26,42 @@
       "items": [
         {
           "name": "vue",
-          "description": "",
+          "description": "Tłumaczenie z języka angielskiego-Vue.js to front-endowy framework JavaScript typu open source model-view-viewmodel do tworzenia interfejsów użytkownika i aplikacji jednostronicowych. Został stworzony przez Evana You i jest utrzymywany przez niego i pozostałych aktywnych członków zespołu.",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/vue.png",
+            "alt": "Ikona frameworku vue"
           }
         },
         {
           "name": "react",
           "description": "Jeden z 10",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/react.png",
+            "alt": "Ikona frameworku react"
           }
         },
         {
           "name": "typescript",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/typescript.png",
+            "alt": "Ikona frameworku typescript"
           }
         },
         {
           "name": "nextJs",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/nextjs.png",
+            "alt": "Ikona frameworku nextjs"
           }
         },
         {
           "name": "gsap",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/gsap.png",
+            "alt": "Ikona biblioteki gsap"
           }
         }
       ]

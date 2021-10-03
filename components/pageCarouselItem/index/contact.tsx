@@ -8,43 +8,49 @@ import Footer from "../../layout/footer";
 const Contact: FunctionComponent = () => {
 
     return (
-        <div className="h-full w-full flex justify-around flex-col md:flex-row">
-            <div className="md:flex md:justify-center md:flex-col">
+        <div className="h-full w-full flex flex-col-reverse  justify-around flex-col md:flex-row">
+            <div className="md:flex md:justify-center md:flex-col md:mr-5">
                 <p className="font-semibold text-xl uppercase text-center md:text-4xl">Contact</p>
-                <a className="flex justify-center align-middle flex items-center mt-2" href="tel:502572544">
+                <p className="max-w-sm text-center hidden lg:block mt-3 mx-auto">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo.
+                </p>
+                <a className="flex justify-center align-middle flex items-center mt-5 lg:mt-10" href="tel:502572544">
                     <PhoneIcon className="w-5 h-5 mr-2"/>
-                    <p>+48 502 572 544</p>
+                    <p className="md:text-xl">+48 502 572 544</p>
                 </a>
-                <a className="flex justify-center align-middle flex items-center mt-2"
+                <a className="flex justify-center align-middle flex items-center mt-2 md:mt-5 lg:mt-10"
                    href="mailto:pawel.romanowski000@gmail.com">
 
                     <EmailIcon className="w-5 h-5 mr-2"/>
-                    <p>pawel.romanowski000@gmail.com</p>
+                    <p className="md:text-xl">pawel.romanowski000@gmail.com</p>
                 </a>
-                <a className="flex justify-center align-middle flex items-center mt-2" href="https://github.com/nexthis"
+                <a className="flex justify-center align-middle flex items-center mt-2 md:mt-5 lg:mt-10"
+                   href="https://github.com/nexthis"
                    target="_blank"
                    rel="nofollow noreferrer">
                     <GithubIcon className="w-5 h-5 mr-2"/>
-                    <p>nexthis</p>
+                    <p className="md:text-xl">nexthis</p>
                 </a>
             </div>
 
-            <div className="md:flex md:justify-center md:flex-col">
+            <div className="md:flex md:justify-center md:flex-col md:ml-5">
                 <h2 className="font-semibold text-xl uppercase text-center mt-3 md:text-4xl">STAY WITH CONTACT</h2>
                 <form className={styles.formInput}>
-                    <label className="mt-2">
+                    <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
                         <span className="placeholder uppercase">Your name</span>
                     </label>
-                    <label className="mt-2">
+                    <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
                         <span className="placeholder uppercase">Your phone</span>
                     </label>
-                    <label className="mt-2">
+                    <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
                         <span className="placeholder uppercase">Your E-Mail</span>
                     </label>
-                    <label className="mt-2">
+                    <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
                         <span className="placeholder uppercase">Message</span>
                     </label>

@@ -25,13 +25,16 @@ const Skills: FunctionComponent<props> = ({content}) => {
     return (
         <div className="flex flex-col justify-between h-full w-full ">
             <h2 className="sr-only">Skills</h2>
-            <div className="flex justify-between">
+            <div className="flex flex-wrap justify-between">
                 <div>
                     {selected.items.map((item, key) => (
-                        <div key={key} onClick={() => onItemChange(item)}>
-                            <Image src={item.image.src} alt={item.image.alt} height={50} width={50} key={key}/>
+                        <div key={key}>
+                            <div className="mx-auto">
+                                <Image src={item.image.src} alt={item.image.alt} className="rounded-full" height={60}
+                                       width={60} key={key}/>
+                            </div>
+                            <p className="text-xl text-center">{item.name}</p>
                         </div>
-
                     ))}
                 </div>
                 {/*<div>*/}
