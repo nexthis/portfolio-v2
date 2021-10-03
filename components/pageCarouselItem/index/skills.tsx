@@ -25,18 +25,16 @@ const Skills: FunctionComponent<props> = ({content}) => {
     return (
         <div className="flex flex-col justify-between h-full w-full ">
             <h2 className="sr-only">Skills</h2>
-            <div className="flex flex-wrap justify-between">
-                <div>
-                    {selected.items.map((item, key) => (
-                        <div key={key}>
-                            <div className="mx-auto" style={{height: 60, width: 60}}>
-                                <Image src={item.image.src} alt={item.image.alt} className="rounded-full" height={60}
-                                       width={60} key={key}/>
-                            </div>
-                            <p className="text-xl text-center">{item.name}</p>
+            <div className="flex flex-wrap justify-evenly mt-5">
+                {selected.items.map((item, key) => (
+                    <div key={key} className="p-2">
+                        <div className="mx-auto" style={{height: 60, width: 60}}>
+                            <Image src={item.image.src} alt={item.image.alt} className="rounded-full" height={60}
+                                   width={60} key={key}/>
                         </div>
-                    ))}
-                </div>
+                        <p className="text-xl mt-1 text-center">{item.name}</p>
+                    </div>
+                ))}
                 {/*<div>*/}
                 {/*    <div>{selectedItem.name}</div>*/}
                 {/*    <div>{selectedItem.description}</div>*/}

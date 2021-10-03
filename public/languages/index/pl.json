@@ -65,6 +65,38 @@
             "src": "/icons/skills/gsap.png",
             "alt": "Ikona biblioteki gsap"
           }
+        },
+        {
+          "name": "gatsby",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/gatsby.png",
+            "alt": "Ikona frameworku gatsby JS"
+          }
+        },
+        {
+          "name": "nuxtjs",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/nuxtjs.png",
+            "alt": "Ikona frameworku nuxtjs"
+          }
+        },
+        {
+          "name": "pre CSS",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/precss.png",
+            "alt": "Ikona dla technologii preprocesorów css"
+          }
+        },
+        {
+          "name": "Webpack",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/webpack.png",
+            "alt": "Ikona dla technologii Webpack"
+          }
         }
       ]
     },
@@ -79,32 +111,40 @@
           "name": "laravel",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/laravel.png",
+            "alt": "Ikona frameworku Laravel"
           }
         },
         {
           "name": "symfony",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/symfony.png",
+            "alt": "Ikona frameworku Symfony"
           }
         },
         {
           "name": "Lumen",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/lumen.png",
+            "alt": "Ikona frameworku Lumen"
           }
         },
         {
-          "name": "php websockets",
+          "name": "websocket",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
-            "alt": "Paweł Romanowski Full-stac developer"
+            "src": "/icons/skills/websocket.png",
+            "alt": "Ikona technologii websocket"
+          }
+        },
+        {
+          "name": "API",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/api.png",
+            "alt": "Ikona technologii api"
           }
         }
       ]
@@ -120,7 +160,7 @@
           "name": "Linux",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/linux.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
@@ -128,26 +168,43 @@
           "name": "GIT",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/git.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
         {
-          "name": "GIT",
+          "name": "jira",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/jira.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
         {
-          "name": "Webpack",
+          "name": "scripts",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/console.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "docker",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/docker.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "SEO",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/seo.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         }
+
       ]
     },
     {
@@ -161,7 +218,7 @@
           "name": "MySQL",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/mysql.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
@@ -169,7 +226,7 @@
           "name": "Redis",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/redis.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         },
@@ -177,7 +234,15 @@
           "name": "Mongo DB",
           "description": "",
           "image": {
-            "src": "/image/seo/index.png",
+            "src": "/icons/skills/mongodb.png",
+            "alt": "Paweł Romanowski Full-stac developer"
+          }
+        },
+        {
+          "name": "Firebase",
+          "description": "",
+          "image": {
+            "src": "/icons/skills/firebase.png",
             "alt": "Paweł Romanowski Full-stac developer"
           }
         }
