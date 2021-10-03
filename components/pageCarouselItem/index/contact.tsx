@@ -4,12 +4,17 @@ import GithubIcon from '../../../public/icons/github.svg'
 import PhoneIcon from '../../../public/icons/phone.svg'
 import EmailIcon from '../../../public/icons/email.svg'
 import Footer from "../../layout/footer";
+import ContentInterface from "../../../public/languages/index/type";
 
-const Contact: FunctionComponent = () => {
+type props = {
+    content: ContentInterface['contact'],
+}
+
+const Contact: FunctionComponent<props> = ({content}) => {
 
     return (
         <div className="h-full w-full flex flex-col-reverse  justify-around flex-col md:flex-row">
-            <div className="md:flex md:justify-center md:flex-col md:mr-5">
+            <div className="md:flex md:justify-center md:flex-col md:mr-5 md:w-1/3">
                 <p className="font-semibold text-xl uppercase text-center md:text-4xl">Contact</p>
                 <p className="max-w-sm text-center hidden lg:block mt-3 mx-auto">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -35,32 +40,31 @@ const Contact: FunctionComponent = () => {
                 </a>
             </div>
 
-            <div className="md:flex md:justify-center md:flex-col md:ml-5">
-                <h2 className="font-semibold text-xl uppercase text-center mt-3 md:text-4xl">STAY WITH CONTACT</h2>
+            <div className="md:flex md:justify-center md:flex-col md:ml-5 md:w-1/2">
+                <h2 className="font-semibold text-xl uppercase text-center mt-3 md:text-4xl">{content.form.title}</h2>
                 <form className={styles.formInput}>
                     <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
-                        <span className="placeholder uppercase">Your name</span>
+                        <span className="placeholder uppercase">{content.form.name}</span>
                     </label>
                     <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
-                        <span className="placeholder uppercase">Your phone</span>
+                        <span className="placeholder uppercase">{content.form.phone}</span>
                     </label>
                     <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
-                        <span className="placeholder uppercase">Your E-Mail</span>
+                        <span className="placeholder uppercase">{content.form.email}</span>
                     </label>
                     <label className="mt-2 md:mt-5 lg:mt-10">
                         <input/>
-                        <span className="placeholder uppercase">Message</span>
+                        <span className="placeholder uppercase">{content.form.message}</span>
                     </label>
 
                     {/*<input type="checkbox" id="scales" name="scales"*/}
                     {/*       checked/>*/}
-                    <label className="text-xs" htmlFor="scales">Wyrażam zgodę na przetwarzanie moich danych osobowych
-                        w szczególności na kontakt telefoniczny i mailowy. Więcej</label>
+                    <label className="text-xs" htmlFor="scales">{content.form.clause}</label>
 
-                    <button className="uppercase" type="submit"> Send</button>
+                    <button className="uppercase" type="submit">{content.form.send}</button>
                 </form>
             </div>
             {/*<Footer/>*/}

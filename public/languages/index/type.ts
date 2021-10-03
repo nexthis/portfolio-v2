@@ -14,7 +14,7 @@ export default interface type extends seo{
             "src": string,
             "alt": string
         },
-        "items":  Array<{
+        "items": Array<{
             "name": string,
             "description": string,
             "image": {
@@ -23,4 +23,15 @@ export default interface type extends seo{
             },
         }>
     }>,
+    "contact": {
+        "form": {
+            "title": string,
+            "name": string,
+            "phone": string,
+            "email": string,
+            "message": string,
+            "clause": string,
+            "send": string,
+        }
+    }
 }

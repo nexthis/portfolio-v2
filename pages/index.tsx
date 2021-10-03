@@ -30,7 +30,7 @@ const Home: FunctionComponent<props> = ({content}) => {
         {
             id: 3,
             name: 'Contact',
-            renderItem: (<Contact/>)
+            renderItem: (<Contact content={content.contact}/>)
         }
     ]
 

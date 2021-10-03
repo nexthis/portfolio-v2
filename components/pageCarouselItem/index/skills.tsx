@@ -29,7 +29,7 @@ const Skills: FunctionComponent<props> = ({content}) => {
                 <div>
                     {selected.items.map((item, key) => (
                         <div key={key}>
-                            <div className="mx-auto">
+                            <div className="mx-auto" style={{height: 60, width: 60}}>
                                 <Image src={item.image.src} alt={item.image.alt} className="rounded-full" height={60}
                                        width={60} key={key}/>
                             </div>

@@ -185,6 +185,14 @@
     }
   ],
   "contact": {
-
+    "form": {
+      "title": "Skontaktuj się ze mną",
+      "name": "Twoje Imię",
+      "phone": "Twój nr Telefonu",
+      "email": "Twój E–mail",
+      "message": "Wiadomość",
+      "clause": "Wyrażam zgodę na przetwarzanie moich danych osobowych w szczególności na kontakt telefoniczny i mailowy. Więcej",
+      "send": "Wyślij"
+    }
   }
 }

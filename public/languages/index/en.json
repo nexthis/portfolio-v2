@@ -183,6 +183,14 @@
     }
   ],
   "contact": {
-
+    "form": {
+      "title": "Stay with contact",
+      "name": "Your name",
+      "phone": "Your phone",
+      "email": "Your e-mail",
+      "message": "Message",
+      "clause": "I consent to the processing of my personal data, in particular for telephone and e-mail contact. More",
+      "send": "Send"
+    }
   }
 }
