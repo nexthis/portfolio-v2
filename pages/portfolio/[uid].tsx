@@ -16,6 +16,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 import clsx from "clsx";
 import {debounce} from "../../helpers/event";
 import Link from "next/link";
+import Footer from "../../components/layout/footer";
 
 
 type props = {
@@ -141,6 +142,7 @@ const View: FunctionComponent<props> = ({content}) => {
                     </div>
                 </Container>
             </div>
+            <Footer/>
         </Layout>
     )
 }

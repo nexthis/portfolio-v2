@@ -1,0 +1,145 @@
+%base {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bigCircle {
+  @extend %base;
+  $width: 243px;
+  $height: 243px;
+  width: $width;
+  height: $height;
+  left: calc(95% - $width);
+  top: calc(70% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 2.5;
+    height: $height * 2.5;
+    left: calc(95% - $width * 2.5);
+    top: calc(70% - $height * 2.5);
+  }
+}
+
+.smallCircle {
+  @extend %base;
+  $width: 161px;
+  $height: 171px;
+  width: $width;
+  height: $height;
+  left: calc(101% - $width);
+  top: calc(85% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 3;
+    height: $height * 3;
+    left: calc(95% - $width * 3);
+    top: unset;
+    bottom: 0;
+  }
+}
+
+.left1 {
+  @extend %base;
+  $width: 175px;
+  $height: 140px;
+  width: $width;
+  height: $height;
+  left: 0;
+  top: calc(100% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 1.5;
+    height: $height * 1.5;
+    left: 0;
+    top: calc(100% - $height * 1.5);
+  }
+}
+
+.left2 {
+  @extend %base;
+  $width: 200px;
+  $height: 163px;
+  width: $width;
+  height: $height;
+  left: 0;
+  top: calc(100% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 1.5;
+    height: $height * 1.5;
+    left: 0;
+    top: calc(100% - $height * 1.5);
+  }
+}
+
+.left3 {
+  @extend %base;
+  $width: 222px;
+  $height: 187px;
+  width: $width;
+  height: $height;
+  left: 0;
+  top: calc(100% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 1.5;
+    height: $height * 1.5;
+    left: 0;
+    top: calc(100% - $height * 1.5);
+  }
+}
+
+.right1 {
+  @extend %base;
+  $width: 153px;
+  $height: 173px;
+  width: $width;
+  height: $height;
+  left: calc(100% - $width);
+  top: calc(100% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 3;
+    height: $height * 3;
+    left: calc(100% - $width * 3);
+    top: calc(100% - $height * 3);
+    filter: blur(3px);
+  }
+}
+
+.right2 {
+  @extend %base;
+  $width: 176px;
+  $height: 196px;
+  width: $width;
+  height: $height;
+  left: calc(100% - $width);
+  top: calc(100% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 3;
+    height: $height * 3;
+    left: calc(100% - $width * 3);
+    top: calc(100% - $height * 3);
+    filter: blur(3px);
+  }
+}
+
+.right3 {
+  @extend %base;
+  $width: 199px;
+  $height: 219px;
+  width: $width;
+  height: $height;
+  left: calc(100% - $width);
+  top: calc(100% - $height);
+
+  @media (min-width: theme('screens.lg')) {
+    width: $width * 3;
+    height: $height * 3;
+    left: calc(100% - $width * 3);
+    top: calc(100% - $height * 3);
+    filter: blur(3px);
+  }
+}
