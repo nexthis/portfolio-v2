@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async ({res}) => {
         return `
             <url>
               <loc>${baseUrl}/portfolio/${item.uid}</loc>
-              <lastmod>${new Date().toISOString()}</lastmod>
+              <lastmod>${new Date(Date.parse(item.last_publication_date!)).toISOString()}</lastmod>
               <changefreq>weekly</changefreq>
               <priority>"1.0"</priority>
               <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/portfolio/${item.uid}" />
@@ -71,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async ({res}) => {
   `;
 
     res.setHeader("Content-Type", "text/xml");
-    res.setHeader('Cache-Control', 'public, max-age=360000, must-revalidate');
+    res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
     res.write(sitemap);
     res.end();
 
