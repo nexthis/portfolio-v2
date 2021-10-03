@@ -1,5 +1,4 @@
 import type {GetServerSideProps} from "next";
-import * as fs from "fs";
 import {Client} from "../helpers/prismic";
 import Prismic from "@prismicio/client";
 
@@ -9,20 +8,10 @@ const Sitemap = () => {
 export const getServerSideProps: GetServerSideProps = async ({res}) => {
     const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
-    const staticPages = fs
-        .readdirSync("pages")
-        .filter((staticPage) => {
-            return ![
-                "_app.tsx",
-                "_document.tsx",
-                "_error.tsx",
-                "api",
-                "sitemap.xml.tsx",
-            ].includes(staticPage);
-        })
-        .map((staticPagePath) => {
-            return `${staticPagePath.replace('.tsx', '').replace('index', '')}`;
-        });
+    const staticPages = [
+        '',
+        'portfolio'
+    ]
 
     const client = Client();
 
