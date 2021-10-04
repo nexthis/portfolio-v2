@@ -46,7 +46,7 @@ const Mobile: FunctionComponent<props> = ({content}) => {
                 <ul className="flex flex-wrap justify-around mb-5">
                     {useMemo(() => content.map((item, key) => (
                         <li onClick={() => onSkillChange(item)}
-                            className={clsx('w-28 py-0.5 mt-3 border-accent border rounded-full text-center', item === selected ? 'bg-accent text-primary' : null)}
+                            className={clsx('w-28 py-0.5 mt-3 mx-1 border-accent border rounded-full text-center', item === selected ? 'bg-accent text-primary' : null)}
                             key={key}>
                             {item.name}
                         </li>
@@ -64,8 +64,8 @@ const Desktop: FunctionComponent<props> = ({content}) => {
             <h2 className="sr-only">Skills</h2>
             <div className="flex flex-wrap justify-evenly mt-5">
                 {content.map((item, key) => (
-                    <div key={key} className="p-2 w-72 flex flex-wrap">
-                        <h5>
+                    <div key={key} className="p-2 lg:w-96 flex flex-wrap">
+                        <h5 className="w-full text-4xl uppercase text-center">
                             {item.name}
                         </h5>
                         {item.items.map((skill, index) => (
