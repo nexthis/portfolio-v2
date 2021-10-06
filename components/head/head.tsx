@@ -13,7 +13,7 @@ const HeadComponent: FunctionComponent<props> = (
     const baseName = process.env.NEXT_PUBLIC_APP_NAME;
     const router = useRouter();
     const lang = router.locale === 'pl' ? ['pl_PL', 'en_US'] : ['en_US', 'pl_PL'];
-    console.log(seo.dateModified)
+
     return (
         <Head>
             {/*Base*/}

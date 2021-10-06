@@ -27,7 +27,7 @@ type props = {
 const View: FunctionComponent<props> = ({content}) => {
     const [height, setHeight] = useState(0);
     const item = content.data;
-    console.log(item)
+
     const seoData: seo['seo'] = {
         title: RichText.asText(item.seo_title),
         description: RichText.asText(item.seo_description),
@@ -173,7 +173,6 @@ const htmlSerializer = (type, element, content, children, index) => {
     //     )
     // }
 
-    console.log(type)
 }
 
 const getMobileDetect = (userAgent: NavigatorID['userAgent']) => {

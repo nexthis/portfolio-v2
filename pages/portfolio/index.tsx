@@ -17,7 +17,7 @@ type props = {
 
 // @ts-ignore
 const Index: FunctionComponent<props> = ({content, staticContent}) => {
-    console.log(content)
+
     // @ts-ignore
     const items: CarouselItem[] = content.results.map((item, key) => ({
         id: key,

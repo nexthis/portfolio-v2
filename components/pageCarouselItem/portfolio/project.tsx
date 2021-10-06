@@ -12,7 +12,7 @@ type props = {
 }
 
 const Project: FunctionComponent<props> = ({item}) => {
-    console.log(item)
+
     return (
         <div className="h-full w-full flex flex-col md:flex-row justify-between md:container md:mx-auto">
 
