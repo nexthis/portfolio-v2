@@ -48,7 +48,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
         setHeight(window.innerHeight - height)
     }
     return (
-        <div className="overflow-hidden default-screen-height" style={{height: process.browser ? height : 'auto'}}>
+        <div className="overflow-hidden default-screen-height">
             {props.map(({y, display, sc}, i) => (
                 <animated.div {...bind()} key={i} className="h-full"
                               style={{display, transform: y.to(x => `translate3d(0,${y}px,0)`)}}>
