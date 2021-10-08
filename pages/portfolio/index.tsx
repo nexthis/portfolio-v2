@@ -8,7 +8,7 @@ import Prismic from "@prismicio/client";
 import {RichText} from 'prismic-reactjs';
 import PageCarousel from "../../components/pageCarousel/pageCarusel";
 import Project from "../../components/pageCarouselItem/portfolio/project";
-import {CarouselItem} from "../../types/carusel";
+import {CarouselItem} from "../../types/carousel";
 
 
 type props = {

@@ -2,7 +2,7 @@ import type {FunctionComponent} from 'react'
 import {useEffect, useRef, useState} from "react";
 import {debounce, throttle} from "../../helpers/event";
 import clsx from "clsx";
-import {CarouselItem} from "../../types/carusel";
+import {CarouselItem} from "../../types/carousel";
 import {animated, useSprings} from "@react-spring/web";
 import {useGesture, useDrag} from "react-use-gesture";
 

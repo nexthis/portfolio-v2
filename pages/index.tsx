@@ -8,7 +8,7 @@ import About from "../components/pageCarouselItem/index/about";
 import Skills from "../components/pageCarouselItem/index/skills";
 import {getAbsoluteURL} from "../helpers/url";
 import Contact from "../components/pageCarouselItem/index/contact";
-import {CarouselItem} from "../types/carusel";
+import {CarouselItem} from "../types/carousel";
 
 
 type props = {
