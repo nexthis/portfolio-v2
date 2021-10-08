@@ -5,9 +5,6 @@ import clsx from "clsx";
 import {CarouselItem} from "../../types/carusel";
 import {animated, useSprings} from "@react-spring/web";
 import {useGesture, useDrag} from "react-use-gesture";
-// import Swiper core and required modules
-// import AwesomeSlider from 'react-awesome-slider';
-// import 'react-awesome-slider/dist/styles.css';
 
 // export const PageCarouselContex = createContext(0);
 
@@ -16,7 +13,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
     const [height, setHeight] = useState(0);
 
     const index = useRef(0);
-    const [props, set] = useSprings(items.length, i => ({y: i * height, sc: 1, display: 'block'}))
+    const [props, api] = useSprings(items.length, i => ({y: i * height, sc: 1, display: 'block'}))
 
     const bind = useDrag(({down, delta: [xDelta, yDelta], direction: [xDir, yDir], distance, cancel}) => {
         if (down && distance > height / 2) {
@@ -24,13 +21,14 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
             cancel((index.current = clamp(index.current + (yDir > 0 ? -1 : 1), 0, items.length - 1)))
         }
 
-        set(i => {
-            if (i < index.current - 1 || i > index.current + 1) return {display: 'none'}
+        api.start(i => {
+            // if (i < index.current - 1 || i > index.current + 1) return {display: 'none'}
             const y = (i - index.current) * height + (down ? yDelta : 0)
+            console.log(y, (i - index.current), yDelta, down, height)
             const sc = down ? 1 - distance / height / 2 : 1
             return {y, sc, display: 'block'}
         })
-    })
+    }, {axis: 'y', useTouch: true})
 
     useEffect(() => {
         calculateHeight();
@@ -51,7 +49,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
         <div className="overflow-hidden default-screen-height">
             {props.map(({y, display, sc}, i) => (
                 <animated.div {...bind()} key={i} className="h-full"
-                              style={{display, transform: y.to(x => `translate3d(0,${y}px,0)`)}}>
+                              style={{display, transform: y.to(y => `translate(0,${y}px)`)}}>
                     <animated.div style={{transform: sc.to(s => `scale(${s})`)}} className="h-full">
                         {items[i].renderItem}
                     </animated.div>
