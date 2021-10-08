@@ -1,27 +1,40 @@
 import type {FunctionComponent} from 'react'
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {debounce, throttle} from "../../helpers/event";
 import clsx from "clsx";
 import {CarouselItem} from "../../types/carusel";
+import {animated, useSprings} from "@react-spring/web";
+import {useGesture, useDrag} from "react-use-gesture";
 // import Swiper core and required modules
-import useEmblaCarousel from 'embla-carousel-react'
+// import AwesomeSlider from 'react-awesome-slider';
+// import 'react-awesome-slider/dist/styles.css';
 
 // export const PageCarouselContex = createContext(0);
 
 const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
 
-    const [sliderRef, sliderApi] = useEmblaCarousel({
-        axis: 'y',
-        loop: false,
-    })
     const [height, setHeight] = useState(0);
+
+    const index = useRef(0);
+    const [props, set] = useSprings(items.length, i => ({y: i * height, sc: 1, display: 'block'}))
+
+    const bind = useDrag(({down, delta: [xDelta, yDelta], direction: [xDir, yDir], distance, cancel}) => {
+        if (down && distance > height / 2) {
+            // @ts-ignore
+            cancel((index.current = clamp(index.current + (yDir > 0 ? -1 : 1), 0, items.length - 1)))
+        }
+
+        set(i => {
+            if (i < index.current - 1 || i > index.current + 1) return {display: 'none'}
+            const y = (i - index.current) * height + (down ? yDelta : 0)
+            const sc = down ? 1 - distance / height / 2 : 1
+            return {y, sc, display: 'block'}
+        })
+    })
 
     useEffect(() => {
         calculateHeight();
         window.addEventListener('resize', debounce(calculateHeight, 100))
-        if (sliderApi) {
-            //sliderApi.on('')
-        }
         return () => {
             window.removeEventListener('resize', calculateHeight)
         }
@@ -34,30 +47,17 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
         const height = element.clientHeight + parseInt(style.marginTop) + parseInt(style.marginBottom)
         setHeight(window.innerHeight - height)
     }
-
     return (
-        <>
-            <div ref={sliderRef} className="embla overflow-hidden" style={{height: height}}>
-                <div className="embla__container w-full h-full">
-                    {items.map((item, index) =>
-                        (
-                            <div className={`embla__slide h-full number-slide-${index + 1}`} key={index}>
-                                {item.renderItem}
-                            </div>
-                        )
-                    )}
-                </div>
-            </div>
-
-            {/*<ThumbWraper useListenToCustomEvent={useListenToCustomEvent} thumbsFragment={thumbsFragment}/>*/}
-            {/*<div className="fixed left-0 top-3/4 sm:top-1/2 sm:transform translate-y-1/2 z-10">*/}
-            {/*    {items.map((item, index) =>*/}
-            {/*        (*/}
-            {/*            <ThumbItem key={index} title={item.name} number={index + 1} active={false}/>*/}
-            {/*        )*/}
-            {/*    )}*/}
-            {/*</div>*/}
-        </>
+        <div className="overflow-hidden default-screen-height" style={{height: process.browser ? height : 'auto'}}>
+            {props.map(({y, display, sc}, i) => (
+                <animated.div {...bind()} key={i} className="h-full"
+                              style={{display, transform: y.to(x => `translate3d(0,${y}px,0)`)}}>
+                    <animated.div style={{transform: sc.to(s => `scale(${s})`)}} className="h-full">
+                        {items[i].renderItem}
+                    </animated.div>
+                </animated.div>
+            ))}
+        </div>
     )
 }
 
@@ -79,5 +79,21 @@ const ThumbItem: FunctionComponent<{ title: string, number: number, active?: boo
         </div>
     )
 }
+
+//TODO ADD TO HELPER
+// @ts-ignore
+function clamp(number, lower, upper) {
+    number = +number
+    lower = +lower
+    upper = +upper
+    lower = lower === lower ? lower : 0
+    upper = upper === upper ? upper : 0
+    if (number === number) {
+        number = number <= upper ? number : upper
+        number = number >= lower ? number : lower
+    }
+    return number
+}
+
 
 export default PageCarousel

@@ -33,7 +33,7 @@ const Skills: FunctionComponent<props> = ({content}) => {
                     ))}
                 </div>
             </div>
-            <div className="max-h-32 w-full">
+            <div className="max-h-32 w-full md:hidden">
                 <ul className="flex flex-wrap justify-around mb-5">
                     {useMemo(() => content.map((item, key) => (
                         <li onClick={() => onSkillChange(item)}
