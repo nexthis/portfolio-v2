@@ -1,15 +1,17 @@
-import type {FunctionComponent, CSSProperties} from 'react'
-import {useEffect, useRef, useState} from "react";
-import {debounce, throttle} from "../../helpers/event";
+import type {FunctionComponent, CSSProperties, MutableRefObject} from 'react'
+import {useEffect, useMemo, useRef, useState} from "react";
+import {debounce} from "../../helpers/event";
 import clsx from "clsx";
 import {CarouselItem} from "../../types/carousel";
 import {animated, useSprings} from "@react-spring/web";
-import {useGesture, useDrag} from "react-use-gesture";
+import {useDrag} from "react-use-gesture";
+import {clamp} from "../../helpers/number";
 
 
 const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
 
     const [height, setHeight] = useState(0);
+    //const [current, setCurrent] = useState(0);
 
     const index = useRef(0);
     const [props, api] = useSprings<{
@@ -54,48 +56,49 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
     }
 
     return (
-        <div className="overflow-hidden default-screen-height relative" {...bind()}>
-            {props.map(({y, display, position, scale}, i) => (
-                <animated.div key={i} className="h-full w-full"
-                              style={{display, position, y}}>
-                    <animated.div style={{transform: scale.to(s => `scale(${s})`)}} className="h-full w-full">
-                        {items[i].renderItem}
+        <>
+            <div className="overflow-hidden default-screen-height relative" {...bind()}>
+                {props.map(({y, display, position, scale}, i) => (
+                    <animated.div key={i} className="h-full w-full"
+                                  style={{display, position, y}}>
+                        <animated.div style={{transform: scale.to(s => `scale(${s})`)}} className="h-full w-full">
+                            {items[i].renderItem}
+                        </animated.div>
                     </animated.div>
-                </animated.div>
-            ))}
-        </div>
+                ))}
+            </div>
+
+            {/*<div className="fixed bottom-0 left-0">*/}
+            {/*    {items.map((item, key) => (*/}
+            {/*        <ThumbItem key={key} number={key} title={item.name} active={index}/>*/}
+            {/*    ))}*/}
+            {/*</div>*/}
+
+        </>
     )
 }
 
 
-const ThumbItem: FunctionComponent<{ title: string, number: number, active?: boolean }> = ({title, number, active}) => {
+const ThumbItem: FunctionComponent<{ title: string, number: number, active?: MutableRefObject<number> }> = ({
+                                                                                                                title,
+                                                                                                                number,
+                                                                                                                active
+                                                                                                            }) => {
     return (
         <div className="mt-1 sm:mt-3">
             <div
-                className={clsx("w-8 sm:w-20 text-right text-sm font-light", active ? "w-10 sm:w-24 text-2xl" : null)}>{number < 10 ? 0 : null}{number} </div>
+                className={clsx("w-8 sm:w-20 text-right text-sm font-light", active ? "w-10 sm:w-24 text-2xl" : null)}>
+                {number < 10 ? 0 : null}{number}
+            </div>
             {/*{title}  {active ? "active" : "disabled"}*/}
             <div className="flex items-center">
                 <div
                     className={clsx("w-8 sm:w-20 h-3 rounded-tr-full rounded-br-full border-l-0 border-accent border", active ? "bg-accent w-10 sm:w-24" : null)}/>
-                <div className={clsx("ml-1 hidden sm:block text-xs", active ? "text-sm" : null)}>{title}</div>
+                <div className={clsx("ml-1 hidden sm:block text-xs", active ? "text-sm" : null)}>{title}:
+                    active={active?.current}</div>
             </div>
         </div>
     )
-}
-
-//TODO ADD TO HELPER
-// @ts-ignore
-function clamp(number, lower, upper) {
-    number = +number
-    lower = +lower
-    upper = +upper
-    lower = lower === lower ? lower : 0
-    upper = upper === upper ? upper : 0
-    if (number === number) {
-        number = number <= upper ? number : upper
-        number = number >= lower ? number : lower
-    }
-    return number
 }
 
 

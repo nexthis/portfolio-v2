@@ -1,10 +1,7 @@
 import Prismic from '@prismicio/client'
-import Link from 'next/link'
 import {
     apiEndpoint,
     accessToken,
-    linkResolver,
-    hrefResolver
 } from 'prismic-configuration'
 
 // Client method to query documents from the Prismic repo
