@@ -1,20 +1,23 @@
-import type {FunctionComponent} from 'react'
+import type {FunctionComponent, CSSProperties} from 'react'
 import {useEffect, useRef, useState} from "react";
 import {debounce, throttle} from "../../helpers/event";
 import clsx from "clsx";
 import {CarouselItem} from "../../types/carousel";
 import {animated, useSprings} from "@react-spring/web";
 import {useGesture, useDrag} from "react-use-gesture";
-import {Handler} from "react-use-gesture/dist/types";
 
-// export const PageCarouselContex = createContext(0);
 
 const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
 
     const [height, setHeight] = useState(0);
 
     const index = useRef(0);
-    const [props, api] = useSprings(items.length, i => ({
+    const [props, api] = useSprings<{
+        y: number,
+        scale: number,
+        display: string,
+        position: CSSProperties['position']
+    }>(items.length, i => ({
         y: i * height,
         scale: 1,
         display: 'block',
@@ -30,16 +33,6 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
         api.start(i => {
             if (i < index.current - 1 || i > index.current + 1) return {display: 'none'}
             const y = (i - index.current) * height + (active ? my : 0)
-            //+TODO rm in prod
-            // console.group('ANIMATION')
-            // console.log('i', i)
-            // console.log('index.current', index.current)
-            // console.log('height', height)
-            // console.log('movement Y', my)
-            // console.log('active', active)
-            // console.log('distance', distance)
-            // console.log('process.browser', process.browser)
-            // console.groupEnd()
             const scale = active ? 1 - distance / height / 2 : 1
             return {y, scale, display: 'block', position: 'absolute'}
         })
@@ -75,10 +68,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
 }
 
 
-//getCurrentActiveItem: () => {id: string, index: number}
 const ThumbItem: FunctionComponent<{ title: string, number: number, active?: boolean }> = ({title, number, active}) => {
-
-    
     return (
         <div className="mt-1 sm:mt-3">
             <div
