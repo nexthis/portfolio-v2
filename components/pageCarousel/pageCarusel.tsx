@@ -8,10 +8,17 @@ import {useDrag} from "react-use-gesture";
 import {clamp} from "../../helpers/number";
 import {useRouter} from 'next/router'
 
-const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
+type props = {
+    items: CarouselItem[],
+    init?: number,
+    onChange?: (index?: number, item?: CarouselItem) => void
+}
+
+
+const PageCarousel: FunctionComponent<props> = ({items, init, onChange}) => {
 
     const router = useRouter();
-    const [height, setHeight] = useState(0);
+    const [height, setHeight] = useState(init ? init : 0);
     //const [current, setCurrent] = useState(0);
 
     const index = useRef(0);
@@ -30,7 +37,10 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
     const bind = useDrag(({active, movement: [mx, my], direction: [xDir, yDir], distance, cancel}) => {
         if (active && distance > height / 2) {
             index.current = clamp(index.current + (yDir > 0 ? -1 : 1), 0, items.length - 1)
-            //router.push({hash: items[index.current].name.toLocaleLowerCase()})
+            router.push({hash: items[index.current].name.toLocaleLowerCase()})
+            if (onChange) {
+                onChange(index.current, items[index.current]);
+            }
             cancel();
         }
 
