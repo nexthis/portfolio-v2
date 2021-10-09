@@ -6,10 +6,11 @@ import {CarouselItem} from "../../types/carousel";
 import {animated, useSprings} from "@react-spring/web";
 import {useDrag} from "react-use-gesture";
 import {clamp} from "../../helpers/number";
-
+import {useRouter} from 'next/router'
 
 const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => {
 
+    const router = useRouter();
     const [height, setHeight] = useState(0);
     //const [current, setCurrent] = useState(0);
 
@@ -29,6 +30,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
     const bind = useDrag(({active, movement: [mx, my], direction: [xDir, yDir], distance, cancel}) => {
         if (active && distance > height / 2) {
             index.current = clamp(index.current + (yDir > 0 ? -1 : 1), 0, items.length - 1)
+            //router.push({hash: items[index.current].name.toLocaleLowerCase()})
             cancel();
         }
 
@@ -38,7 +40,7 @@ const PageCarousel: FunctionComponent<{ items: CarouselItem[] }> = ({items}) => 
             const scale = active ? 1 - distance / height / 2 : 1
             return {y, scale, display: 'block', position: 'absolute'}
         })
-    })
+    }, {useTouch: true, axis: 'y'})
 
     useEffect(() => {
         calculateHeight();
