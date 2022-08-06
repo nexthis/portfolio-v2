@@ -22,6 +22,11 @@ export default defineNuxtConfig({
     vite: {
         plugins: [svgLoader()]
     },
+    image: {
+        domains: [
+            'avatars0.githubusercontent.com'
+        ]
+    },
     runtimeConfig: {
         public:{
             baseUrl: process.env.baseUrl ?? 'http://localhost:3000'
