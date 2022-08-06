@@ -23,9 +23,7 @@ export default defineNuxtConfig({
         plugins: [svgLoader()]
     },
     image: {
-        domains: [
-            'avatars0.githubusercontent.com'
-        ]
+        dir: 'assets/images'
     },
     runtimeConfig: {
         public:{
