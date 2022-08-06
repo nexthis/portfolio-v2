@@ -10,7 +10,7 @@
       <p class="text-md text-white mt-1 tracking-tight lg:text-right lg:w-1/2">{{ t('description') }}</p>
     </div>
     <div class="flex h-full w-full relative items-end justify-end lg:justify-center">
-      <nuxt-img class="h-full w-auto block absolute" src="/me.png"  format="webp" fit
+      <nuxt-img class="h-full w-auto block absolute" src="/images/me.png"  format="webp" fit
                 alt="Zdjęcia przedstawiające Pawła Romanowskiego"/>
     </div>
     <NuxtLink class="sr-only" to="/skills">Skills</NuxtLink>
