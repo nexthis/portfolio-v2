@@ -2,7 +2,7 @@
   <div class="flex flex-col h-full">
 
     <header class="w-full sm:mt-5 flex-auto flex items-center py-5 md:px-0 px-3 container mx-auto">
-      <img src="/assets/icons/logo.svg" class="mr-3" alt="Paweł Romanowski Logo"/>
+      <img src="/icons/logo.svg" class="mr-3" alt="Paweł Romanowski Logo"/>
       <NuxtLink to="/" class="uppercase font-light text-white uppercase text-xs sm:text-xl">
         Paweł
         <span class="text-accent font-medium">Romanowski</span>
