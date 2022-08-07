@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         },
         transpile: ['gsap']
     },
-    modules: ['@intlify/nuxt3', '@nuxtjs/prismic', '@nuxt/image-edge',],
+    modules: ['@intlify/nuxt3', '@nuxtjs/prismic', '@nuxt/image-edge', '@kevinmarrec/nuxt-pwa'],
     prismic: { endpoint: 'https://pawel-romanowski.prismic.io/api/v2', clientConfig: {accessToken: process.env.PRISMIC_ACCESS_TOKEN} },
     intlify: {
         vueI18n: {
