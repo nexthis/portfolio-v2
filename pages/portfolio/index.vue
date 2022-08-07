@@ -46,7 +46,7 @@ watch(locale, async () => {
 
 const animate = (direction: 'up' | 'down') => {
   const index = data.value.results.indexOf(item.value)
-  const next = _.clamp(  direction === 'up' ?index - 1: index + 1,0,  data.value.results.length - 1)
+  const next = _.clamp(  direction === 'up' ? index - 1: index + 1,0,  data.value.results.length - 1)
 
   gsap.timeline()
       .to('.title, .description, .link', {xPercent: -20, opacity: 0, duration: 0.4, stagger: 0.2}, 'same')
