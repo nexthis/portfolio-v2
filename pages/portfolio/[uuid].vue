@@ -67,8 +67,9 @@
 </template>
 
 <script setup lang="ts">
+import 'highlight.js/styles/atom-one-dark.css'
 import {useI18n} from "vue-i18n";
-import _ from 'lodash'
+import highlight from 'highlight.js'
 
 const {client, asText, asLink, asImageSrc, asHTML} = usePrismic()
 
@@ -92,18 +93,10 @@ watch(locale, () => {
 
 const htmlSerializer = (type, element, content, children, index) => {
   if (type === 'preformatted') {
-    const items = _.flatten(children);
-    if (items.length === 0) return;
-    const isCode = items[0].toString().includes('code');
+    const isCode = children.toString().includes('code');
     if (isCode) {
-      const lang = items.shift().toString().replace('code:', '');
-      return `
-          <pre class="${lang + ' code'}">
-      <code>
-          {items}
-      </code>
-      </pre>`
-
+      const lang = children.toString().replace('code:', '').replace(/:.*/s , '');
+      return `<pre class="${lang + ' code'}"><code>${children.replace(`code:${lang}:`, '')}</code></pre>`
     }
   }
 }
@@ -112,6 +105,7 @@ onMounted(() => {
   document.body.classList.add('!h-auto', '!overflow-auto')
   document.querySelector('main').classList.remove('container')
   document.querySelector('main').classList.add('w-full')
+  highlight.highlightAll()
 })
 onUnmounted(() => {
   document.body.classList.remove('!h-auto', '!overflow-auto')
