@@ -57,10 +57,9 @@
 </template>
 
 <script lang="ts" setup>
-import PhoneIcon from '@/assets/icons/phone.svg'
-import EmailIcon from '@/assets/icons/email.svg'
-import GithubIcon from '@/assets/icons/github.svg'
-import {useI18n} from "vue-i18n";
+// import PhoneIcon from '@/assets/icons/phone.svg'
+// import EmailIcon from '@/assets/icons/email.svg'
+// import GithubIcon from '@/assets/icons/github.svg'
 
 const {t} = useI18n()
 useNavigation(null, '/skills')
