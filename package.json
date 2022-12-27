@@ -24,7 +24,6 @@
     "@headlessui/vue": "^1.7.3",
     "gsap": "^3.11.3",
     "highlight.js": "^11.6.0",
-    "lodash": "^4.17.21",
-    "swiper": "^8.4.4"
+    "lodash": "^4.17.21"
   }
 }

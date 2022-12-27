@@ -1,5 +1,4 @@
 <template>
-
   <Head>
     <!--    Base-->
     <Title>Paweł Romanowski - {{ title }}</Title>
@@ -8,11 +7,9 @@
     <Meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <Meta name="description" :content="description" />
 
-
     <!--    Control the behavior of search engine crawling and indexing-->
     <Meta name="robots" content="index,follow" />
     <Meta name="googlebot" content="index,follow" />
-
 
     <!--    Facebook Open Graph-->
     <Meta property="og:url" :content="url.href" />
@@ -47,27 +44,26 @@
     <!--      type="application/ld+json"-->
     <!--      dangerouslySetInnerHTML={{__html: JSON.stringify(generateJsonLD(seo, type))}}-->
     <!--  />-->
-
-
   </Head>
 </template>
 
 <script setup lang="ts">
+const {
+  type = "article",
+  description,
+  title,
+} = defineProps<{
+  title: string;
+  description: string;
+  type?: "person" | "article";
+}>();
 
-const { type = 'article', description, title } = defineProps<{
-  title: string,
-  description: string,
-  type?: 'person' | 'article'
-}>()
-
-const router = useRouter()
-const config = useRuntimeConfig()
+const router = useRouter();
+const config = useRuntimeConfig();
 //console.log(router.currentRoute.value)
-const url = new URL(router.currentRoute.value.fullPath, config.public.baseUrl)
+const url = new URL(router.currentRoute.value.fullPath, config.public.baseUrl);
 
-console.log(config.public.baseUrl)
+console.log(config.public.baseUrl);
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

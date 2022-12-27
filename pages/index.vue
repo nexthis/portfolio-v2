@@ -1,66 +1,69 @@
 <template>
-  <div class="h-full grid-template">
-    <HeadStandard
-      title="Nowoczesne strony internetowe, ecommerce, blogi i inne"
-      description="Witam. Nazywam się Paweł Romanowski od kilku lat zajmuję się programowaniem stron internetowych. Zachęcam cię do przejrzenia mojego portfolio i poznania mnie lepiej."
-    />
+  <HeadStandard
+    title="Nowoczesne strony internetowe, ecommerce, blogi i inne"
+    description="Witam. Nazywam się Paweł Romanowski od kilku lat zajmuję się programowaniem stron internetowych. Zachęcam cię do przejrzenia mojego portfolio i poznania mnie lepiej."
+  />
 
-    <div
-      class="flex flex-col items-start pt-7 lg:justify-center lg:items-end lg:pt-0"
-    >
-      <h1
-        class="text-white uppercase font-bold text-2xl md:text-4xl xl:text-5xl lg:text-right"
-      >
-        {{ t("title") }}
-      </h1>
-      <p class="text-md text-white mt-1 tracking-tight lg:text-right lg:w-1/2">
-        {{ t("description") }}
-      </p>
-    </div>
-    <div
-      class="flex h-full w-full relative items-end justify-end lg:justify-center"
-    >
-      <!--      <nuxt-img class="h-full w-auto block absolute" src="/me.png"  format="webp" fit-->
-      <!--                alt="Zdjęcia przedstawiające Pawła Romanowskiego"/>-->
-      <img
-        class="h-full w-auto block absolute"
-        src="/me.png"
-        alt="Zdjęcia przedstawiające Pawła Romanowskiego"
-      />
-    </div>
-    <NuxtLink class="sr-only" to="/skills">Skills</NuxtLink>
+  <div class="h-full w-full md:container md:mx-auto relative slider">
+    <ElementMain />
+    <div class="h-1/5"></div>
+    <ElementSkills />
+    <div class="h-1/5"></div>
+    <ElementContact />
   </div>
+
+  <PaginationSlider :page="page" :max="ELEMENTS" />
 </template>
 <script setup lang="ts">
-useBackgroundText("Web \nDeveloper");
+import { gsap } from "gsap";
+import _ from "lodash";
 
-const { t, locale } = useI18n();
-useNavigation("/skills");
+//For tests
+const ELEMENTS = 3;
+const page = ref(0);
+
+const { onScrollEnd } = useScroll();
+const { onKeyDown } = useKeyboard();
+const { onSwipe } = useSwipe();
+
+const animate = (direction: "up" | "down") => {
+  page.value = _.clamp(
+    direction === "down" ? page.value + 1 : page.value - 1,
+    0,
+    ELEMENTS - 1
+  );
+  gsap.to(".slider", { translateY: `-${page.value * 120}%` });
+};
+
+onScrollEnd((e) => {
+  if (e.deltaY > 0) {
+    animate("down");
+    return;
+  }
+  if (e.deltaY < 0) {
+    animate("up");
+  }
+});
+
+onKeyDown((e) => {
+  if (e.key === "ArrowDown") {
+    animate("down");
+    return;
+  }
+  if (e.key === "ArrowUp") {
+    animate("up");
+  }
+});
+
+onSwipe((e) => {
+  if (e.direction.base === "vertical") {
+    return;
+  }
+
+  if (e.direction.precisely === "up") {
+    animate("down");
+    return;
+  }
+  animate("up");
+});
 </script>
-
-<style scoped lang="scss">
-.grid-template {
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-
-  @media (min-width: theme("screens.lg")) {
-    grid-template-rows: unset;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-}
-</style>
-
-<i18n>
-{
-  "en": {
-    "title": "Im ready to create your website and make it awesome!",
-    "description": "Full-stac developer from Poland. I create custom website to help buisinesses to better online"
-  },
-  "pl": {
-    "title": "Stwórzmy razem kolejną niesamowitą stronę internetową!",
-    "description": "Full-stac developer. Tworzę strony inernetowe, sklepy, blogi i aplikacje internetowe "
-  }
-}
-
-</i18n>

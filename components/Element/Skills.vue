@@ -1,45 +1,50 @@
 <template>
-  <div class="h-full w-full flex flex-col justify-center">
+  <section class="h-full w-full flex flex-col justify-center">
     <!--    {{text}}-->
-    <h1 class="text-center text-5xl font-bold md:mb-14 xl:sr-only">{{ t('title') }}</h1>
+    <h1 class="text-center text-5xl font-bold md:mb-14 xl:sr-only">
+      {{ t("title") }}
+    </h1>
     <div class="grid-template mt-10 md:mt-0">
       <div
-          v-for="(item, index) in tm('skills')"
-          :key="item"
-          class="whitespace-pre-wrap text-2xl rounded-2xl shadow bg-secondary-300"
-          :style="{backgroundImage: rt(item.gradient)}"
+        v-for="(item, index) in tm('skills')"
+        :key="item"
+        class="whitespace-pre-wrap text-2xl rounded-2xl shadow bg-secondary-300"
+        :style="{ backgroundImage: rt(item.gradient) }"
       >
         <div class="py-4 px-5 text-white">
           <div class="flex justify-center items-center xl:justify-between">
-<!--            <nuxt-img class="rounded-full w-16" :src="rt(item.icon)" format="webp" :alt="rt(item.title)"/>-->
-            <img class="rounded-full w-16" :src="rt(item.icon)" :alt="rt(item.title)"/>
-            <div class=" uppercase tracking-wider font-bold hidden xl:block">{{ rt(item.title) }}</div>
+            <!--            <nuxt-img class="rounded-full w-16" :src="rt(item.icon)" format="webp" :alt="rt(item.title)"/>-->
+            <img
+              class="rounded-full w-16"
+              :src="rt(item.icon)"
+              :alt="rt(item.title)"
+            />
+            <div class="uppercase tracking-wider font-bold hidden xl:block">
+              {{ rt(item.title) }}
+            </div>
           </div>
 
           <div class="mt-8 uppercase hidden xl:block">Skill</div>
-          <div class=" grid-cols-10 gap-3 mt-3 hidden xl:grid">
-            <div v-for="number in 10" :key="number" class="bg-white p-2"
-                 :class="{'!bg-green-500' : item.skill >= number }"></div>
+          <div class="grid-cols-10 gap-3 mt-3 hidden xl:grid">
+            <div
+              v-for="number in 10"
+              :key="number"
+              class="bg-white p-2"
+              :class="{ '!bg-green-500': item.skill >= number }"
+            ></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
+  </section>
 </template>
 
-
 <script setup lang="ts">
-import {useI18n} from "vue-i18n";
+import { useI18n } from "vue-i18n";
 
-const {t, rt, tm} = useI18n();
+const { t, rt, tm } = useI18n();
 
-useNavigation('/contact', '/')
-watchEffect(() => (
-    useBackgroundText(t('title'))
-))
-
-
+watchEffect(() => useBackgroundText(t("title")));
 </script>
 
 <style scoped lang="scss">
@@ -50,17 +55,15 @@ watchEffect(() => (
   @media (max-height: 750px) {
     grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   }
-  @media (min-width: theme('screens.md')) {
+  @media (min-width: theme("screens.md")) {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    @apply px-14
+    @apply px-14;
   }
-  @media (min-width: theme('screens.xl')) {
+  @media (min-width: theme("screens.xl")) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-
 }
 </style>
-
 
 <i18n>
 {
