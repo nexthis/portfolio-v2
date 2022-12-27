@@ -60,7 +60,7 @@ const {
   description: string;
   type?: "person" | "article";
   image?: string;
-  alt: string;
+  alt?: string;
 }>();
 
 const router = useRouter();
