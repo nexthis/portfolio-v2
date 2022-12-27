@@ -13,14 +13,18 @@
         class="flex justify-center align-middle flex text-white items-center mt-5 lg:mt-10"
         href="tel:502572544"
       >
-        <phone-icon alt="phone" class="w-5 h-5 mr-2" />
+        <Icon
+          class="mr-2"
+          size="30"
+          name="material-symbols:phone-android-outline-rounded"
+        />
         <p class="md:text-xl">+48 502 572 544</p>
       </a>
       <a
         class="flex justify-center align-middle flex items-center mt-2 md:mt-5 lg:mt-10"
         href="mailto:pawel.romanowski000@gmail.com"
       >
-        <email-icon class="w-5 h-5 mr-2" />
+        <Icon class="mr-2" size="30" name="material-symbols:mail-outline" />
         <p class="md:text-xl">pawel.romanowski000@gmail.com</p>
       </a>
       <a
@@ -29,7 +33,7 @@
         target="_blank"
         rel="nofollow noreferrer"
       >
-        <github-icon class="w-5 h-5 mr-2" />
+        <Icon class="mr-2" size="30" name="mdi:github" />
         <p class="md:text-xl">nexthis</p>
       </a>
     </div>
@@ -81,10 +85,6 @@
 </template>
 
 <script lang="ts" setup>
-// import PhoneIcon from '@/assets/icons/phone.svg'
-// import EmailIcon from '@/assets/icons/email.svg'
-// import GithubIcon from '@/assets/icons/github.svg'
-
 const { t } = useI18n();
 </script>
 

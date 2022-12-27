@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     "@nuxtjs/prismic",
     "@nuxt/image-edge",
     "@kevinmarrec/nuxt-pwa",
+    "nuxt-icon",
   ],
   prismic: {
     endpoint: "https://pawel-romanowski.prismic.io/api/v2",
