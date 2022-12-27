@@ -51,6 +51,7 @@ const item = ref();
 const { client, predicate, asText, asLink, asImageSrc } = usePrismic();
 const { locale } = useI18n();
 const page = useCookie("page", { default: () => 0 });
+const bgText = useBackgroundText("Portfolio");
 const { onScrollEnd } = useScroll();
 const { onKeyDown } = useKeyboard();
 const { onSwipe } = useSwipe();
@@ -73,6 +74,7 @@ const animate = (direction: "up" | "down") => {
   const max = data.value!.results.length;
 
   const next = _.clamp(direction === "up" ? index - 1 : index + 1, 0, max - 1);
+  const driver = direction === "up" ? 1 : -1;
 
   if ((index === 0 && next === 0) || (index === max - 1 && next === max - 1)) {
     gsap.to(".component", 0.1, { x: "+=15", yoyo: true, repeat: 5 });
@@ -83,16 +85,17 @@ const animate = (direction: "up" | "down") => {
     .timeline()
     .to(
       ".title, .description, .link",
-      { xPercent: -20, opacity: 0, duration: 0.3, stagger: 0.2 },
+      { yPercent: driver * 50, opacity: 0, duration: 0.3, stagger: 0.1 },
       "same"
     )
-    .to(".image", { xPercent: 20, duration: 0.4, opacity: 0 }, "same+=0.2")
+    .to(".image", { duration: 0.3, opacity: 0 }, "same")
     .call(() => {
       item.value = data.value!.results[next];
       page.value = next;
+      bgText.value = asText(item.value.data.title) ?? "Portfolio";
     })
     .to(".title, .description, .link, .image", {
-      xPercent: 0,
+      yPercent: 0,
       duration: 0.3,
       opacity: 1,
       stagger: 0.2,
