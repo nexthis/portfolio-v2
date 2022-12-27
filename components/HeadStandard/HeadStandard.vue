@@ -65,7 +65,7 @@ const {
 
 const router = useRouter();
 const config = useRuntimeConfig();
-//console.log(router.currentRoute.value)
+
 const url = new URL(router.currentRoute.value.fullPath, config.public.baseUrl);
 
 const getImage = () => {
