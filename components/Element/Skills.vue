@@ -44,7 +44,6 @@ import { useI18n } from "vue-i18n";
 
 const { t, rt, tm } = useI18n();
 
-watchEffect(() => useBackgroundText(t("title")));
 </script>
 
 <style scoped lang="scss">

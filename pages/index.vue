@@ -5,33 +5,40 @@
   />
 
   <div class="h-full w-full md:container md:mx-auto relative slider">
-    <ElementMain />
-    <div class="h-1/5"></div>
-    <ElementSkills />
-    <div class="h-1/5"></div>
-    <ElementContact />
+    <template v-for="item in elements" :key="item">
+      <component :is="item" />
+      <div class="h-1/5"></div>
+    </template>
   </div>
 
-  <PaginationSlider :page="page" :max="ELEMENTS" />
+  <PaginationSlider :page="page" :max="elements.length" />
 </template>
 <script setup lang="ts">
 import { gsap } from "gsap";
 import _ from "lodash";
 
 //For tests
-const ELEMENTS = 3;
 const page = ref(0);
 
+const elements = [
+  resolveComponent("ElementMain"),
+  resolveComponent("ElementSkills"),
+  resolveComponent("ElementContact"),
+];
+
+const { t } = useI18n();
 const { onScrollEnd } = useScroll();
 const { onKeyDown } = useKeyboard();
 const { onSwipe } = useSwipe();
+const bgText = useBackgroundText(t(`title.0`));
 
 const animate = (direction: "up" | "down") => {
   page.value = _.clamp(
     direction === "down" ? page.value + 1 : page.value - 1,
     0,
-    ELEMENTS - 1
+    elements.length - 1
   );
+  bgText.value = t(`title.${page.value}`);
   gsap.to(".slider", { translateY: `-${page.value * 120}%` });
 };
 
@@ -67,3 +74,22 @@ onSwipe((e) => {
   animate("up");
 });
 </script>
+
+<i18n>
+{
+  "en": {
+    "title": [
+      "Web\n Developer",
+      "Skills",
+      "Contact",
+    ],
+  },
+  "pl": {
+    "title": [
+      "Web\n Developer",
+      "Umiejętności",
+      "Kontakt",
+    ],
+  }
+}
+</i18n>

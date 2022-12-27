@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-useBackgroundText("Web \nDeveloper");
+
 //flex-1
 const { t, locale } = useI18n();
 </script>

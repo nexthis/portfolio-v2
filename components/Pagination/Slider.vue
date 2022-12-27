@@ -121,7 +121,7 @@ const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
   &__cursor {
     width: 30px;
     height: 30px;
-    background-color: #fff;
+    background-color: theme("colors.accent.500");
     border-radius: 100%;
     position: absolute;
     z-index: -1;

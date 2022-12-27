@@ -86,7 +86,6 @@
 // import GithubIcon from '@/assets/icons/github.svg'
 
 const { t } = useI18n();
-watchEffect(() => useBackgroundText(t("title")));
 </script>
 
 <i18n>
