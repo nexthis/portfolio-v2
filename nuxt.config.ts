@@ -61,4 +61,17 @@ export default defineNuxtConfig({
       baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
     },
   },
+
+  routeRules: {
+    "/": {
+      static: true,
+      headers: { "cache-control": "public, max-age=31536000" },
+    },
+    "/portfolio": {
+      headers: { "cache-control": "public, max-age=3600" },
+    },
+    "/portfolio/**": {
+      headers: { "cache-control": "public, max-age=3600" },
+    },
+  },
 });
