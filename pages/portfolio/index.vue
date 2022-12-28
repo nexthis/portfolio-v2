@@ -89,20 +89,24 @@ const animate = (direction: "up" | "down") => {
 
   gsap
     .timeline()
-    .to(
-      ".title, .description, .link, .image",
-      { y: driver * 50, opacity: 0, duration: 0.13 },
-      "<"
-    )
+    .to(".title, .description, .link", { x: "50vh", duration: 0.3 }, "<")
+    .to(".image", { x: "-50vh", duration: 0.3 }, "<")
+    .to(".title, .description, .link, .image", {
+      y: `${driver * 100}vh`,
+      opacity: 0,
+    })
     .call(() => {
       item.value = data.value!.results[next];
       page.value = next;
       bgText.value = asText(item.value.data.title) ?? "Portfolio";
     })
-    .to(".title, .description, .link, .image", {
-      y: 0,
+    .set(".title, .description, .link, .image", {
+      y: `${-driver * 100}vh`,
       opacity: 1,
-    });
+    })
+    .to(".title, .description, .link, .image", { y: 0 })
+    .to(".title, .description, .link", { x: 0, duration: 0.3 })
+    .to(".image", { x: 0, duration: 0.3 }, "<");
 
   // item.value = data.value.results[next]
 };

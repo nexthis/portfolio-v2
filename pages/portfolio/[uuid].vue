@@ -66,8 +66,8 @@
                   class="rounded-full w-[32px] h-[32px]"
                   :src="`/skills/${item.technology}.png`"
                   :alt="item.technology"
-                  height="30"
-                  width="30"
+                  height="32"
+                  width="32"
                   format="webp"
                 />
               </div>

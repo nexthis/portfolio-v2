@@ -44,7 +44,7 @@
       </h2>
       <form class="">
         <div class="mt-6">
-          <label class="uppercase">Twoje imię</label>
+          <label class="uppercase">{{ t("name") }}</label>
           <input
             name="name"
             class="w-full bg-transparent border-none outline-0"
@@ -53,7 +53,7 @@
         </div>
 
         <div class="mt-6">
-          <label class="uppercase">Twój nr telefonu</label>
+          <label class="uppercase">{{ t("phone") }}</label>
           <input
             name="phone"
             class="w-full bg-transparent border-none outline-0"
@@ -62,7 +62,7 @@
         </div>
 
         <div class="mt-6">
-          <label class="uppercase">Twój e–mail</label>
+          <label class="uppercase">{{ t("email") }}</label>
           <input
             name="email"
             class="w-full bg-transparent border-none outline-0"
@@ -71,7 +71,7 @@
         </div>
 
         <div class="mt-6">
-          <label class="uppercase">Wiadomość</label>
+          <label class="uppercase">{{ t("message") }}</label>
           <input
             name="message"
             class="w-full bg-transparent border-none outline-0"
@@ -79,6 +79,16 @@
           <div class="w-full bg-accent h-0.5" />
         </div>
         <span class="text-xs">{{ t("rodo") }}</span>
+
+        <div class="flex w-full justify-end">
+          <button
+            type="button"
+            disabled
+            class="text-white bg-accent-700 hover:bg-accent-800 focus:ring-4 focus:ring-accent-900 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-non"
+          >
+            {{ t("send") }}
+          </button>
+        </div>
       </form>
     </div>
   </section>
@@ -93,12 +103,22 @@ const { t } = useI18n();
   "en": {
     "title": "Contact",
     "description": "Are you interested in working with me? Do you want to evaluate the website? Would you like to consult a topic related to website development? Feel free to contact me!",
-    "rodo": "I consent to the processing of my personal data, in particular for telephone and e-mail contact."
+    "rodo": "I consent to the processing of my personal data, in particular for telephone and e-mail contact.",
+    "name": "Name",
+    "phone": "Phone number",
+    "email": "E-Mail",
+    "message": "Message",
+    "send": "Not supported",
   },
   "pl": {
     "title": "Kontakt",
     "description": "Jesteś zainteresowany współpracą zemną? Chcesz wycenić stronę? Chciałbyś skonsultować się temat związany z tworzeniem stron internetowych? Zapraszam do kontaktu!",
-    "rodo": "Wyrażam zgodę na przetwarzanie moich danych osobowych w szczególności na kontakt telefoniczny i mailowy."
+    "rodo": "Wyrażam zgodę na przetwarzanie moich danych osobowych w szczególności na kontakt telefoniczny i mailowy.",
+    "name": "Twoje imię",
+    "phone": "Twój nr telefonu",
+    "email": "Twój e–mail",
+    "message": "Wiadomość",
+    "send": "Nie obsługiwane ",
   }
 }
 </i18n>

@@ -12,8 +12,17 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    locales: ["pl", "en"],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root", // recommended
+    },
+    locales: [
+      { code: "pl", iso: "pl" },
+      { code: "en", iso: "es-ES" },
+    ],
     defaultLocale: "pl",
+    baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
   },
 
   pwa: {
