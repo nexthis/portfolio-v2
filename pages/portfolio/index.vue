@@ -155,7 +155,7 @@ onSwipe((e) => {
   },
   "pl": {
     "seoTitle": "Portfolio, realizacje i własne projekty",
-    "seoDescription": "Moje portfolio programistyczne prezentuje moje umiejętności i doświadczenie jako programisty. Od tworzenia niestandardowych aplikacji internetowych po optymalizację kodu pod kątem wydajności, udowodniłem, że potrafię dostarczać kod wysokiej jakości. Zajrzyj i przekonaj się, jak mogę wnieść wartość do Twojego zespołu jako programista.",
+    "seoDescription": "Mój portfolio programistyczne prezentuje moje umiejętności i doświadczenie jako programista oprogramowania. Od tworzenia niestandardowych aplikacji internetowych po optymalizację kodu pod kątem wydajności, udowodniłem swoją zdolność do dostarczania wysokiej jakości kodu. Zajrzyj i zobacz, jak mogę przynieść wartość twojemu zespołowi jako programista.",
   }
 }
 </i18n>

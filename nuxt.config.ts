@@ -32,8 +32,8 @@ export default defineNuxtConfig({
   },
 
   sourcemap: {
-    client: true,
-    server: true,
+    client: process.env.NODE_ENV === "development",
+    server: process.env.NODE_ENV === "development",
   },
 
   modules: [
