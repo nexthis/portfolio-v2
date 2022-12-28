@@ -11,7 +11,7 @@
     </ul>
 
     <div class="info">
-      <template v-if="page < 10">0</template>{{ page + 1 }} /
+      <template v-if="modelValue < 10">0</template>{{ modelValue + 1 }} /
       <template v-if="max < 10">0</template>{{ max }}
     </div>
   </div>
@@ -20,19 +20,21 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 
+const emit = defineEmits(["update:modelValue"]);
+
 const props = defineProps<{
-  page: number;
+  modelValue: number;
   max: number;
 }>();
 
-const cursorPosition = ref(props.page);
+const cursorPosition = ref(props.modelValue);
 
 onMounted(() => {
   indicatorTo(cursorPosition.value);
 });
 
 watch(props, () => {
-  const index = props.page;
+  const index = props.modelValue;
   const direction = getDirection(index);
 
   indicatorTo(index, direction);
@@ -44,10 +46,11 @@ const getDirection = (number: number) =>
 
 const onItemClick = (number: number) => {
   const index = number - 1;
-  const direction = getDirection(number);
+  emit("update:modelValue", index);
+  // const direction = getDirection(number);
 
-  indicatorTo(index, direction);
-  cursorPosition.value = index;
+  // indicatorTo(index, direction);
+  // cursorPosition.value = index;
 };
 
 const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
@@ -56,8 +59,14 @@ const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
   const cursor = ".indicator__cursor";
   const defaultCursorHeight = 30;
   const itemHeight = 35;
+  const space = Math.abs(index - cursorPosition.value) + 1;
 
-  let cursorHeight = itemHeight + 15 * 2;
+  //Avoiding bug when user click in the same position
+  if (index === cursorPosition.value) {
+    return;
+  }
+
+  let cursorHeight = itemHeight + 15 * space;
 
   if (direction === "down") {
     gsap

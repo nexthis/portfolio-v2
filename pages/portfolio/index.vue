@@ -1,4 +1,5 @@
 <template>
+  <HeadStandard :title="t('seoTitle')" :description="t('seoDescription')" />
   <div
     class="h-full w-full flex flex-col justify-between md:container md:mx-auto default-screen-height"
   >
@@ -38,7 +39,11 @@
       </NuxtLink>
     </div>
 
-    <PaginationSlider :page="page ?? 0" :max="data?.results.length ?? 1" />
+    <PaginationSlider
+      @update:model-value="onPaginationChange"
+      :model-value="page ?? 0"
+      :max="data?.results.length ?? 1"
+    />
   </div>
 </template>
 
@@ -48,10 +53,11 @@ import { gsap } from "gsap";
 import _ from "lodash";
 
 const item = ref();
-const { client, predicate, asText, asLink, asImageSrc } = usePrismic();
-const { locale } = useI18n();
 const page = useCookie("page", { default: () => 0 });
 const bgText = useBackgroundText("Portfolio");
+const { client, predicate, asText, asLink, asImageSrc } = usePrismic();
+const { locale } = useI18n();
+const { t } = useI18n();
 const { onScrollEnd } = useScroll();
 const { onKeyDown } = useKeyboard();
 const { onSwipe } = useSwipe();
@@ -84,24 +90,26 @@ const animate = (direction: "up" | "down") => {
   gsap
     .timeline()
     .to(
-      ".title, .description, .link",
-      { yPercent: driver * 50, opacity: 0, duration: 0.3, stagger: 0.1 },
-      "same"
+      ".title, .description, .link, .image",
+      { y: driver * 50, opacity: 0, duration: 0.13 },
+      "<"
     )
-    .to(".image", { duration: 0.3, opacity: 0 }, "same")
     .call(() => {
       item.value = data.value!.results[next];
       page.value = next;
       bgText.value = asText(item.value.data.title) ?? "Portfolio";
     })
     .to(".title, .description, .link, .image", {
-      yPercent: 0,
-      duration: 0.3,
+      y: 0,
       opacity: 1,
-      stagger: 0.2,
     });
 
   // item.value = data.value.results[next]
+};
+
+const onPaginationChange = (value: number) => {
+  //animate(page.value! > value ? "up" : "down");
+  page.value = value;
 };
 
 onScrollEnd((e) => {
@@ -138,3 +146,18 @@ onSwipe((e) => {
 </script>
 
 <style scoped></style>
+
+
+<i18n>
+{
+  "en": {
+    "seoTitle": "Portfolio, realizations and own projects",
+    "seoDescription": "Moje portfolio prezentuje moje umiejętności i doświadczenie jako programisty. Spójrz i przekonaj się, jak mogę wnieść wartość do Twojego zespołu.",
+  },
+  "pl": {
+    "seoTitle": "Portfolio, realizacje i własne projekty",
+    "seoDescription": "My portfolio showcases my skills and experience as a programmer.. Take a look and see how I can bring value to your team.",
+
+  }
+}
+</i18n>

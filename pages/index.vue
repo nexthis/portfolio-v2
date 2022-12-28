@@ -8,7 +8,7 @@
     </template>
   </div>
 
-  <PaginationSlider :page="page" :max="elements.length" />
+  <PaginationSlider :model-value="page" :max="elements.length" />
 </template>
 <script setup lang="ts">
 import { gsap, Power2 } from "gsap";

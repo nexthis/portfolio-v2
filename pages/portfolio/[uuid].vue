@@ -1,4 +1,8 @@
 <template>
+  <HeadStandard
+    :title="asText(data.data.title) ?? 'Project'"
+    :description="asText(data.data.short) ?? ''"
+  />
   <div>
     <div
       class="h-full w-full flex flex-col md:flex-row justify-between md:container py-1 md:mx-auto default-screen-height"
