@@ -16,6 +16,21 @@ export default defineNuxtConfig({
     defaultLocale: "pl",
   },
 
+  pwa: {
+    manifest: {
+      name: "Paweł Romanowski",
+      theme_color: "#24262E",
+    },
+    meta: {
+      ogDescription: false,
+      ogImage: false,
+      ogTitle: false,
+      ogSiteName: false,
+      mobileApp: false,
+      ogType: false,
+    },
+  },
+
   sourcemap: {
     client: true,
     server: true,

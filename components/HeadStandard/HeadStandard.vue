@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <!--    Base-->
+    <!--Base-->
     <Title>Paweł Romanowski - {{ title }}</Title>
     <Meta charset="UTF-8" />
     <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,19 +49,19 @@
 </template>
 
 <script setup lang="ts">
-const {
-  type = "article",
-  description,
-  title,
-  image,
-  alt = "Paweł Romanowski card",
-} = defineProps<{
-  title: string;
-  description: string;
-  type?: "person" | "article";
-  image?: string;
-  alt?: string;
-}>();
+const props = withDefaults(
+  defineProps<{
+    title: string;
+    description: string;
+    type?: "person" | "article";
+    image?: string;
+    alt?: string;
+  }>(),
+  {
+    type: "person",
+    alt: "Paweł Romanowski card",
+  }
+);
 
 const router = useRouter();
 const config = useRuntimeConfig();
@@ -69,7 +69,7 @@ const config = useRuntimeConfig();
 const url = new URL(router.currentRoute.value.fullPath, config.public.baseUrl);
 
 const getImage = () => {
-  return new URL(image ?? "/ogImage.png", url.href).href;
+  return new URL(props.image ?? "/ogImage.png", url.href).href;
 };
 </script>
 
