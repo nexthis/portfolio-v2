@@ -96,4 +96,8 @@ const animateMenu = (open: boolean) => {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+main {
+  opacity: 0;
+}
+</style>

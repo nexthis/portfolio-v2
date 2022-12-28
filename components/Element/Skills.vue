@@ -14,7 +14,14 @@
         <div class="py-4 px-5 text-white">
           <div class="flex justify-center items-center xl:justify-between">
             <!--            <nuxt-img class="rounded-full w-16" :src="rt(item.icon)" format="webp" :alt="rt(item.title)"/>-->
-            <img class="rounded-full w-16" :src="item.icon" :alt="item.title" />
+            <nuxt-img
+              class="rounded-full w-16"
+              width="64"
+              height="64"
+              format="webp"
+              :src="item.icon"
+              :alt="item.title"
+            />
             <div class="uppercase tracking-wider font-bold hidden xl:block">
               {{ item.title }}
             </div>

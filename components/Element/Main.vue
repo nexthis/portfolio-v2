@@ -19,6 +19,8 @@
         class="h-full w-auto block absolute"
         src="/me.png"
         format="webp"
+        :quality="90"
+        sizes="sm:100vw md:50vw lg:713px"
         alt="Zdjęcia przedstawiające Pawła Romanowskiego"
       />
       <!-- <img
@@ -31,7 +33,6 @@
 </template>
 
 <script setup lang="ts">
-
 //flex-1
 const { t, locale } = useI18n();
 </script>

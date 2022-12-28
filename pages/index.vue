@@ -11,7 +11,7 @@
   <PaginationSlider :page="page" :max="elements.length" />
 </template>
 <script setup lang="ts">
-import { gsap } from "gsap";
+import { gsap, Power2 } from "gsap";
 import _ from "lodash";
 
 //For tests
@@ -36,7 +36,10 @@ const animate = (direction: "up" | "down") => {
     elements.length - 1
   );
   bgText.value = t(`title.${page.value}`);
-  gsap.to(".slider", { translateY: `-${page.value * 120}%` });
+  gsap.to(".slider", {
+    translateY: `-${page.value * 120}%`,
+    ease: Power2.easeOut,
+  });
 };
 
 onScrollEnd((e) => {
