@@ -20,7 +20,7 @@
         src="/me.png"
         format="webp"
         :quality="90"
-        sizes="sm:45vh md:50vh lg:713px"
+        sizes="sm:40vh md:50vh lg:713px"
         alt="Zdjęcia przedstawiające Pawła Romanowskiego"
       />
       <!-- <img

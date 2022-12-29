@@ -3,11 +3,18 @@
     <header
       class="w-full sm:mt-5 flex-auto flex items-center py-5 md:px-0 px-3 container mx-auto z-50"
     >
-      <img src="/icons/logo.svg" class="mr-3" alt="Paweł Romanowski Logo" />
       <NuxtLink
         to="/"
-        class="uppercase font-light text-white uppercase text-xs sm:text-xl"
+        class="uppercase font-light flex justify-center items-center text-white uppercase text-xs sm:text-xl"
       >
+        <nuxt-img
+          src="/icons/logo.svg"
+          class="mr-3"
+          alt="Paweł Romanowski Logo"
+          height="40"
+          width="31"
+        />
+
         Paweł
         <span class="text-accent font-medium">Romanowski</span>
       </NuxtLink>
@@ -18,6 +25,7 @@
         v-model="enabled"
         @click="onLangChange"
         class="relative inline-flex h-[38px] w-[74px] text-white uppercase shrink-0 cursor-pointer bg-secondary rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+        aria-label="Menu"
       >
         <span class="sr-only">Select Language</span>
         <div class="absolute left-0 top-0 w-1/2 h-full">

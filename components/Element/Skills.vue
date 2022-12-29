@@ -19,6 +19,7 @@
               width="64"
               height="64"
               format="webp"
+              quality="90"
               :src="item.icon"
               :alt="item.title"
             />

@@ -44,8 +44,9 @@
       </h2>
       <form class="">
         <div class="mt-6">
-          <label class="uppercase">{{ t("name") }}</label>
+          <label for="name-form" class="uppercase">{{ t("name") }}</label>
           <input
+            id="name-form"
             name="name"
             class="w-full bg-transparent border-none outline-0"
           />
@@ -53,8 +54,9 @@
         </div>
 
         <div class="mt-6">
-          <label class="uppercase">{{ t("phone") }}</label>
+          <label for="phone-form" class="uppercase">{{ t("phone") }}</label>
           <input
+            id="phone-form"
             name="phone"
             class="w-full bg-transparent border-none outline-0"
           />
@@ -62,8 +64,9 @@
         </div>
 
         <div class="mt-6">
-          <label class="uppercase">{{ t("email") }}</label>
+          <label for="email-form" class="uppercase">{{ t("email") }}</label>
           <input
+            id="email-form"
             name="email"
             class="w-full bg-transparent border-none outline-0"
           />
@@ -71,8 +74,9 @@
         </div>
 
         <div class="mt-6">
-          <label class="uppercase">{{ t("message") }}</label>
+          <label for="message-form" class="uppercase">{{ t("message") }}</label>
           <input
+            id="message-form"
             name="message"
             class="w-full bg-transparent border-none outline-0"
           />
