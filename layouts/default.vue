@@ -7,13 +7,12 @@
         to="/"
         class="uppercase font-light flex justify-center items-center text-white uppercase text-xs sm:text-xl"
       >
-        <nuxt-img
+        <div v-html="Logo" class="mr-2" />
+        <!-- <nuxt-img
           src="/icons/logo.svg"
           class="mr-3"
           alt="Paweł Romanowski Logo"
-          height="40"
-          width="31"
-        />
+        /> -->
 
         Paweł
         <span class="text-accent font-medium">Romanowski</span>
@@ -25,7 +24,6 @@
         v-model="enabled"
         @click="onLangChange"
         class="relative inline-flex h-[38px] w-[74px] text-white uppercase shrink-0 cursor-pointer bg-secondary rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        aria-label="Menu"
       >
         <span class="sr-only">Select Language</span>
         <div class="absolute left-0 top-0 w-1/2 h-full">
@@ -51,7 +49,7 @@
         <client-only>
           {{ animateMenu(open) }}
         </client-only>
-        <MenuButton class="ml-2">
+        <MenuButton class="ml-2" aria-label="Menu">
           <span class="menu-1 block w-8 h-[4px] rounded-full bg-accent"></span>
           <span
             class="menu-2 block w-6 h-[4px] rounded-full mt-1.5 bg-accent ml-auto"
@@ -78,6 +76,8 @@
 </template>
 
 <script setup lang="ts">
+//Alternatively use svg import lib
+import Logo from "~/assets/icons/logo.svg?raw";
 import { gsap } from "gsap";
 import { Switch, Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { useI18n } from "vue-i18n";
