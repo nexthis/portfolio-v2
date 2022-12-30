@@ -72,7 +72,12 @@ const config = useRuntimeConfig();
 const url = new URL(router.currentRoute.value.fullPath, config.public.baseUrl);
 
 const getImage = () => {
-  return new URL(props.image ?? "/ogImage.png", url.href).href;
+  const link = props.image ?? "/ogImage.png";
+  if (validURL(link)) {
+    return link;
+  }
+
+  return new URL(link, url.href).href;
 };
 </script>
 

@@ -8,7 +8,11 @@
     </template>
   </div>
 
-  <PaginationSlider :model-value="page" :max="elements.length" />
+  <PaginationSlider
+    @update:model-value="onSliderChange"
+    :model-value="page"
+    :max="elements.length"
+  />
 </template>
 <script setup lang="ts">
 import { gsap, Power2 } from "gsap";
@@ -29,12 +33,8 @@ const { onKeyDown } = useKeyboard();
 const { onSwipe } = useSwipe();
 const bgText = useBackgroundText(t(`title.0`));
 
-const animate = (direction: "up" | "down") => {
-  page.value = _.clamp(
-    direction === "down" ? page.value + 1 : page.value - 1,
-    0,
-    elements.length - 1
-  );
+const animate = (value: number) => {
+  page.value = _.clamp(value, 0, elements.length - 1);
   bgText.value = t(`title.${page.value}`);
   gsap.to(".slider", {
     translateY: `-${page.value * 120}%`,
@@ -42,23 +42,27 @@ const animate = (direction: "up" | "down") => {
   });
 };
 
+const onSliderChange = (value: number) => {
+  animate(value);
+};
+
 onScrollEnd((e) => {
   if (e.deltaY > 0) {
-    animate("down");
+    animate(page.value + 1);
     return;
   }
   if (e.deltaY < 0) {
-    animate("up");
+    animate(page.value - 1);
   }
 });
 
 onKeyDown((e) => {
   if (e.key === "ArrowDown") {
-    animate("down");
+    animate(page.value + 1);
     return;
   }
   if (e.key === "ArrowUp") {
-    animate("up");
+    animate(page.value - 1);
   }
 });
 
@@ -68,10 +72,10 @@ onSwipe((e) => {
   }
 
   if (e.direction.precisely === "up") {
-    animate("down");
+    animate(page.value + 1);
     return;
   }
-  animate("up");
+  animate(page.value - 1);
 });
 </script>
 

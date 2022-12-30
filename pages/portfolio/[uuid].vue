@@ -1,7 +1,8 @@
 <template>
   <HeadStandard
-    :title="asText(data.data.title) ?? 'Project'"
-    :description="asText(data.data.short) ?? ''"
+    :title="asText(data.data.seo_title) ?? 'Project'"
+    :description="asText(data.data.seo_description) ?? ''"
+    :image="asImageSrc(data.data.seo_image) ?? ''"
   />
   <div>
     <div
