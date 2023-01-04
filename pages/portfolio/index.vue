@@ -10,7 +10,7 @@
       <div
         class="md:px-0 px-6 mt-5 md:flex md:justify-center md:w-1/2 md:flex-col"
       >
-        <div class="md:flex md:flex-col md:justify-end">
+        <div class="md:flex md:flex-col md:justify-end text-box">
           <h1
             class="text-white uppercase font-bold text-2xl md:text-4xl xl:text-6xl mb-5 title"
           >
@@ -51,9 +51,10 @@
 import { useI18n } from "vue-i18n";
 import { gsap } from "gsap";
 import _ from "lodash";
+import type { Ref } from "vue";
 
 const item = ref();
-const page = useCookie("page", { default: () => 0 });
+const page = useCookie("page", { default: () => 0 }) as Ref<number>;
 const bgText = useBackgroundText("Portfolio");
 const { client, predicate, asText, asLink, asImageSrc } = usePrismic();
 const { locale } = useI18n();
@@ -68,71 +69,74 @@ const { data, refresh, pending } = await useAsyncData("portfolio", () =>
     lang: locale.value ?? "pl",
   })
 );
-item.value = data.value!.results[page.value ?? 0];
+item.value = data.value!.results[page.value];
 
 watch(locale, async () => {
   await refresh();
-  item.value = data.value!.results[page.value ?? 0];
+  item.value = data.value!.results[page.value];
 });
 
-const animate = (direction: "up" | "down") => {
+const animate = (value: number) => {
   const index = data.value!.results.indexOf(item.value);
   const max = data.value!.results.length;
 
-  const next = _.clamp(direction === "up" ? index - 1 : index + 1, 0, max - 1);
-  const driver = direction === "up" ? 1 : -1;
+  const next = _.clamp(value, 0, max - 1);
+  const driver = value > page.value ? 1 : -1;
+
+  const width = document.querySelector(".image")!.clientWidth;
+  const position =
+    document.querySelector(".component")!.clientWidth / 2 - width / 2;
 
   if ((index === 0 && next === 0) || (index === max - 1 && next === max - 1)) {
     gsap.to(".component", 0.1, { x: "+=15", yoyo: true, repeat: 5 });
     return;
   }
 
+  page.value = next;
+
   gsap
     .timeline()
-    .to(".title, .description, .link", { x: "50vh", duration: 0.3 }, "<")
-    .to(".image", { x: "-50vh", duration: 0.3 }, "<")
-    .to(".title, .description, .link, .image", {
+    .set(".text-box", { width: width })
+    .to(".text-box", { x: position, duration: 0.3 }, "<")
+    .to(".image", { x: -position, duration: 0.3 }, "<")
+    .to(".text-box, .image", {
       y: `${driver * 100}vh`,
       opacity: 0,
     })
     .call(() => {
       item.value = data.value!.results[next];
-      page.value = next;
       bgText.value = asText(item.value.data.title) ?? "Portfolio";
     })
-    .set(".title, .description, .link, .image", {
+    .set(".text-box, .image", {
       y: `${-driver * 100}vh`,
       opacity: 1,
     })
-    .to(".title, .description, .link, .image", { y: 0 })
-    .to(".title, .description, .link", { x: 0, duration: 0.3 })
+    .to(".text-box, .image", { y: 0 })
+    .to(".text-box", { x: 0, duration: 0.3 })
     .to(".image", { x: 0, duration: 0.3 }, "<");
-
-  // item.value = data.value.results[next]
 };
 
 const onPaginationChange = (value: number) => {
-  //animate(page.value! > value ? "up" : "down");
-  page.value = value;
+  animate(value);
 };
 
 onScrollEnd((e) => {
   if (e.deltaY > 0) {
-    animate("down");
+    animate(page.value + 1);
     return;
   }
   if (e.deltaY < 0) {
-    animate("up");
+    animate(page.value - 1);
   }
 });
 
 onKeyDown((e) => {
   if (e.key === "ArrowDown") {
-    animate("down");
+    animate(page.value + 1);
     return;
   }
   if (e.key === "ArrowUp") {
-    animate("up");
+    animate(page.value - 1);
   }
 });
 
@@ -142,10 +146,10 @@ onSwipe((e) => {
   }
 
   if (e.direction.precisely === "up") {
-    animate("down");
+    animate(page.value + 1);
     return;
   }
-  animate("up");
+  animate(page.value - 1);
 });
 </script>
 

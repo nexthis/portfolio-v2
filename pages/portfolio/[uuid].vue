@@ -40,7 +40,10 @@
           class="w-full h-full max-h-96 relative mt-20 md:flex md:w-3/4 md:justify-center md:flex-col md:mt-0 sm:max-h-full md:ml-5 lg:w-1/2"
         >
           <div class="md:h-full md:mb-5 md:relative md:shadow-2xl">
-            <img :src="asImageSrc(data.data.image)" />
+            <img
+              :src="asImageSrc(data.data.image)"
+              :alt="data.data.image.alt"
+            />
           </div>
         </div>
       </div>
