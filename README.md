@@ -16,3 +16,4 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 - [ ] Fix image loading/re in portfolio site  
 - [ ] Add en support for portfolio site  
 - [ ] Fix mobile ui after the changes*
+- [ ] Code refactor n(1)
