@@ -2,41 +2,17 @@
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
-## Setup
+## Is just portfolio... 
 
-Make sure to install the dependencies:
+# TODO 
 
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+- [x] Make this list 
+- [x] Project configuration
+- [x] Implement website mockup
+- [x] PWA
+- [x] Web cache 
+- [x] Base SEO 
+- [ ] Fix language change (to default) when user jump to another page
+- [ ] Fix image loading/re in portfolio site  
+- [ ] Add en support for portfolio site  
+- [ ] Fix mobile ui after the changes*
