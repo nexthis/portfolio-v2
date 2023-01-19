@@ -53,12 +53,12 @@ const { t, locale } = useI18n();
 <i18n>
 {
   "en": {
-    "title": "Im ready to create your website and make it awesome!",
-    "description": "Full-stac developer from Poland. I create custom website to help buisinesses to better online"
+    "title": "Im ready to create your website and make it awesome! (WIP)",
+    "description": "Full-stack developer from Poland. I create custom website to help buisinesses to better online"
   },
   "pl": {
-    "title": "Stwórzmy razem kolejną niesamowitą stronę internetową!",
-    "description": "Full-stac developer. Tworzę strony inernetowe, sklepy, blogi i aplikacje internetowe ",
+    "title": "Stwórzmy razem kolejną niesamowitą stronę internetową! (WIP)",
+    "description": "Full-stack developer. Tworzę strony inernetowe, sklepy, blogi i aplikacje internetowe ",
   }
 }
 

@@ -3,6 +3,7 @@
     :title="asText(data.data.seo_title) ?? 'Project'"
     :description="asText(data.data.seo_description) ?? ''"
     :image="asImageSrc(data.data.seo_image) ?? ''"
+    type="article"
   />
   <div>
     <div

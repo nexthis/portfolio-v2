@@ -20,7 +20,8 @@
       <Meta property="og:image:alt" :content="alt" />
 
       <Meta property="og:description" :content="description" />
-      <!-- <Meta property="og:locale" content="pl-PL" /> -->
+      <Meta property="og:locale" content="pl-PL" />
+      <Meta property="og:locale:alternate" content="en_BG" />
       <Meta property="og:site_name" content="Paweł Romanowski - Portfolio" />
 
       <!--    {type === 'article' ? (-->
@@ -34,12 +35,12 @@
       <!--    ) : null}-->
 
       <!--   Twitter Card -->
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" :content="url.href" />
-      <meta name="twitter:title" :content="title" />
-      <meta name="twitter:description" :content="description" />
-      <meta name="twitter:image" :content="getImage()" />
-      <meta name="twitter:image:alt" :content="alt" />
+      <Meta name="twitter:card" content="summary_large_image" />
+      <Meta name="twitter:url" :content="url.href" />
+      <Meta name="twitter:title" :content="title" />
+      <Meta name="twitter:description" :content="description" />
+      <Meta name="twitter:image" :content="getImage()" />
+      <Meta name="twitter:image:alt" :content="alt" />
 
       <!--   Schema JSON LD -->
       <!--  <script-->

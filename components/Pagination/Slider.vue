@@ -27,18 +27,18 @@ const props = defineProps<{
   max: number;
 }>();
 
-const cursorPosition = ref(props.modelValue);
+const cursorPosition = ref(0);
 
 onMounted(() => {
-  indicatorTo(cursorPosition.value);
+  indicatorTo(props.modelValue);
 });
 
 watch(props, () => {
   const index = props.modelValue;
   const direction = getDirection(index);
 
+  console.log("watch", props.modelValue);
   indicatorTo(index, direction);
-  cursorPosition.value = index;
 });
 
 const getDirection = (number: number) =>
@@ -47,10 +47,6 @@ const getDirection = (number: number) =>
 const onItemClick = (number: number) => {
   const index = number - 1;
   emit("update:modelValue", index);
-  // const direction = getDirection(number);
-
-  // indicatorTo(index, direction);
-  // cursorPosition.value = index;
 };
 
 const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
@@ -60,6 +56,8 @@ const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
   const defaultCursorHeight = 30;
   const itemHeight = 35;
   const space = Math.abs(index - cursorPosition.value) + 1;
+
+  console.log(index === cursorPosition.value);
 
   //Avoiding bug when user click in the same position
   if (index === cursorPosition.value) {
@@ -93,6 +91,8 @@ const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
         height: defaultCursorHeight,
       });
   }
+
+  cursorPosition.value = index;
 };
 </script>
 

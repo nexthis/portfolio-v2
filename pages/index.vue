@@ -1,7 +1,7 @@
 <template>
   <HeadStandard :title="t('seoTitle')" :description="t('seoDescription')" />
 
-  <div class="h-full w-full md:container md:mx-auto relative slider">
+  <div class="h-full w-full md:container md:mx-auto slider">
     <template v-for="item in elements" :key="item">
       <component :is="item" />
       <div class="h-1/5"></div>

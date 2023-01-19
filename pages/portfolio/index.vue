@@ -41,8 +41,8 @@
 
     <PaginationSlider
       @update:model-value="onPaginationChange"
-      :model-value="page ?? 0"
-      :max="data?.results.length ?? 1"
+      :model-value="page"
+      :max="data?.results.length ?? 0"
     />
   </div>
 </template>
@@ -81,7 +81,7 @@ const animate = (value: number) => {
   const max = data.value!.results.length;
 
   const next = _.clamp(value, 0, max - 1);
-  const driver = value > page.value ? 1 : -1;
+  const driver = value > page.value ? -1 : 1;
 
   const width = document.querySelector(".image")!.clientWidth;
   const position =
@@ -97,7 +97,7 @@ const animate = (value: number) => {
   gsap
     .timeline()
     .set(".text-box", { width: width })
-    .to(".text-box", { x: position, duration: 0.3 }, "<")
+    .to(".text-box", { x: position + 10, duration: 0.3 }, "<")
     .to(".image", { x: -position, duration: 0.3 }, "<")
     .to(".text-box, .image", {
       y: `${driver * 100}vh`,
@@ -113,7 +113,8 @@ const animate = (value: number) => {
     })
     .to(".text-box, .image", { y: 0 })
     .to(".text-box", { x: 0, duration: 0.3 })
-    .to(".image", { x: 0, duration: 0.3 }, "<");
+    .to(".image", { x: 0, duration: 0.3 }, "<")
+    .set(".text-box", { width: "auto" });
 };
 
 const onPaginationChange = (value: number) => {
