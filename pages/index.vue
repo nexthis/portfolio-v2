@@ -1,13 +1,14 @@
 <template>
   <HeadStandard :title="t('seoTitle')" :description="t('seoDescription')" />
 
-  <div class="h-full w-full md:container md:mx-auto slider">
-    <template v-for="item in elements" :key="item">
-      <component :is="item" />
-      <div class="h-1/5"></div>
-    </template>
+  <div class="h-full w-full relative">
+    <div class="h-full w-full absolute md:mx-auto slider">
+      <template v-for="item in elements" :key="item">
+        <component :is="item" />
+        <div class="h-1/5"></div>
+      </template>
+    </div>
   </div>
-
   <PaginationSlider
     @update:model-value="onSliderChange"
     :model-value="page"

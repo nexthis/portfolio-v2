@@ -82,12 +82,11 @@ import { gsap } from "gsap";
 import { Switch, Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { useI18n } from "vue-i18n";
 
-const enabled = ref(false);
+const { locale } = useI18n({ useScope: "global" });
 
-const { locale } = useI18n();
+const enabled = ref(locale.value !== "pl");
 
 const onLangChange = () => {
-  console.log("test");
   locale.value = enabled.value ? "pl" : "en";
 };
 
