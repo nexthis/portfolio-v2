@@ -118,15 +118,24 @@ const createSchema = () => {
       url: "https://pawel-romanowski.pl/",
       jobTitle: "Full-stack developer",
       sameAs: ["https://github.com/nexthis"],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Gdańsk",
+        addressCountry: "Polska",
+      },
+      email: "pawel.romanowski000@gmail.com",
+      birthPlace: "Gdańsk",
+      telephone: "502572544",
     };
   }
+
   return {};
 };
 
 useHead({
   script: [
     {
-      type: "application/ld-json",
+      type: "application/ld+json",
       children: JSON.stringify(createSchema()),
     },
   ],
