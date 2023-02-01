@@ -114,9 +114,6 @@ const { client, asText, asLink, asImageSrc, asHTML } = usePrismic();
 const route = useRoute();
 const { locale } = useI18n();
 
-definePageMeta({
-  pageTransition: null,
-});
 
 const { data, refresh } = await useAsyncData(
   "portfolio." + route.params.uuid,

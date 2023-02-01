@@ -43,12 +43,6 @@
       <Meta name="twitter:description" :content="description" />
       <Meta name="twitter:image" :content="getImage()" />
       <Meta name="twitter:image:alt" :content="alt" />
-
-      <!--   Schema JSON LD -->
-      <Script
-        type="application/ld+json"
-        v-html="JSON.stringify(createSchema())"
-      />
     </Head>
   </Html>
 </template>
@@ -128,6 +122,15 @@ const createSchema = () => {
   }
   return {};
 };
+
+useHead({
+  script: [
+    {
+      type: "application/ld-json",
+      children: JSON.stringify(createSchema()),
+    },
+  ],
+});
 </script>
 
 <style scoped></style>
