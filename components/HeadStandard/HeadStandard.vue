@@ -21,18 +21,20 @@
 
       <Meta property="og:description" :content="description" />
       <Meta property="og:locale" content="pl-PL" />
-      <Meta property="og:locale:alternate" content="en_BG" />
+      <Meta property="og:locale:alternate" content="en_US" />
       <Meta property="og:site_name" content="Paweł Romanowski - Portfolio" />
 
-      <!--    {type === 'article' ? (-->
-      <!--    <>-->
-      <!--    <meta property="article:author" content="Paweł Romanowski"/>-->
-      <!--    <meta property="article:modified_time"-->
-      <!--          content={new Date(seo.dateModified!).toISOString().slice(0, 10)}/>-->
-      <!--    <meta property="article:published_time"-->
-      <!--          content={new Date(seo.datePublished!).toISOString().slice(0, 10)}/>-->
-
-      <!--    ) : null}-->
+      <template v-if="type === 'article'">
+        <Meta property="article:author" content="Paweł Romanowski" />
+        <Meta
+          property="article:modified_time"
+          :content="new Date(modifiedTime!).toISOString()"
+        />
+        <Meta
+          property="article:published_time"
+          :content="new Date(publishedTime!).toISOString()"
+        />
+      </template>
 
       <!--   Twitter Card -->
       <Meta name="twitter:card" content="summary_large_image" />
@@ -43,10 +45,10 @@
       <Meta name="twitter:image:alt" :content="alt" />
 
       <!--   Schema JSON LD -->
-      <!--  <script-->
-      <!--      type="application/ld+json"-->
-      <!--      dangerouslySetInnerHTML={{__html: JSON.stringify(generateJsonLD(seo, type))}}-->
-      <!--  />-->
+      <Script
+        type="application/ld+json"
+        v-html="JSON.stringify(createSchema())"
+      />
     </Head>
   </Html>
 </template>
@@ -59,6 +61,8 @@ const props = withDefaults(
     type?: "person" | "article";
     image?: string;
     alt?: string;
+    modifiedTime?: string | Date;
+    publishedTime?: string | Date;
   }>(),
   {
     type: "person",
@@ -69,6 +73,7 @@ const props = withDefaults(
 const { locale } = useI18n();
 const router = useRouter();
 const config = useRuntimeConfig();
+const img = useImage();
 
 const url = new URL(router.currentRoute.value.fullPath, config.public.baseUrl);
 
@@ -79,6 +84,49 @@ const getImage = () => {
   }
 
   return new URL(link, url.href).href;
+};
+
+const createSchema = () => {
+  const link = props.image ?? "/ogImage.png";
+
+  if (props.type === "article") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: props.title,
+      image: [
+        new URL(img(link, { width: 630, height: 630 }), url.href).href,
+        new URL(img(link, { width: 630, height: 472 }), url.href).href,
+        new URL(img(link, { width: 630, height: 354 }), url.href).href,
+      ],
+      datePublished: new Date(props.publishedTime!).toISOString(),
+      dateModified: new Date(props.modifiedTime!).toISOString(),
+      author: [
+        {
+          "@type": "Person",
+          name: "Paweł Romanowski",
+          url: "https://pawel-romanowski.pl/",
+        },
+      ],
+    };
+  }
+
+  if (props.type === "person") {
+    return {
+      "@context": "http://schema.org/",
+      "@type": "Person",
+      name: "Paweł Romanowski",
+      image: [
+        new URL(img(link, { width: 630, height: 630 }), url.href).href,
+        new URL(img(link, { width: 630, height: 472 }), url.href).href,
+        new URL(img(link, { width: 630, height: 354 }), url.href).href,
+      ],
+      url: "https://pawel-romanowski.pl/",
+      jobTitle: "Full-stack developer",
+      sameAs: ["https://github.com/nexthis"],
+    };
+  }
+  return {};
 };
 </script>
 

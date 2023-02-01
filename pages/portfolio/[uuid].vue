@@ -3,6 +3,8 @@
     :title="asText(data.data.seo_title) ?? 'Project'"
     :description="asText(data.data.seo_description) ?? ''"
     :image="asImageSrc(data.data.seo_image) ?? ''"
+    :modified-time="data?.last_publication_date"
+    :published-time="data?.first_publication_date"
     type="article"
   />
   <div>
