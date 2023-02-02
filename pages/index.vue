@@ -13,6 +13,7 @@
     @update:model-value="onSliderChange"
     :model-value="page"
     :max="elements.length"
+    class="md:bottom-auto md:!top-1/2 md:!right-3 bottom-0 !top-auto !right-0"
   />
 </template>
 <script setup lang="ts">

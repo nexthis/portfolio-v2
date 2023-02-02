@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: "pl",
     baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
+    strategy: "prefix_except_default",
   },
 
   pwa: {

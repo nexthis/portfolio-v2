@@ -23,13 +23,13 @@
           </div>
           <NuxtLink
             class="text-accent lg:text-xl lg:mt-5 block link"
-            :to="`/portfolio/${item.uid}`"
+            :to="localePath(`/portfolio/${item.uid}`)"
             >Zobacz więcej</NuxtLink
           >
         </div>
       </div>
       <NuxtLink
-        :to="`/portfolio/${item.uid}`"
+        :to="localePath(`/portfolio/${item.uid}`)"
         class="w-full h-full max-h-80 relative mt-20 md:flex md:w-3/4 md:justify-center md:flex-col md:mt-0 sm:max-h-full md:ml-5 lg:w-5/12 image"
       >
         <img
@@ -56,9 +56,9 @@ import type { Ref } from "vue";
 const item = ref();
 const page = useCookie("page", { default: () => 0 }) as Ref<number>;
 const bgText = useBackgroundText("Portfolio");
+const localePath = useLocalePath();
 const { client, predicate, asText, asLink, asImageSrc } = usePrismic();
-const { locale } = useI18n();
-const { t } = useI18n();
+const { locale, t } = useI18n();
 const { onScrollEnd } = useScroll();
 const { onKeyDown } = useKeyboard();
 const { onSwipe } = useSwipe();

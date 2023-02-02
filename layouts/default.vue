@@ -4,7 +4,7 @@
       class="w-full sm:mt-5 flex-auto flex items-center py-5 md:px-0 px-3 container mx-auto z-50"
     >
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="uppercase font-light flex justify-center items-center text-white uppercase text-xs sm:text-xl"
       >
         <div v-html="Logo" class="mr-2" />
@@ -60,7 +60,10 @@
         </MenuButton>
         <MenuItems class="absolute right-0 mt-2 z-50" v-show="open" static>
           <MenuItem class="block bg-secondary px-2 py-1" v-slot="{ active }">
-            <NuxtLink :class="{ 'bg-accent-700': active }" to="/portfolio">
+            <NuxtLink
+              :class="{ 'bg-accent-700': active }"
+              :to="localePath('/portfolio')"
+            >
               Portfolio
             </NuxtLink>
           </MenuItem>
@@ -80,14 +83,16 @@
 import Logo from "~/assets/icons/logo.svg?raw";
 import { gsap } from "gsap";
 import { Switch, Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { useI18n } from "vue-i18n";
 
-const { locale } = useI18n({ useScope: "global" });
+const switchLocalePath = useSwitchLocalePath();
+const localePath = useLocalePath();
+const { locale } = useI18n();
+const router = useRouter();
 
-const enabled = ref(locale.value !== "pl");
+const enabled = ref(locale.value === "en");
 
 const onLangChange = () => {
-  locale.value = enabled.value ? "pl" : "en";
+  router.push(switchLocalePath(enabled.value ? "pl" : "en"));
 };
 
 const animateMenu = (open: boolean) => {
