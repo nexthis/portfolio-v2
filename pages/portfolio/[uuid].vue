@@ -46,6 +46,7 @@
             <img
               :src="asImageSrc(data.data.image)"
               :alt="data.data.image.alt"
+              class="w-full h-auto block"
             />
           </div>
         </div>
@@ -102,6 +103,12 @@
       </div>
     </div>
   </div>
+  <footer
+    class="h-full px-7 py-6 bg-slate-900 flex flex-wrap justify-between text-accent text-md"
+  >
+    <div>© {{ new Date().getFullYear() }} Paweł Romanowski</div>
+    <div>TREŚĆ STRONY PRAWNIE CHRONIONA</div>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -113,7 +120,6 @@ const { client, asText, asLink, asImageSrc, asHTML } = usePrismic();
 
 const route = useRoute();
 const { locale } = useI18n();
-
 
 const { data, refresh } = await useAsyncData(
   "portfolio." + route.params.uuid,
@@ -147,6 +153,7 @@ onMounted(() => {
   document.querySelector("main").classList.add("w-full");
   highlight.highlightAll();
 });
+
 onUnmounted(() => {
   document.body.classList.remove("!h-auto", "!overflow-auto");
   document.querySelector("main").classList.add("container");

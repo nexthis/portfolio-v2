@@ -24,13 +24,13 @@
           <NuxtLink
             class="text-accent lg:text-xl lg:mt-5 block link"
             :to="localePath(`/portfolio/${item.uid}`)"
-            >Zobacz więcej</NuxtLink
+            >{{ t("see") }}</NuxtLink
           >
         </div>
       </div>
       <NuxtLink
         :to="localePath(`/portfolio/${item.uid}`)"
-        class="w-full h-full max-h-80 relative mt-20 md:flex md:w-3/4 md:justify-center md:flex-col md:mt-0 sm:max-h-full md:ml-5 lg:w-5/12 image"
+        class="w-full h-full max-h relative mt-20 md:flex md:w-3/4 md:justify-center md:flex-col md:mt-0 sm:max-h-full md:ml-5 lg:w-5/12 image"
       >
         <img
           :src="asImageSrc(item.data.image) ?? ''"
@@ -94,9 +94,21 @@ const animate = (value: number) => {
 
   page.value = next;
 
+  if (window.innerWidth <= 767) {
+    gsap
+      .timeline()
+      .to(".text-box, .image", { opacity: 0, duration: 0.3 }, "<")
+      .call(() => {
+        item.value = data.value!.results[next];
+        bgText.value = asText(item.value.data.title) ?? "Portfolio";
+      })
+      .to(".text-box, .image", { opacity: 1 }, "<");
+
+    return;
+  }
+
   gsap
     .timeline()
-    .set(".text-box", { width: width })
     .to(".text-box", { x: position + 10, duration: 0.3 }, "<")
     .to(".image", { x: -position, duration: 0.3 }, "<")
     .to(".text-box, .image", {
@@ -113,8 +125,7 @@ const animate = (value: number) => {
     })
     .to(".text-box, .image", { y: 0 })
     .to(".text-box", { x: 0, duration: 0.3 })
-    .to(".image", { x: 0, duration: 0.3 }, "<")
-    .set(".text-box", { width: "auto" });
+    .to(".image", { x: 0, duration: 0.3 }, "<");
 };
 
 const onPaginationChange = (value: number) => {
@@ -154,17 +165,23 @@ onSwipe((e) => {
 });
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.max-h {
+  max-height: 85vh;
+}
+</style>
 
 <i18n>
 {
   "en": {
     "seoTitle": "Portfolio, realizations and own projects",
     "seoDescription": "My programming portfolio showcases my skills and experience as a software developer. From building custom web applications to optimizing code for performance, I have demonstrated my ability to deliver high-quality code. Take a look and see how I can bring value to your team as a programmer.",
+    "see": "See more",
   },
   "pl": {
     "seoTitle": "Portfolio, realizacje i własne projekty",
     "seoDescription": "Mój portfolio programistyczne prezentuje moje umiejętności i doświadczenie jako programista oprogramowania. Od tworzenia niestandardowych aplikacji internetowych po optymalizację kodu pod kątem wydajności, udowodniłem swoją zdolność do dostarczania wysokiej jakości kodu. Zajrzyj i zobacz, jak mogę przynieść wartość twojemu zespołowi jako programista.",
+    "see": "Zobacz więcej",
   }
 }
 </i18n>

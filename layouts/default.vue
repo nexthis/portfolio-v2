@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <header
-      class="w-full sm:mt-5 flex-auto flex items-center py-5 md:px-0 px-3 container mx-auto z-50"
+      class="w-full sm:mt-5 flex-auto flex items-center py-5 xl:px-0 md:px-10 px-3 container mx-auto z-50"
     >
       <NuxtLink
         :to="localePath('/')"
@@ -71,7 +71,9 @@
       </Menu>
     </header>
 
-    <main class="container mx-auto h-full text-white flex-auto md:px-0 px-6">
+    <main
+      class="container mx-auto h-full text-white flex-auto xl:px-0 md:px-10 px-6"
+    >
       <slot />
     </main>
   </div>
