@@ -39,7 +39,7 @@
       </NuxtLink>
     </div>
 
-    <template v-for="item in data?.results">
+    <template v-for="item in data?.results" v-once>
       <NuxtLink :to="localePath(`/portfolio/${item.uid}`)" class="sr-only" />
     </template>
 
