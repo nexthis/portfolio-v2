@@ -39,6 +39,10 @@
       </NuxtLink>
     </div>
 
+    <template v-for="item in data?.results">
+      <NuxtLink :to="localePath(`/portfolio/${item.uid}`)" class="sr-only" />
+    </template>
+
     <PaginationSlider
       @update:model-value="onPaginationChange"
       :model-value="page"
