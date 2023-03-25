@@ -1,19 +1,13 @@
 <template>
-  <div class="flex flex-col h-full">
-    <header
-      class="w-full sm:mt-5 flex-auto flex items-center py-5 xl:px-0 md:px-10 px-3 container mx-auto z-50"
+  <header>
+    <nav
+      class="flex-auto flex items-center py-5 xl:px-0 md:px-10 px-3 mt-0 container mx-auto z-50"
     >
       <NuxtLink
         :to="localePath('/')"
         class="uppercase font-light flex justify-center items-center text-white uppercase text-xs sm:text-xl"
       >
         <div v-html="Logo" class="mr-2" />
-        <!-- <nuxt-img
-          src="/icons/logo.svg"
-          class="mr-3"
-          alt="Paweł Romanowski Logo"
-        /> -->
-
         Paweł
         <span class="text-accent font-medium">Romanowski</span>
       </NuxtLink>
@@ -45,7 +39,7 @@
         </span>
       </Switch>
 
-      <Menu class="relative text-white" as="div" v-slot="{ open }">
+      <Menu class="relative text-white ml-2" as="div" v-slot="{ open }">
         <client-only>
           {{ animateMenu(open) }}
         </client-only>
@@ -69,19 +63,41 @@
           </MenuItem>
         </MenuItems>
       </Menu>
-    </header>
+    </nav>
+  </header>
+  <main class="container mx-auto xl:px-0 md:px-10 px-6">
+    <slot />
+  </main>
 
-    <main
-      class="container mx-auto h-full text-white flex-auto xl:px-0 md:px-10 px-6"
+  <footer class="bg-primary-400">
+    <div
+      class="w-full mx-auto container md:p-6 p-4 md:flex md:items-center md:justify-between"
     >
-      <slot />
-    </main>
-  </div>
-  <Background />
+      <span class="text-sm sm:text-center text-primary-200"
+        >© 2023 Paweł Romanowski All Rights Reserved.
+      </span>
+      <ul
+        class="flex flex-wrap items-center mt-3 text-sm text-primary-200 sm:mt-0"
+      >
+        <li>
+          <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+        </li>
+        <li>
+          <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
-//Alternatively use svg import lib
+//Alternatively use svg import libcss
 import Logo from "~/assets/icons/logo.svg?raw";
 import { gsap } from "gsap";
 import { Switch, Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
@@ -112,6 +128,5 @@ const animateMenu = (open: boolean) => {
 
 <style scoped lang="scss">
 main {
-  opacity: 0;
 }
 </style>
