@@ -17,7 +17,7 @@
     </div>
 
     <div
-      class="text-white p-5 lg:p-10 md:flex md:gap-5 lg:mt-5 lg:gap-10"
+      class="text-white p-2 lg:p-14 md:flex md:gap-5 lg:mt-5 lg:gap-10"
       v-if="!pending"
     >
       <nuxt-link
@@ -32,6 +32,7 @@
           sizes="sm:100vw lg:30vw"
           :src="asImageSrc(item.data.image) ?? ''"
           :alt="item.data.image.alt"
+          placeholder
         />
       </nuxt-link>
     </div>

@@ -23,7 +23,15 @@
         class="progress skills__progress"
       >
         <div class="progress__bar skills__bar"></div>
-        <div class="logo skills__logo"></div>
+        <nuxt-img
+          class="logo skills__logo"
+          format="webp"
+          sizes="sm:150px lg:300px"
+          fit="contain"
+          :quality="90"
+          src="/me1.png"
+        >
+        </nuxt-img>
 
         <img
           @click.stop="(e) => onItemClick(e, item)"
@@ -315,16 +323,13 @@ const skills = [
 
 <style scoped lang="scss">
 .logo {
-  background-image: url("/me1.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   width: 150px;
   height: 150px;
   z-index: 20;
   position: relative;
   border-radius: 100%;
-
+  object-fit: contain;
+  object-position: center;
   @screen lg {
     width: 300px;
     height: 300px;

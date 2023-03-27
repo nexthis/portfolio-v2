@@ -7,6 +7,13 @@ export default defineNuxtConfig({
   buildModules: [
     '@nuxtjs/google-fonts'
   ],
+  modules: [
+    "@nuxtjs/i18n",
+    "@nuxtjs/prismic",
+    "@nuxt/image-edge",
+    "@kevinmarrec/nuxt-pwa",
+    "nuxt-icon",
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -49,13 +56,7 @@ export default defineNuxtConfig({
     server: process.env.NODE_ENV === "development",
   },
 
-  modules: [
-    "@nuxtjs/i18n",
-    "@nuxtjs/prismic",
-    "@nuxt/image-edge",
-    "@kevinmarrec/nuxt-pwa",
-    "nuxt-icon",
-  ],
+
   prismic: {
     endpoint: "https://pawel-romanowski.prismic.io/api/v2",
     clientConfig: { accessToken: process.env.PRISMIC_ACCESS_TOKEN },

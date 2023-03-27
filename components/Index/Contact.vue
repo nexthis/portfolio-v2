@@ -29,15 +29,7 @@
         </div>
         <div class="mt-2 font-bold">+48 502 572 544</div>
       </a>
-      <a
-        class="flex flex-col items-center"
-        href="mailto:pawel.romanowski000@gmail.com"
-      >
-        <div class="p-4 bg-primary-200 rounded-lg">
-          <Icon size="50" name="material-symbols:mail-outline" />
-        </div>
-        <div class="mt-2 font-bold">Email</div>
-      </a>
+
       <a
         class="flex flex-col items-center"
         href="https://github.com/nexthis"
@@ -47,6 +39,18 @@
           <Icon size="50" name="mdi:github" />
         </div>
         <div class="mt-2 font-bold">nexthis</div>
+      </a>
+
+      <a
+        class="flex flex-col items-center"
+        href="mailto:pawel.romanowski000@gmail.com"
+      >
+        <div class="p-4 bg-primary-200 rounded-lg">
+          <Icon size="50" name="material-symbols:mail-outline" />
+        </div>
+        <div class="mt-2 font-bold text-center">
+          pawel.romanowski000<br />@gmail.com
+        </div>
       </a>
 
       <a

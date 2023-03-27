@@ -31,6 +31,7 @@
         :quality="90"
         sizes="sm:100vw lg:40vw"
         alt="Zdjęcia przedstawiające Pawła Romanowskiego"
+        placeholder
       />
     </div>
   </div>
