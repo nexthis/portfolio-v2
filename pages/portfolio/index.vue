@@ -1,6 +1,9 @@
 <template>
   <HeadStandard :title="t('seoTitle')" :description="t('seoDescription')" />
-  <div v-if="!pending" class="flex flex-col my-10 gap-20 md:gap-36 md:mt-20">
+  <div
+    v-if="!pending"
+    class="flex flex-col my-10 px-0 md:px-5 gap-20 md:gap-36 md:mt-20"
+  >
     <div
       v-intersection-observer="[
         onIntersectionObserver,

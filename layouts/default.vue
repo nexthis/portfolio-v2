@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav
-      class="flex-auto flex items-center pb-5 pt-5 md:pt-10 xl:px-0 md:px-10 px-3 mt-0 container mx-auto z-50"
+      class="flex-auto flex items-center pb-5 pt-5 md:pt-10 xl2:px-0 md:px-5 px-3 mt-0 container mx-auto z-50"
     >
       <NuxtLink
         :to="localePath('/')"
