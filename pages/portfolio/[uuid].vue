@@ -9,7 +9,7 @@
   />
   <div class="md:mt-11">
     <div
-      class="flex flex-col md:flex-row justify-between md:container py-1 md:mx-auto default-screen-height"
+      class="flex flex-col md:flex-row justify-between md:container py-1 md:px-10 md:mx-auto default-screen-height"
     >
       <div
         class="flex flex-col md:flex-row justify-between md:container md:mx-auto default-screen-height"
