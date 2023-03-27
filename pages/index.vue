@@ -1,6 +1,7 @@
 <template>
   <HeadStandard :title="t('seoTitle')" :description="t('seoDescription')" />
   <IndexMain />
+  <IndexPortfolio />
   <IndexSkills />
   <IndexContact />
 </template>

@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav
-      class="flex-auto flex items-center py-5 xl:px-0 md:px-10 px-3 mt-0 container mx-auto z-50"
+      class="flex-auto flex items-center pb-5 pt-5 md:pt-10 xl:px-0 md:px-10 px-3 mt-0 container mx-auto z-50"
     >
       <NuxtLink
         :to="localePath('/')"
@@ -83,10 +83,7 @@
           <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
         </li>
         <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+          <a href="#" class="mr-4 hover:underline md:mr-6">Portfolio</a>
         </li>
         <li>
           <a href="#" class="hover:underline">Contact</a>

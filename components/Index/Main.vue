@@ -15,7 +15,7 @@
       </h1>
 
       <p
-        class="text-lg text-white mt-1 tracking-tight lg:text-right lg:ml-auto lg:w-1/2"
+        class="text-lg text-white mt-1 tracking-tight lg:text-right lg:ml-auto lg:w-7/12"
       >
         {{ t("description") }}
       </p>

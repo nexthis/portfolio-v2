@@ -37,7 +37,6 @@ watch(props, () => {
   const index = props.modelValue;
   const direction = getDirection(index);
 
-  console.log("watch", props.modelValue);
   indicatorTo(index, direction);
 });
 
@@ -57,7 +56,6 @@ const indicatorTo = (index: number, direction: "down" | "up" = "down") => {
   const itemHeight = 35;
   const space = Math.abs(index - cursorPosition.value) + 1;
 
-  console.log(index === cursorPosition.value);
 
   //Avoiding bug when user click in the same position
   if (index === cursorPosition.value) {

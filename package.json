@@ -10,6 +10,7 @@
     "@kevinmarrec/nuxt-pwa": "^0.17.0",
     "@nuxt/image-edge": "^1.0.0-27991759.1a5eea1",
     "@nuxt/types": "^2.15.8",
+    "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/i18n": "^8.0.0-beta.7",
     "@nuxtjs/prismic": "^3.0.0-rc.2",
     "@types/lodash": "^4.14.187",

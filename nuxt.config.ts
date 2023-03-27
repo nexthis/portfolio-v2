@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ["gsap"],
   },
+  buildModules: [
+    '@nuxtjs/google-fonts'
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -60,6 +63,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
+    },
+  },
+
+  googleFonts: {
+    families: {
+      raleway: true,
     },
   },
 

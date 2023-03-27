@@ -9,13 +9,13 @@
       >
         {{ t("title") }}
       </h2>
-      <p class="mt-4 text-lg md:text-xl tracking-tight text-gray-600 max-w-4xl">
+      <p class="mt-4 text-md md:text-xl tracking-tight text-gray-500 max-w-5xl">
         {{ t("description") }}
       </p>
     </div>
 
     <div
-      class="flex justify-evenly items-center flex-wrap lg:flex-nowrap min-h mt-14 skills__wrapper"
+      class="flex justify-evenly items-center flex-wrap lg:flex-nowrap min-h mt-14 lg:mt-20 skills__wrapper"
     >
       <div
         v-element-visibility="onElementVisibility"
@@ -38,7 +38,7 @@
         >
           Laravel
         </div>
-        <div class="text-xl text-gray-600 opacity-0 skills__description mt-10">
+        <div class="text-xl text-gray-500 opacity-0 skills__description mt-10">
           Posiadam doświadczenie zawodowe w pracy z frameworkiem Vue i Vue 3. W
           trakcie mojej kariery zawodowej stworzyłem strony opartę o technologię
           w Nuxt, co pozwoliło mi na rozwinięcie umiejętności w pracy z
@@ -59,7 +59,7 @@
       </div>
       <div
         v-if="lg"
-        class="text-md text-gray-600 hidden skills__description text-center mt-10"
+        class="text-md text-gray-500 hidden skills__description text-center mt-10"
       >
         Posiadam doświadczenie zawodowe w pracy z frameworkiem Vue i Vue 3. W
         trakcie mojej kariery zawodowej stworzyłem strony opartę o technologię w
@@ -85,10 +85,12 @@ const breakpoints = useBreakpoints(breakpointsTailwind);
 const lg = breakpoints.smaller("lg");
 
 let selected: null | { timeline: gsap.core.Timeline; item: Object } = null;
+let isVisible = false;
 
 const onElementVisibility = (state: boolean) => {
-  if (state) {
+  if (state && !isVisible) {
     openMenuAnimation();
+    isVisible = true;
   }
 };
 
@@ -100,8 +102,6 @@ const onProgressClick = () => {
 };
 
 const onItemClick = (e, item) => {
-  console.log("click");
-
   if (selected && selected.item === item) {
     selected.timeline.reverse(0);
   } else {

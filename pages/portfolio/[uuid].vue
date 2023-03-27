@@ -7,12 +7,12 @@
     :published-time="data?.first_publication_date"
     type="article"
   />
-  <div>
+  <div class="md:mt-11">
     <div
-      class="h-full w-full flex flex-col md:flex-row justify-between md:container py-1 md:mx-auto default-screen-height"
+      class="flex flex-col md:flex-row justify-between md:container py-1 md:mx-auto default-screen-height"
     >
       <div
-        class="h-full w-full flex flex-col md:flex-row justify-between md:container md:mx-auto default-screen-height"
+        class="flex flex-col md:flex-row justify-between md:container md:mx-auto default-screen-height"
       >
         <div
           class="md:px-0 px-6 mt-5 md:flex md:justify-center md:w-1/2 md:flex-col"
@@ -23,7 +23,7 @@
             >
               {{ asText(data.data.title) }}
             </h1>
-            <div class="lg:w-2/3 md:w-full">
+            <div class="lg:w-2/3 md:w-full text-white">
               <p
                 class="text-md font-normal md:text-base lg:text-xl xl:text-2xl"
               >
@@ -40,12 +40,14 @@
           </div>
         </div>
         <div
-          class="w-full h-full max-h-96 relative mt-20 md:flex md:w-3/4 md:justify-center md:flex-col md:mt-0 sm:max-h-full md:ml-5 lg:w-1/2"
+          class="mt-20 md:flex md:w-3/4 md:justify-center md:flex-col md:mt-0 sm:max-h-full md:ml-5 lg:w-1/2"
         >
-          <div class="md:h-full md:mb-5 md:relative md:shadow-2xl">
-            <img
-              :src="asImageSrc(data.data.image)"
+          <div class="md:h-full md:mb-5 md:shadow-2xl">
+            <nuxt-img
+              :src="asImageSrc(data.data.image) ?? ''"
               :alt="data.data.image.alt"
+              format="webp"
+              :quality="90"
               class="w-full h-auto block"
             />
           </div>
@@ -95,7 +97,7 @@
         />
       </div>
     </div>
-    <div class="background-gradient">
+    <div class="text-white">
       <div class="mx-auto container md:px-0 px-6">
         <div class="py-8 max-w-5xl mx-auto">
           <div v-html="asHTML(data.data.content, null, htmlSerializer)" />
@@ -103,12 +105,6 @@
       </div>
     </div>
   </div>
-  <footer
-    class="h-full px-7 py-6 bg-slate-900 flex flex-wrap justify-between text-accent text-md"
-  >
-    <div>© {{ new Date().getFullYear() }} Paweł Romanowski</div>
-    <div>TREŚĆ STRONY PRAWNIE CHRONIONA</div>
-  </footer>
 </template>
 
 <script setup lang="ts">
@@ -130,7 +126,6 @@ const { data, refresh } = await useAsyncData(
 );
 
 watch(locale, () => {
-  console.log(data);
   refresh();
 });
 
@@ -148,16 +143,14 @@ const htmlSerializer = (type, element, content, children, index) => {
 };
 
 onMounted(() => {
-  document.body.classList.add("!h-auto", "!overflow-auto");
-  document.querySelector("main").classList.remove("container");
-  document.querySelector("main").classList.add("w-full");
+  document
+    .querySelector("main")
+    .classList.remove("container", "md:px-10", "px-6");
   highlight.highlightAll();
 });
 
 onUnmounted(() => {
-  document.body.classList.remove("!h-auto", "!overflow-auto");
-  document.querySelector("main").classList.add("container");
-  document.querySelector("main").classList.remove("w-full");
+  document.querySelector("main").classList.add("container", "md:px-10", "px-6");
 });
 </script>
 
