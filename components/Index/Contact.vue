@@ -1,6 +1,7 @@
 <template>
   <section
     aria-label="Contact"
+    id="contact"
     class="py-20 sm:py-32 md:grid md:grid-cols-12 lg:pb-32 xl:pb-36 text-white"
   >
     <div class="md:col-span-12">

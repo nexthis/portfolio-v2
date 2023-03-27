@@ -80,13 +80,22 @@
         class="flex flex-wrap items-center mt-3 text-sm text-primary-200 sm:mt-0"
       >
         <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+          <nuxt-link :to="localePath('/')" class="mr-4 hover:underline md:mr-6">
+            {{ t("about") }}
+          </nuxt-link>
         </li>
         <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6">Portfolio</a>
+          <nuxt-link
+            :to="localePath('/portfolio')"
+            class="mr-4 hover:underline md:mr-6"
+          >
+            {{ t("portfolio") }}
+          </nuxt-link>
         </li>
         <li>
-          <a href="#" class="hover:underline">Contact</a>
+          <nuxt-link :to="localePath('/') + '#contact'" class="hover:underline">
+            {{ t("contact") }}
+          </nuxt-link>
         </li>
       </ul>
     </div>
@@ -94,14 +103,13 @@
 </template>
 
 <script setup lang="ts">
-//Alternatively use svg import libcss
 import Logo from "~/assets/icons/logo.svg?raw";
 import { gsap } from "gsap";
 import { Switch, Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const router = useRouter();
 
 const enabled = ref(locale.value === "en");
@@ -123,7 +131,22 @@ const animateMenu = (open: boolean) => {
 };
 </script>
 
-<style scoped lang="scss">
-main {
+<style lang="scss" scoped>
+.main {
 }
 </style>
+
+<i18n>
+  {
+    "en": {
+      "about": "About",
+      "portfolio": "Portfolio",
+      "contact": "Contact",
+    },
+    "pl": {
+      "about": "O Mnie",
+      "portfolio": "Portfolio",
+      "contact": "Kontakt",
+    }
+  }
+</i18n>
