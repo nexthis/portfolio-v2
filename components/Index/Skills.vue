@@ -35,9 +35,9 @@
 
         <img
           @click.stop="(e) => onItemClick(e, item)"
-          v-for="item in skills"
+          v-for="item in tm('skills')"
           class="icon skills__icon"
-          :src="item.icon"
+          :src="rt(item.icon)"
         />
       </div>
       <div v-if="!lg" class="w-5/12">
@@ -87,7 +87,7 @@ import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { vElementVisibility } from "@vueuse/components";
 import { gsap } from "gsap";
 
-const { t } = useI18n();
+const { t, tm, rt } = useI18n();
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
 const lg = breakpoints.smaller("lg");
@@ -220,7 +220,7 @@ const selectItemAnimation = (event, item) => {
       progress,
       {
         duration: 1,
-        backgroundImage: item.gradient,
+        backgroundImage: rt(item.gradient),
       },
       "end"
     )
@@ -228,7 +228,8 @@ const selectItemAnimation = (event, item) => {
     .to(others, { opacity: 0, display: "none" }, "end")
     .set([text, description], { display: "block", opacity: 0 })
     .call(() => {
-      text!.innerHTML = item.title;
+      text!.innerHTML = rt(item.title);
+      description!.innerHTML = rt(item.description);
     });
 
   if (lg.value) {
@@ -273,7 +274,6 @@ const skills = [
     description: "loremasdd123sad",
     gradient: "linear-gradient( 135deg, #5db5f3 10%, #00243e 100%)",
     icon: "/skills/webpack.png",
-    skill: 5,
   },
   {
     title: "Laravel",
@@ -281,14 +281,12 @@ const skills = [
     gradient:
       "linear-gradient(-20deg, #b59eae, rgba(0, 0, 0, 0) 25%), linear-gradient(-100deg, #e8bea6, #e8bea6 0%, #f4a771 50%, #f65773)",
     icon: "/skills/laravel.png",
-    skill: 5,
   },
   {
     title: "Database",
     description: "loremasdd123sad",
     gradient: "linear-gradient(to right, #3ea555 0%, #041c0a 100%)",
     icon: "/skills/database.png",
-    skill: 5,
   },
   {
     title: "Websocket",
@@ -302,21 +300,18 @@ const skills = [
     description: "loremasdd123sad",
     gradient: "linear-gradient( 135deg, #424242 10%, #161616 100%)",
     icon: "/skills/linux.png",
-    skill: 5,
   },
   {
     title: "Jira",
     description: "loremasdd123sad",
     gradient: "linear-gradient( 135deg, #2d85fb 10%, #093376 100%)",
     icon: "/skills/jira.png",
-    skill: 5,
   },
   {
     title: "Docker",
     description: "loremasdd123sad",
     gradient: "linear-gradient( 135deg, #005168 10%, #161616 100%)",
     icon: "/skills/docker.png",
-    skill: 5,
   },
 ];
 </script>
@@ -388,10 +383,140 @@ const skills = [
   "en": {
     "title": "Skills",
     "description": "I am a young programmer with three years of professional experience. Before starting my full-time job, I worked as a freelancer. I specialize in JavaScript-based technologies such as Electron, Tauri, NodeJs, Vue, Laravel and web development in general. I want to continue developing my skills.",
+    "skills": [
+      {
+      title: "Vue",
+      description:
+        "Posiadam doświadczenie zawodowe w pracy z frameworkiem Vue i Vue 3. W trakcie mojej kariery zawodowej stworzyłem strony opartę o technologię w Nuxt, co pozwoliło mi na rozwinięcie umiejętności w pracy z dynamicznymi stronami internetowymi. Ponadto, pisałem własne projekty wykorzystując Nuxt 3, Vue 3 i TypeScript, co umożliwiło mi poznanie najlepszych praktyk i metodologii w pracy z tymi technologiami. W mojej pracy wykorzystuję swoje umiejętności programistyczne w TypeScript, co pozwala mi na zwiększenie jakości kodu oraz ułatwienie pracy w zespole. </div>",
+      gradient:
+        "radial-gradient( circle farthest-corner at 10% 20%,  rgb(21 171 91) 0%, rgb(16 102 102) 90% )",
+      icon: "/skills/vue.png",
+    },
+    {
+      title: "Typescript",
+      description: "Typescript asdasdasd ",
+      gradient: "linear-gradient(to right, #0d3566 0%, #021226 100%)",
+      icon: "/skills/typescript.png",
+    },
+    {
+      title: "pre CSS",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #F97794 10%, #623AA2 100%)",
+      icon: "/skills/precss.png",
+    },
+    {
+      title: "Webpack",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #5db5f3 10%, #00243e 100%)",
+      icon: "/skills/webpack.png",
+    },
+    {
+      title: "Laravel",
+      description: "loremasdd123sad",
+      gradient:
+        "linear-gradient(-20deg, #b59eae, rgba(0, 0, 0, 0) 25%), linear-gradient(-100deg, #e8bea6, #e8bea6 0%, #f4a771 50%, #f65773)",
+      icon: "/skills/laravel.png",
+    },
+    {
+      title: "Database",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient(to right, #3ea555 0%, #041c0a 100%)",
+      icon: "/skills/database.png",
+    },
+    {
+      title: "Websocket",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient(to right, #0d3566 0%, black 100%)",
+      icon: "/skills/websocket.png",
+    },
+    {
+      title: "Linux/wsl2",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #424242 10%, #161616 100%)",
+      icon: "/skills/linux.png",
+    },
+    {
+      title: "Jira",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #2d85fb 10%, #093376 100%)",
+      icon: "/skills/jira.png",
+    },
+    {
+      title: "Docker",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #005168 10%, #161616 100%)",
+      icon: "/skills/docker.png",
+    },
+    ]
   },
   "pl": {
     "title": "Umiejętności",
     "description": "Jestem młodym programistą, z trzyletnim doświadczeniem zawodowym. Przed rozpoczęciem pracy etatowej, realizowałem zlecenia jako freelancer. Specjalizuję się w technologiach opartych o język JavaScript jak Electron, Tauri, NodeJs, Vue i szeroko pojęty web development. Chcę nadal rozwijać swoje kompetencje.",
+    "skills": [
+      {
+      title: "Vue",
+      description:
+        "Posiadam doświadczenie zawodowe w pracy z frameworkiem Vue i Vue 3. W trakcie mojej kariery zawodowej stworzyłem strony opartę o technologię w Nuxt, co pozwoliło mi na rozwinięcie umiejętności w pracy z dynamicznymi stronami internetowymi. Ponadto, pisałem własne projekty wykorzystując Nuxt 3, Vue 3 i TypeScript, co umożliwiło mi poznanie najlepszych praktyk i metodologii w pracy z tymi technologiami. W mojej pracy wykorzystuję swoje umiejętności programistyczne w TypeScript, co pozwala mi na zwiększenie jakości kodu oraz ułatwienie pracy w zespole. </div>",
+      gradient:
+        "radial-gradient( circle farthest-corner at 10% 20%,  rgb(21 171 91) 0%, rgb(16 102 102) 90% )",
+      icon: "/skills/vue.png",
+    },
+    {
+      title: "Typescript",
+      description: "Typescript asdasdasd ",
+      gradient: "linear-gradient(to right, #0d3566 0%, #021226 100%)",
+      icon: "/skills/typescript.png",
+    },
+    {
+      title: "pre CSS",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #F97794 10%, #623AA2 100%)",
+      icon: "/skills/precss.png",
+    },
+    {
+      title: "Webpack",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #5db5f3 10%, #00243e 100%)",
+      icon: "/skills/webpack.png",
+    },
+    {
+      title: "Laravel",
+      description: "loremasdd123sad",
+      gradient:
+        "linear-gradient(-20deg, #b59eae, rgba(0, 0, 0, 0) 25%), linear-gradient(-100deg, #e8bea6, #e8bea6 0%, #f4a771 50%, #f65773)",
+      icon: "/skills/laravel.png",
+    },
+    {
+      title: "Database",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient(to right, #3ea555 0%, #041c0a 100%)",
+      icon: "/skills/database.png",
+    },
+    {
+      title: "Websocket",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient(to right, #0d3566 0%, black 100%)",
+      icon: "/skills/websocket.png",
+    },
+    {
+      title: "Linux/wsl2",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #424242 10%, #161616 100%)",
+      icon: "/skills/linux.png",
+    },
+    {
+      title: "Jira",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #2d85fb 10%, #093376 100%)",
+      icon: "/skills/jira.png",
+    },
+    {
+      title: "Docker",
+      description: "loremasdd123sad",
+      gradient: "linear-gradient( 135deg, #005168 10%, #161616 100%)",
+      icon: "/skills/docker.png",
+    },
+    ]
   }
 }
 

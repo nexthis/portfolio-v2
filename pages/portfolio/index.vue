@@ -49,7 +49,7 @@
           :to="localePath(`/portfolio/${item.uid}`)"
           class="text-accent mt-5 block md:mt-10 text-lg lg:text-2xl xl:text-3xl opacity-0 description"
           data-v-d5322c4e=""
-          >Zobacz więcej</nuxt-link
+          >{{ t("see") }}</nuxt-link
         >
       </div>
 

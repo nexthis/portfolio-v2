@@ -35,7 +35,7 @@
               :href="asLink(data.data.website_url)"
               target="_blank"
               rel="noreferrer"
-              >Zobacz stronę</a
+              >{{ t("see") }}</a
             >
           </div>
         </div>
@@ -115,7 +115,7 @@ import highlight from "highlight.js";
 const { client, asText, asLink, asImageSrc, asHTML } = usePrismic();
 
 const route = useRoute();
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 const { data, refresh } = await useAsyncData(
   "portfolio." + route.params.uuid,
@@ -159,3 +159,14 @@ onUnmounted(() => {
   background: linear-gradient(77deg, #131a24, #2b323c) no-repeat fixed;
 }
 </style>
+
+<i18n>
+  {
+    "en": {
+      "see": "Visit site",
+    },
+    "pl": {
+      "see": "Zobacz stronę",
+    }
+  }
+  </i18n>
