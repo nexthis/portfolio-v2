@@ -65,7 +65,7 @@
       </Menu>
     </nav>
   </header>
-  <main class="container mx-auto xl:px-0 md:px-10 px-6">
+  <main class="container mx-auto 2xl:px-0 md:px-8 px-6">
     <slot />
   </main>
 
