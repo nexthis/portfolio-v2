@@ -35,18 +35,21 @@
         {{ asText(item.data.title) }}
       </h3> -->
 
-      <div class="w-full" :class="index % 2 ? 'md:pr-20' : 'md:pl-20'">
+      <div
+        class="w-full"
+        :class="index % 2 ? 'md:pr-20 lg:pr-40 ' : 'md:pl-20 lg:pl-40'"
+      >
         <p
           class="text-md lg:text-xl xl:text-3xl text-white font-normal opacity-0 mt-4 md:text-base description"
         >
           {{ asText(item.data.short) }}
         </p>
 
-        <a
-          href="/portfolio/ppe"
+        <nuxt-link
+          :to="localePath(`/portfolio/${item.uid}`)"
           class="text-accent mt-5 block md:mt-10 text-lg lg:text-2xl xl:text-3xl opacity-0 description"
           data-v-d5322c4e=""
-          >Zobacz więcej</a
+          >Zobacz więcej</nuxt-link
         >
       </div>
 
