@@ -30,6 +30,7 @@
           fit="contain"
           :quality="90"
           src="/me1.png"
+          alt="Paweł Romanowski"
         >
         </nuxt-img>
 
