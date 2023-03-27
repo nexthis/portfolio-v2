@@ -4,8 +4,6 @@
   "compilerOptions": {
     "types": [
       "@nuxt/types",
-      //"@nuxt/image-edge",
-      "@nuxtjs/i18n",
     ]
   }
 }

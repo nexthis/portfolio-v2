@@ -7,24 +7,27 @@
     "preview": "nuxi preview"
   },
   "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.13.0",
-    "@nuxt/image-edge": "1.0.0-27840416.dc1ed65",
+    "@kevinmarrec/nuxt-pwa": "^0.17.0",
+    "@nuxt/image-edge": "^1.0.0-27991759.1a5eea1",
     "@nuxt/types": "^2.15.8",
+    "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/i18n": "^8.0.0-beta.7",
     "@nuxtjs/prismic": "^3.0.0-rc.2",
     "@types/lodash": "^4.14.187",
     "autoprefixer": "^10.4.13",
-    "nuxt": "^3.0.0",
-    "nuxt-icon": "^0.1.8",
+    "nuxt": "^3.3.1",
+    "nuxt-icon": "^0.3.3",
     "postcss": "^8.4.18",
     "sass": "^1.55.0",
-    "tailwindcss": "^3.2.1",
-    "vite-svg-loader": "^3.6.0"
+    "tailwindcss": "^3.2.7",
+    "vite-svg-loader": "^4.0.0"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.3",
-    "gsap": "^3.11.3",
-    "highlight.js": "^11.6.0",
+    "@headlessui/vue": "^1.7.12",
+    "@vueuse/components": "^9.13.0",
+    "@vueuse/core": "^9.13.0",
+    "gsap": "^3.11.5",
+    "highlight.js": "^11.7.0",
     "lodash": "^4.17.21"
   }
 }
