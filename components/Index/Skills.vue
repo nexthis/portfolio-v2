@@ -110,7 +110,10 @@ const onItemClick = (e, item) => {
 };
 
 onMounted(() => {
-  centerProgress();
+  setTimeout(() => {
+    centerProgress();
+  }, 200);
+
   window.addEventListener("resize", listener);
 });
 
