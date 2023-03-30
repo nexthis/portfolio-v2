@@ -68,7 +68,11 @@
 </template>
 
 <script setup lang="ts">
-import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+import {
+  breakpointsTailwind,
+  useBreakpoints,
+  useEventListener,
+} from "@vueuse/core";
 import { vElementVisibility } from "@vueuse/components";
 import { gsap } from "gsap";
 
@@ -106,12 +110,28 @@ const onItemClick = (e, item) => {
 };
 
 onMounted(() => {
+  centerProgress();
+  window.addEventListener("resize", listener);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", listener);
+});
+
+const listener = debounce(() => {
+  centerProgress();
+  openMenuAnimation();
+}, 200);
+
+const centerProgress = () => {
   const progress = document.querySelector(".skills__progress");
   const wrapper = document.querySelector(".skills__wrapper");
-  if (!lg.value) {
-    gsap.set(progress, { x: wrapper!.clientWidth / 2 - progress!.clientWidth });
+  if (lg.value) {
+    gsap.set(progress, { x: 0 });
+    return;
   }
-});
+  gsap.set(progress, { x: wrapper!.clientWidth / 2 - progress!.clientWidth });
+};
 
 const openMenuAnimation = () => {
   const progress = document.querySelector(".skills__progress");
