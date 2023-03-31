@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   },
   buildModules: [
     '@nuxtjs/google-fonts',
-    '@nuxtjs/google-analytics'
   ],
   modules: [
     "@nuxtjs/i18n",
@@ -20,10 +19,6 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
-  },
-
-  googleAnalytics: {
-    id: 'G-73RJFSH73Z'
   },
 
   i18n: {
@@ -76,6 +71,15 @@ export default defineNuxtConfig({
     families: {
       raleway: true,
     },
+  },
+
+
+  app: {
+    head: {
+      script: [
+        { src: 'https://www.googletagmanager.com/gtag/js?id=G-73RJFSH73Z', async: true }
+      ]
+    }
   },
 
   routeRules: {
