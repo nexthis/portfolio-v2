@@ -27,10 +27,11 @@
       >
         <nuxt-img
           format="webp"
-          :quality="90"
-          sizes="sm:100vw lg:30vw"
+          :quality="80"
+          class="w-full h-auto"
+          sizes="sm:100vw lg:25vw"
           loading="lazy"
-          :src="asImageSrc(item.data.image) ?? ''"
+          :src="asImageSrc(item.data.image, { w: 576 }) ?? ''"
           :alt="item.data.image.alt"
           placeholder
         />

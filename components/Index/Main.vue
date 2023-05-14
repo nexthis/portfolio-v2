@@ -28,10 +28,10 @@
         src="/me.png"
         class="max-h-img"
         format="webp"
-        :quality="90"
-        sizes="sm:100vw lg:40vw"
+        :quality="80"
+        sizes="sm:100vw lg:85vh"
         alt="Zdjęcia przedstawiające Pawła Romanowskiego"
-        preload
+        placeholder
       />
     </div>
   </div>
