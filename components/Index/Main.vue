@@ -29,7 +29,7 @@
         class="max-h-img"
         format="webp"
         :quality="80"
-        sizes="sm:100vw lg:85vh"
+        sizes="sm:80vw md:85vh"
         alt="Zdjęcia przedstawiające Pawła Romanowskiego"
         placeholder
       />
