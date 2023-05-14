@@ -28,8 +28,8 @@
         <nuxt-img
           format="webp"
           :quality="90"
-          class="w-full h-auto"
           sizes="sm:100vw lg:30vw"
+          loading="lazy"
           :src="asImageSrc(item.data.image) ?? ''"
           :alt="item.data.image.alt"
           placeholder

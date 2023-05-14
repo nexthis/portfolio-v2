@@ -27,6 +27,7 @@
           class="logo skills__logo"
           format="webp"
           sizes="sm:150px lg:300px"
+          loading="lazy"
           fit="contain"
           :quality="90"
           src="/me1.png"
@@ -37,7 +38,7 @@
         <img
           @click.stop="(e) => onItemClick(e, item)"
           v-for="item in tm('skills')"
-          class="icon skills__icon"
+          class="icon skills__icon cursor-pointer"
           :alt="rt(item.title)"
           :src="rt(item.icon)"
         />
