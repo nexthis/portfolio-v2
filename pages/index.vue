@@ -17,6 +17,8 @@ useSeoGenerator({
 
 <template>
   <div>
+    <SuperExtraCanvas />
     <SectionPortfolioList />
+    <NavigationFooter />
   </div>
 </template>

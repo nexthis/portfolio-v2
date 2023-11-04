@@ -4,12 +4,8 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  app: {
-    head: {
-      bodyAttrs: {
-        class: 'bg-black'
-      }
-    }
+  tailwindcss: {
+    cssPath: '~/assets/styles/index.scss'
   },
 
   runtimeConfig: {
