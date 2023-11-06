@@ -1,9 +1,8 @@
 <template>
+  <div>
+    <NuxtLoadingIndicator />
     <NuxtLayout>
-      <NuxtPage/>
+      <NuxtPage />
     </NuxtLayout>
+  </div>
 </template>
-
-<script setup>
-import '@/assets/tailwind.css'
-</script>

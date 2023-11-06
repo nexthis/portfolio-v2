@@ -1,19 +1,75 @@
 # Nuxt 3 Minimal Starter
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Is just portfolio... 
+## Setup
 
-# TODO 
+Make sure to install the dependencies:
 
-- [x] Make this list 
-- [x] Project configuration
-- [x] Implement website mockup
-- [x] PWA
-- [x] Web cache 
-- [x] Base SEO 
-- [ ] Fix language change (to default) when user jump to another page
-- [ ] Fix image loading/re in portfolio site  
-- [ ] Add en support for portfolio site  
-- [ ] Fix mobile ui after the changes*
-- [ ] Code refactor n(1)
+```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
