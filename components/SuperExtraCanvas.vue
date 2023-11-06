@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const canvas = ref<HTMLCanvasElement>()
+const { t } = useI18n({ useScope: 'local' })
 
 const { width, height } = useWindowSize({ includeScrollbar: false })
 const { init } = useSuperExtraCanvas()
@@ -24,7 +25,7 @@ onMounted(async () => {
         Paweł Romanowski
       </h1>
       <p class="font-light md:text-lg xl:text-xl text-gray-400">
-        Nowoczesne strony internetowe
+        {{ t('title') }}
       </p>
     </div>
   </div>
@@ -38,3 +39,14 @@ onMounted(async () => {
   width: 100%;
 }
 </style>
+
+<i18n lang="json">
+  {
+    "en": {
+      "title": "Modern websites"
+    },
+    "pl": {
+      "title": "Nowoczesne strony internetowe"
+    }
+  }
+  </i18n>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 </script>
 
@@ -9,11 +9,11 @@ const switchLocalePath = useSwitchLocalePath()
   >
     <div class="container pt-9">
       <div class="mb-9 flex gap-4 justify-center">
-        <div>Home</div>
-        <div>Kontakt</div>
-        <div>Portfolio</div>
+        <div>{{ t('home') }}</div>
+        <div>{{ t('contact') }}</div>
+        <div>{{ t('portfolio') }}</div>
         <NuxtLink :href="switchLocalePath( locale === 'en' ? 'pl' : 'en')">
-          {{ locale === 'en' ? 'Polski' : 'English' }}
+          {{ t('locale') }}
         </NuxtLink>
       </div>
     </div>
@@ -26,3 +26,20 @@ const switchLocalePath = useSwitchLocalePath()
     </div>
   </footer>
 </template>
+
+<i18n lang="json">
+  {
+    "en": {
+      "home": "Home",
+      "contact": "Contact",
+      "portfolio": "Portfolio",
+      "locale": "Polski"
+    },
+    "pl": {
+      "home": "Strona główna",
+      "contact": "Kontakt",
+      "portfolio": "Portfolio",
+      "locale": "English"
+    }
+  }
+  </i18n>

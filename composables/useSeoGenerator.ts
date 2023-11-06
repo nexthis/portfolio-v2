@@ -84,12 +84,14 @@ export function useSeoGenerator (props: Props) {
   })
 
   useSchemaOrg([
-    ...schema,
+
     // (props.article !== undefined) && article.fn,
     // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
     defineWebSite({
       image: createImage(props.image, { width: 1200, height: 675 })
     }),
-    defineWebPage()
+    defineWebPage(),
+
+    ...schema
   ])
 }

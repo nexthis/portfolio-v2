@@ -17,8 +17,8 @@ useSeoGenerator({
       '@type': 'BlogPosting',
       headline: data.value?.title,
       image: data.value?.image,
-      datePublished: new Date(2020, 1, 1),
-      dateModified: new Date(2020, 1, 1),
+      datePublished: data.value?.datePublished,
+      dateModified: data.value?.dateModified,
       author: [
         {
           name: 'Paweł Romanowski'

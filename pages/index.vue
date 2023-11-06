@@ -1,8 +1,9 @@
 <script setup lang="ts">
+const { t } = useI18n({ useScope: 'local' })
 
 useSeoGenerator({
-  title: 'Paweł Romanowski - Web Development',
-  description: 'Elevate Your Online Presence with a Skilled Full-Stack Developer from Poland! We Craft Custom Websites to Boost Your Business.',
+  title: t('title'),
+  description: t('description'),
   image: {
     src: '/images/indexSEO.png'
   },
@@ -26,3 +27,16 @@ useSeoGenerator({
     <NavigationFooter />
   </div>
 </template>
+
+<i18n lang="json">
+  {
+    "en": {
+      "title": "Paweł Romanowski - Web Development",
+      "description": "Elevate Your Online Presence with a Skilled Full-Stack Developer from Poland! We Craft Custom Websites to Boost Your Business."
+    },
+    "pl": {
+      "title": "Paweł Romanowski - Web Development",
+      "description": "Zwiększ swoją obecność w Internecie dzięki wykwalifikowanemu programiście Full-Stack! Tworzymy niestandardowe strony internetowe, aby rozwijać Twój biznes."
+    }
+  }
+  </i18n>

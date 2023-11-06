@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.value).limit(5).find())
 
@@ -10,9 +10,9 @@ const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.v
     <div class="container px-4 mx-auto">
       <div class="max-w-4xl mx-auto">
         <div class="max-w-xl mb-14 lg:mb-28">
-          <span class="text-lg text-primary-400 font-semibold">Moje prace</span>
+          <span class="text-lg text-primary-400 font-semibold">{{ t('subtitle') }}</span>
           <h2 class="mt-8 text-5xl text-white font-bold font-heading">
-            Ponad 4 lat doświadczenia
+            {{ t('title') }}
           </h2>
         </div>
         <div class="flex flex-wrap -m-4">
@@ -24,10 +24,25 @@ const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.v
         </div>
         <div class="mt-20 text-center">
           <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" href="/test">
-            Zobacz wszystkie
+            {{ t('showMore') }}
           </NuxtLink>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<i18n lang="json">
+  {
+    "en": {
+      "title": "Over 4 years of experience",
+      "subtitle": "My works",
+      "showMore": " See all"
+    },
+    "pl": {
+      "title": "Ponad 4 lat doświadczenia",
+      "subtitle": "Moje prace",
+      "showMore": " Zobacz wszystkie"
+    }
+  }
+  </i18n>
