@@ -1,9 +1,16 @@
 <script setup lang="ts">
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const route = useRoute()
 const slug = route.params.slug as string
 
+const rtf = new Intl.DateTimeFormat(locale.value, {
+  dateStyle: 'long',
+  timeStyle: undefined
+})
+
 const { data } = await useAsyncData(slug, () => queryContent(locale.value).where({ slug: { $eq: slug } }).findOne())
+
+const time = computed(() => rtf.format(new Date(data.value?.datePublished)))
 
 useSeoGenerator({
   title: data.value?.title,
@@ -37,10 +44,24 @@ useSeoGenerator({
     <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
       <article class="mx-auto w-full max-w-2xl">
         <header class="mb-4 lg:mb-6 not-format">
-          <NuxtImg v-if="data" :src="data.image" width="700" format="webp" quality="80" />
+          <NuxtImg
+            v-if="data"
+            :src="data.image"
+            width="700"
+            height="700"
+            format="webp"
+            quality="80"
+          />
+          Utworzono: <span class="text-primary">{{ time }}</span>
         </header>
 
         <ContentRendererMarkdown v-if="data" class="content" :value="data" />
+
+        <div class="mt-20 text-center">
+          <NuxtLink v-if="data" class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
+            {{ t('show') }}
+          </NuxtLink>
+        </div>
       </article>
     </div>
   </div>
@@ -83,3 +104,14 @@ useSeoGenerator({
   }
 }
 </style>
+
+<i18n lang="json">
+  {
+    "en": {
+      "show": "Show"
+    },
+    "pl": {
+      "show": "Zobacz"
+    }
+  }
+  </i18n>

@@ -19,7 +19,7 @@ const { t, tm, rt } = useI18n({ useScope: 'local' })
             {{ rt(item) }}
           </p>
           <div class="mt-20 text-center">
-            <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" href="/test" data-config-id="primary-action">
+            <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" href="/test">
               {{ t('contact') }}
             </NuxtLink>
           </div>
@@ -28,29 +28,6 @@ const { t, tm, rt } = useI18n({ useScope: 'local' })
     </div>
   </section>
 </template>
-
-<style lang="scss" scoped>
-
-.magic-text {
-    animation: background-pan 3s linear infinite;
-    background: linear-gradient(to right, #00da89, #06754d, #aeffe1, #00da89);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
-}
-
-@keyframes background-pan {
-    from {
-      background-position: 0% center;
-    }
-
-    to {
-      background-position: -200% center;
-    }
-  }
-
-</style>
 
 <i18n lang="json">
   {
