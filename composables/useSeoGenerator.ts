@@ -27,6 +27,7 @@ function getCurrentUrl () {
 }
 
 export function useSeoGenerator (props: Props) {
+  const { locale } = useI18n()
   const img = useImage()
   const url = getCurrentUrl()
 
@@ -44,7 +45,7 @@ export function useSeoGenerator (props: Props) {
   useHead({
     title: props.title,
     htmlAttrs: {
-      lang: 'pl'
+      lang: locale.value
     },
     meta: [
       { name: 'description', content: props.description },

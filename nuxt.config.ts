@@ -1,6 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@nuxt/image', '@nuxtjs/google-fonts', '@vite-pwa/nuxt', 'nuxt-schema-org', 'nuxt-icon', '@nuxtjs/tailwindcss', 'nuxt-simple-sitemap', '@nuxtjs/i18n', '@nuxtjs/eslint-module'],
+  modules: [
+    '@vueuse/nuxt',
+    '@nuxt/image',
+    '@nuxtjs/google-fonts',
+    '@vite-pwa/nuxt',
+    'nuxt-schema-org',
+    'nuxt-icon',
+    '@nuxtjs/tailwindcss',
+    'nuxt-simple-sitemap',
+    '@nuxtjs/i18n',
+    '@nuxtjs/eslint-module',
+    '@nuxt/content'
+  ],
 
   devtools: { enabled: true },
 
@@ -30,12 +42,12 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'Admax App',
-      short_name: 'Admax',
-      description: 'Twórz wspaniałe strony internetowe',
+      name: 'Paweł Romanowski',
+      short_name: 'PR',
+      description: 'Twórz wspaniałe strony internetowe!',
       start_url: '/',
       display: 'standalone',
-      theme_color: '#316CE8',
+      theme_color: '#00da89',
       icons: [
         {
           src: 'pwa-64x64.png',
