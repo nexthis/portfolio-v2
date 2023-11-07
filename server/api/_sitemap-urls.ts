@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   return data.map((item) => {
     return {
       loc: item.slug,
-      modifiedAt: item.datePublished,
+      lastmod: item.datePublished,
       priority: 0.5
     }
   })
