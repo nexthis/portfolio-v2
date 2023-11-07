@@ -3,6 +3,23 @@ const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const { data } = await useAsyncData('all', () => queryContent(locale.value).find())
 
+useSeoGenerator({
+  title: t('title'),
+  description: t('description'),
+  image: {
+    src: '/images/indexSEO.png'
+  },
+  schemaOrg: [
+    definePerson({
+      name: 'Paweł Romanowski',
+      image: '/images/indexSEO.png',
+      sameAs: [
+        'https://github.com/nexthis'
+      ]
+    })
+  ]
+})
+
 </script>
 
 <template>
@@ -33,3 +50,16 @@ const { data } = await useAsyncData('all', () => queryContent(locale.value).find
     </div>
   </section>
 </template>
+
+<i18n lang="json">
+  {
+    "en": {
+      "title": "Paweł Romanowski - Portfolio",
+      "description": "Discover a diverse collection of web applications, responsive designs, and innovative coding projects. Get inspired by passion for creating seamless digital experiences and cutting-edge technology solutions. "
+    },
+    "pl": {
+      "title": "Paweł Romanowski - Portfolio",
+      "description": "Odkryj różnorodną kolekcję aplikacji internetowych, responsywnych projektów i innowacyjnych projektów kodowania. Zainspiruj się pasją tworzenia płynnych doświadczeń cyfrowych i najnowocześniejszych rozwiązań technologicznych."
+    }
+  }
+  </i18n>
