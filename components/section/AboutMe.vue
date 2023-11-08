@@ -1,5 +1,7 @@
 <script setup lang="ts">
+
 const { t, tm, rt } = useI18n({ useScope: 'local' })
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -19,7 +21,7 @@ const { t, tm, rt } = useI18n({ useScope: 'local' })
             {{ rt(item) }}
           </p>
           <div class="mt-20 text-center">
-            <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" href="/test">
+            <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="localePath('/contact')">
               {{ t('contact') }}
             </NuxtLink>
           </div>

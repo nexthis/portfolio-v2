@@ -40,30 +40,31 @@ useSeoGenerator({
 </script>
 
 <template>
-  <div class="pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased">
-    <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
-      <article class="mx-auto w-full max-w-2xl">
-        <header class="mb-4 lg:mb-6 not-format">
-          <NuxtImg
-            v-if="data"
-            :src="data.image"
-            width="700"
-            height="700"
-            format="webp"
-            quality="80"
-          />
-          Utworzono: <span class="text-primary">{{ time }}</span>
-        </header>
-
-        <ContentRendererMarkdown v-if="data" class="content" :value="data" />
-
-        <div class="mt-20 text-center">
-          <NuxtLink v-if="data" class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
-            {{ t('show') }}
-          </NuxtLink>
-        </div>
-      </article>
+  <div>
+    <div class="pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased">
+      <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
+        <article class="mx-auto w-full max-w-2xl">
+          <header class="mb-4 lg:mb-6 not-format">
+            <NuxtImg
+              v-if="data"
+              :src="data.image"
+              width="700"
+              height="700"
+              format="webp"
+              quality="80"
+            />
+            Utworzono: <span class="text-primary">{{ time }}</span>
+          </header>
+          <ContentRendererMarkdown v-if="data" class="content" :value="data" />
+          <div class="mt-20 text-center">
+            <NuxtLink v-if="data" class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
+              {{ t('show') }}
+            </NuxtLink>
+          </div>
+        </article>
+      </div>
     </div>
+    <NavigationFooter />
   </div>
 </template>
 
