@@ -10,16 +10,16 @@ const localePath = useLocalePath()
   >
     <div class="container pt-9">
       <div class="mb-9 flex gap-4 justify-center">
-        <NuxtLink :href="localePath('/')">
+        <NuxtLink data-cursor-hover :href="localePath('/')">
           {{ t('home') }}
         </NuxtLink>
-        <NuxtLink :href="localePath('/contact')">
+        <NuxtLink data-cursor-hover :href="localePath('/contact')">
           {{ t('contact') }}
         </NuxtLink>
-        <NuxtLink :href="localePath('/portfolio')">
+        <NuxtLink data-cursor-hover :href="localePath('/portfolio')">
           {{ t('portfolio') }}
         </NuxtLink>
-        <NuxtLink :href="switchLocalePath( locale === 'en' ? 'pl' : 'en')">
+        <NuxtLink data-cursor-hover :href="switchLocalePath( locale === 'en' ? 'pl' : 'en')">
           {{ t('locale') }}
         </NuxtLink>
       </div>

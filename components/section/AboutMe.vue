@@ -21,7 +21,7 @@ const localePath = useLocalePath()
             {{ rt(item) }}
           </p>
           <div class="mt-20 text-center">
-            <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="localePath('/contact')">
+            <NuxtLink data-cursor-hover class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="localePath('/contact')">
               {{ t('contact') }}
             </NuxtLink>
           </div>

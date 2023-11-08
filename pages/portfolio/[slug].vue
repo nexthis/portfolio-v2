@@ -57,7 +57,7 @@ useSeoGenerator({
           </header>
           <ContentRendererMarkdown v-if="data" class="content" :value="data" />
           <div class="mt-20 text-center">
-            <NuxtLink v-if="data" class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
+            <NuxtLink v-if="data" data-cursor-hover class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
               {{ t('show') }}
             </NuxtLink>
           </div>

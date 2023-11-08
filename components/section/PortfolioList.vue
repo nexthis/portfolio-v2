@@ -19,6 +19,7 @@ const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.v
           <div v-for="(item, index) in data " :key="index" class="w-full p-4" :class="{'lg:w-1/2': index <= 1, 'lg:w-1/3': index > 1}">
             <NuxtLink :href="localePath(`/portfolio/${item.slug}`)">
               <NuxtImg
+                data-cursor-hover
                 class="w-full h-80 object-cover transition duration-300 ease-in hover:saturate-150 hover:blur-sm"
                 width="420"
                 height="450"
@@ -30,7 +31,7 @@ const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.v
           </div>
         </div>
         <div class="mt-20 text-center">
-          <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="localePath('/portfolio')">
+          <NuxtLink class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" data-cursor-hover :href="localePath('/portfolio')">
             {{ t('showMore') }}
           </NuxtLink>
         </div>
