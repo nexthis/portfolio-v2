@@ -43,6 +43,17 @@ function mouseDownEvent () {
 }
 
 onMounted(() => {
+  if (window.matchMedia('(any-hover: none)').matches) {
+    const cursorEl = cursor.value
+    const dotEl = dot.value
+    if (!cursorEl || !dotEl) {
+      return
+    }
+    cursorEl.classList.add('hidden')
+    dotEl.classList.add('hidden')
+    return
+  }
+
   window.addEventListener('mousemove', mouseMoveEvent)
   window.addEventListener('mouseup', mouseUpEvent)
   window.addEventListener('mousedown', mouseDownEvent)
@@ -76,7 +87,7 @@ onUnmounted(() => {
     pointer-events: none;
     left: 0;
     top: 0;
-    transform: translate(calc(-50% + 15px), -50%);
+    transform: translate(-$size, -$size);
 }
 
 .dot {
@@ -89,7 +100,7 @@ onUnmounted(() => {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translate(-50%, -50%);
+    transform: translate(-$size, -$size);
     will-change: transform;
     pointer-events: none;
     transition: width .3s, height .3s, opacity .3s;

@@ -7,8 +7,8 @@ export function useSuperExtraCanvas () {
   let meteoritesTimer = 0
   let meteoritesRandomSpawnRate = Math.floor((Math.random() * 25) + 60)
 
-  const stars: Array<ReturnType<typeof star> > = []
-  const meteorites: Array<ReturnType<typeof meteorite> > = []
+  const stars: Array<ReturnType<typeof star>> = []
+  const meteorites: Array<ReturnType<typeof meteorite>> = []
 
   function init (element: HTMLCanvasElement) {
     canvas = element
@@ -19,7 +19,7 @@ export function useSuperExtraCanvas () {
     }
 
     canvas.addEventListener('mousemove', eventMousePos)
-    animationRequest = window.requestAnimationFrame(animate)
+    animate()
   }
 
   function eventMousePos (evt: MouseEvent) {
@@ -46,7 +46,7 @@ export function useSuperExtraCanvas () {
     }
 
     function draw () {
-      context.save()
+      // context.save()
       context.beginPath()
       const dis = distance({ x, y }, { x: mouseX, y: mouseY })
       if (dis <= mouseRange) {
@@ -58,7 +58,7 @@ export function useSuperExtraCanvas () {
         context.fillStyle = 'white'
         context.arc(x, y, radius, 0, Math.PI * 2, false)
       }
-
+      context.fillStyle = 'white'
       context.shadowColor = '#E3EAEF'
       context.shadowBlur = (Math.random() * 10) + 10
       context.shadowOffsetX = 0
@@ -66,7 +66,7 @@ export function useSuperExtraCanvas () {
       context.fill()
 
       context.closePath()
-      context.restore()
+      // context.restore()
     }
 
     return { draw }
@@ -106,7 +106,7 @@ export function useSuperExtraCanvas () {
         // TODO Add parabolic coordinate transformation
         const opacity = index !== 0 ? (trailingCount - index) / trailingCount : 1
 
-        context.save()
+        // context.save()
         context.beginPath()
         context.moveTo(x, y)
         context.arc(rateX, rateY, Math.abs(rateRadius), 0, Math.PI * 2, false)
@@ -119,7 +119,7 @@ export function useSuperExtraCanvas () {
         context.fillStyle = `rgba(227, 234, 239, ${opacity})`
         context.fill()
         context.closePath()
-        context.restore()
+        // context.restore()
       }
     }
 
@@ -165,7 +165,7 @@ export function useSuperExtraCanvas () {
   }
 
   // Utils
-  function distance (p1: {x: number, y: number}, p2: {x: number, y: number}) {
+  function distance (p1: { x: number, y: number }, p2: { x: number, y: number }) {
     return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
   }
 
