@@ -42,8 +42,13 @@ function mouseDownEvent () {
   dotEl.classList.add('click')
 }
 
+function hasTouch () {
+  return (('ontouchstart' in window) || // html5 browsers
+            (navigator.maxTouchPoints > 0))
+}
+
 onMounted(() => {
-  if (window.matchMedia('(any-hover: none)').matches) {
+  if (hasTouch()) {
     const cursorEl = cursor.value
     const dotEl = dot.value
     if (!cursorEl || !dotEl) {

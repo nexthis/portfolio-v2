@@ -51,7 +51,6 @@ export function useSuperExtraCanvas () {
       const dis = distance({ x, y }, { x: mouseX, y: mouseY })
       if (dis <= mouseRange) {
         context.fillStyle = '#00da89'
-
         const position = magneticEffect(mouseX, mouseY, x, y)
         context.arc(position.x, position.y, radius, 0, Math.PI * 2, false)
       } else {
