@@ -61,10 +61,12 @@ useSeoGenerator({
               </button>
             </div>
             <div class="p-2 w-full pt-8 mt-8 border-t border-white text-center">
-              <a href="mailto:pawel.romanowski000@gmail.com" class="text-primary-500 block">pawel.romanowski000@gmail.com</a>
-              <a href="tel:+48502572544" class="leading-normal text-primary-500 block my-5">
+              <NuxtLink data-cursor-hover href="mailto:pawel.romanowski000@gmail.com" class="text-primary-500 block">
+                pawel.romanowski000@gmail.com
+              </NuxtLink>
+              <NuxtLink data-cursor-hover href="tel:+48502572544" class="leading-normal text-primary-500 block my-5">
                 502 572 544
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -102,7 +104,7 @@ useSeoGenerator({
       "email": "E-mail",
       "message": "Wiadomość",
       "send": "Wyślij",
-      "home": "Strona główna"
+      "home": "Wstecz"
     }
   }
   </i18n>

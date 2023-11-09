@@ -34,6 +34,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "v-shared-element": "^3.1.1"
   }
 }

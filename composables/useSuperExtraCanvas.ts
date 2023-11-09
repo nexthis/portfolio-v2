@@ -1,5 +1,6 @@
 export function useSuperExtraCanvas () {
   let canvas: HTMLCanvasElement
+  let backgroundGradient: CanvasGradient
   let context: CanvasRenderingContext2D
   let animationRequest: number = 0
   let mouseX: number = 0
@@ -14,10 +15,13 @@ export function useSuperExtraCanvas () {
     canvas = element
     context = canvas.getContext('2d')!
 
-    for (let i = 0; i < 220; i++) {
+    for (let i = 0; i < 150; i++) {
       stars.push(star())
     }
 
+    backgroundGradient = context.createLinearGradient(0, 0, 0, canvas.height)
+    backgroundGradient.addColorStop(0, '#000000')
+    backgroundGradient.addColorStop(1, '#141414')
     canvas.addEventListener('mousemove', eventMousePos)
     animate()
   }
@@ -50,14 +54,14 @@ export function useSuperExtraCanvas () {
       context.beginPath()
       const dis = distance({ x, y }, { x: mouseX, y: mouseY })
       if (dis <= mouseRange) {
-        context.fillStyle = '#00da89'
         const position = magneticEffect(mouseX, mouseY, x, y)
+        context.fillStyle = '#00da89'
         context.arc(position.x, position.y, radius, 0, Math.PI * 2, false)
       } else {
         context.fillStyle = 'white'
         context.arc(x, y, radius, 0, Math.PI * 2, false)
       }
-      context.fillStyle = 'white'
+
       context.shadowColor = '#E3EAEF'
       context.shadowBlur = (Math.random() * 10) + 10
       context.shadowOffsetX = 0
@@ -73,8 +77,8 @@ export function useSuperExtraCanvas () {
 
   function meteorite () {
     const gravity = 0.5
-    const trailingCount = 5
     let radius = (Math.random() * 10) + 5
+    const trailingCount = radius / 3
     let x = radius + (canvas.width - radius * 2) * Math.random()
     let y = -10
     const dx = (Math.random() - 0.5) * 20
@@ -133,12 +137,9 @@ export function useSuperExtraCanvas () {
     animationRequest = window.requestAnimationFrame(animate)
 
     // Gradient
-    const backgroundGradient = context.createLinearGradient(0, 0, 0, canvas.height)
-    backgroundGradient.addColorStop(0, '#000000')
-    backgroundGradient.addColorStop(1, '#141414')
-
     context.fillStyle = backgroundGradient
     context.fillRect(0, 0, canvas.width, canvas.height)
+    context.clearRect(0, 0, canvas.width, canvas.height)
 
     // Stars
     for (let i = 0; i < stars.length; i++) {
@@ -158,7 +159,7 @@ export function useSuperExtraCanvas () {
 
     if (meteoritesTimer % meteoritesRandomSpawnRate === 0) {
       meteorites.push(meteorite())
-      meteoritesRandomSpawnRate = Math.floor((Math.random() * 10) + 75)
+      meteoritesRandomSpawnRate = Math.floor((Math.random() * 10) + 100)
       meteoritesTimer = 0
     }
   }
