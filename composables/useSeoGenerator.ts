@@ -63,7 +63,7 @@ export function useSeoGenerator (props: Props) {
       { property: 'og:image:alt', content: props.title },
 
       { property: 'og:url', content: url },
-      { property: 'og:locale', content: 'pl_PL' },
+      // { property: 'og:locale', content: 'pl_PL' },
 
       { name: 'twitter:title', content: props.title },
       { name: 'twitter:description', content: props.description },
