@@ -51,7 +51,6 @@ useSeoGenerator({
           <div v-for="(item, index) in data" :key="index" ref="elements" :class="{'lg:flex-row-reverse': index % 2 }" class="flex flex-wrap lg:flex-nowrap justify-between items-center mt-20 animation">
             <NuxtLink class="contents" :href="localePath(`/portfolio/${item.slug}`)">
               <NuxtImg
-                v-shared-element:[item.slug]
                 data-cursor-hover
                 width="450"
                 height="450"
