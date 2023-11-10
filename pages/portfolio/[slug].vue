@@ -59,7 +59,7 @@ useSeoGenerator({
           </header>
           <ContentRendererMarkdown v-if="data" class="content" :value="data" />
           <div class="mt-20 text-center">
-            <NuxtLink v-if="data" data-cursor-hover class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
+            <NuxtLink v-if="data && data.url" data-cursor-hover class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
               {{ t('show') }}
             </NuxtLink>
           </div>
@@ -104,6 +104,12 @@ useSeoGenerator({
       font-size: 1.125rem;
       line-height: 1.7777778;
     }
+  }
+
+  :deep(ul){
+    list-style: square;
+    padding-left: 40px;
+    margin-top: 5px;
   }
 }
 </style>
