@@ -48,6 +48,7 @@ useSeoGenerator({
             <NuxtImg
               v-if="data"
               v-shared-element:[data.slug]
+              :alt="data.title"
               :src="data.image"
               width="700"
               height="700"
