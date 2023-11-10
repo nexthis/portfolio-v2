@@ -39,7 +39,8 @@ export function useSeoGenerator (props: Props) {
     if (!image) { return undefined }
 
     const imageUrl = img.getImage(image.src, { modifiers: { format: 'png', width: props.width, height: props.height } }).url
-    return new URL(imageUrl, url).href
+    // new URL(imageUrl, url).href
+    return imageUrl
   }
 
   useHead({
@@ -70,11 +71,11 @@ export function useSeoGenerator (props: Props) {
       { name: 'twitter:card', content: 'summary_large_image' },
 
       { name: 'theme-color', content: '#316CE8' },
-      ...meta,
 
       // @ts-expect-error
-      { name: 'mask-icon', content: '/pwa.svg', color: '#316CE8' }
+      { name: 'mask-icon', content: '/pwa.svg', color: '#316CE8' },
 
+      ...meta
     ],
     link: [
       { rel: 'icon', href: '/favicon.ico' },

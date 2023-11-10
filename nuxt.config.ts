@@ -16,6 +16,17 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  app: {
+    pageTransition: {
+      name: 'default',
+      mode: 'out-in' // default
+    },
+    layoutTransition: {
+      name: 'default',
+      mode: 'out-in' // default
+    }
+  },
+
   tailwindcss: {
     cssPath: '~/assets/styles/index.scss'
   },
