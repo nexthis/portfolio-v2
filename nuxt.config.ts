@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     'nuxt-simple-sitemap',
     '@nuxtjs/i18n',
     '@nuxtjs/eslint-module',
-    '@nuxt/content'
+    '@nuxt/content',
+    'nuxt-gtag'
   ],
 
   devtools: { enabled: true },
@@ -48,6 +49,10 @@ export default defineNuxtConfig({
   i18n: {
     locales: ['en', 'pl'],
     defaultLocale: 'pl'
+  },
+
+  gtag: {
+    id: 'G-73RJFSH73Z'
   },
 
   pwa: {
