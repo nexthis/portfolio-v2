@@ -38,7 +38,7 @@ export function useSeoGenerator (props: Props) {
   function createImage (image: Props['image'], props: { width: number; height: number }) {
     if (!image) { return undefined }
 
-    const imageUrl = img.getImage(image.src, { modifiers: { format: 'png', width: props.width, height: props.height } }).url
+    const imageUrl = img.getImage(image.src, { modifiers: { format: 'png', width: props.width, height: props.height, quality: 90 } }).url
     // new URL(imageUrl, url).href
     return imageUrl
   }
