@@ -21,7 +21,7 @@
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@types/lodash": "^4.14.198",
     "@vite-pwa/assets-generator": "^0.0.10",
-    "@vite-pwa/nuxt": "^0.1.1",
+    "@vite-pwa/nuxt": "^0.2.1",
     "@vueuse/core": "^10.5.0",
     "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.53.0",

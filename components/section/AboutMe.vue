@@ -46,7 +46,7 @@ const localePath = useLocalePath()
       "contact": "Contact"
     },
     "pl": {
-      "title": "Zacznimy wspułprace!",
+      "title": "Zacznijmy współpracę!",
       "subtitle": "Poznajmy się jeszcze lepiej!",
       "quote": "Jeśli szukasz specjalisty do stworzenia nowoczesnej strony internetowej, to koniecznie musisz zobaczyć moje portfolio!",
       "description": [
