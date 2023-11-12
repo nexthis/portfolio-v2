@@ -57,11 +57,13 @@ export default defineNuxtConfig({
 
   pwa: {
     registerType: 'autoUpdate',
+    registerWebManifestInRouteRules: true,
     manifest: {
       name: 'Paweł Romanowski',
       short_name: 'PR',
       description: 'Twórz wspaniałe strony internetowe!',
-      start_url: '/',
+      start_url: './',
+      scope: '.',
       display: 'standalone',
       theme_color: '#00da89',
       icons: [
