@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   return data.map((item) => {
     return {
-      loc: item.slug,
+      loc: `portfolio/${item.slug}`,
       lastmod: new Date(item.datePublished),
       priority: 0.5
     }
