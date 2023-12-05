@@ -20,8 +20,8 @@
     "@nuxtjs/i18n": "8.0.0-rc.5",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@types/lodash": "^4.14.198",
-    "@vite-pwa/assets-generator": "^0.0.10",
-    "@vite-pwa/nuxt": "^0.2.1",
+    "@vite-pwa/assets-generator": "^0.0.11",
+    "@vite-pwa/nuxt": "^0.3.4",
     "@vueuse/core": "^10.5.0",
     "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.53.0",
@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
+    "pixi-filters": "^5.2.1",
+    "pixi.js": "^7.3.2",
     "v-shared-element": "^3.1.1"
   }
 }

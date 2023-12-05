@@ -57,7 +57,6 @@ export default defineNuxtConfig({
 
   pwa: {
     registerType: 'autoUpdate',
-    registerWebManifestInRouteRules: true,
     manifest: {
       name: 'Paweł Romanowski',
       short_name: 'PR',
