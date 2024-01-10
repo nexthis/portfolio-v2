@@ -55,6 +55,12 @@ export default defineNuxtConfig({
     id: 'G-73RJFSH73Z'
   },
 
+  nitro: {
+    prerender: {
+      ignore: ['/200']
+    }
+  },
+
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
