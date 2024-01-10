@@ -21,12 +21,24 @@ useSeoGenerator({
 
 <template>
   <div>
-    <SuperExtraCanvas />
+    <div class="fit-size">
+      <SuperExtraCanvas />
+    </div>
+    
     <SectionPortfolioList />
     <SectionAboutMe />
     <NavigationFooter />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.fit-size {
+  height: 100vh;
+  height: 100svh;
+
+  width: 100%;
+}
+</style>
 
 <i18n lang="json">
   {

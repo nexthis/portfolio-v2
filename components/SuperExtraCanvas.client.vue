@@ -23,7 +23,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="fit-size relative">
+  <div class="w-full h-full relative">
     <ClientOnly>
       <div ref="canvasContainer" class="canvas" />
     </ClientOnly>
@@ -48,12 +48,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.fit-size {
-  height: 100vh;
-  height: 100svh;
-
-  width: 100%;
-}
 
 .canvas{
   overflow: hidden;

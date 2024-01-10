@@ -27,6 +27,7 @@ const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.v
                 sizes="100vw sm:100vw md:100vw lg:450px"
                 quality="80"
                 format="webp"
+                prefetch
                 :alt="item.title"
                 :src="item.image"
               />

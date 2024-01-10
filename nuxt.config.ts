@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     'nuxt-schema-org',
     'nuxt-icon',
     '@nuxtjs/tailwindcss',
-    'nuxt-simple-sitemap',
+    '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
     '@nuxtjs/eslint-module',
     '@nuxt/content',
