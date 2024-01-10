@@ -9,11 +9,13 @@ export function useSuperExtraCanvas () {
   const meteoritesInstance = createMeteorites()
 
   function init () {
-    console.log('init')
+   // console.log('init')
+
     app = new PIXI.Application({ resizeTo: window, background: 'black' })
 
-    app.stage.addChild(createGradTexture())
-
+    const gradient = createGradTexture()
+    
+    app.stage.addChild(gradient)
     app.stage.addChild(starsInstance.draw())
     app.stage.addChild(meteoritesInstance.draw())
 
@@ -25,6 +27,12 @@ export function useSuperExtraCanvas () {
       mouseposition = mouseposition || { x: 0, y: 0 }
       mouseposition.x = event.clientX - left
       mouseposition.y = event.clientY - top
+    })
+
+    app.renderer.on('resize', (width, height) => {
+      gradient.width = width;
+      gradient.height = height
+      starsInstance.reDraw()
     })
 
     app.ticker.add((delta) => {
@@ -109,7 +117,7 @@ export function useSuperExtraCanvas () {
           const index = meteorites.indexOf(item)
           container.removeChild(item.meteorite)
           meteorites.splice(index, 1)
-          console.log('end')
+          //console.log('end')
         }
 
         const A = { x, y }
@@ -147,7 +155,7 @@ export function useSuperExtraCanvas () {
   }
 
   function createStars () {
-    const max = 150
+   
     const range = 150
     // const speed = 0.08
     const container = new PIXI.Container()
@@ -161,7 +169,25 @@ export function useSuperExtraCanvas () {
       offset: { x: 0, y: 0 }
     })
 
+
+
+    function reDraw(){
+      container.removeChildren()
+      stars.splice(0,stars.length)
+      internalDraw()
+    }
+
     function draw () {
+      internalDraw()
+
+      container.filters = [dropShadowFilter, dropShadowFilter]
+      return container
+    }
+
+    function internalDraw() {
+      const max = Math.round( (app.renderer.width * app.renderer.height) / (5 * 5 * 300) )
+      console.log(max);
+      
       for (let index = 0; index < max; index++) {
         const star = new PIXI.Graphics()
         const x = Math.random() * app.renderer.width
@@ -178,10 +204,6 @@ export function useSuperExtraCanvas () {
         container.addChild(star)
         stars.push({ star, x, y, radius })
       }
-
-      container.filters = [dropShadowFilter, dropShadowFilter]
-
-      return container
     }
 
     function tick () {
@@ -229,7 +251,7 @@ export function useSuperExtraCanvas () {
       }
     }
 
-    return { draw, tick }
+    return { draw, tick, reDraw }
   }
 
   // Utils
@@ -238,7 +260,7 @@ export function useSuperExtraCanvas () {
   }
 
   onUnmounted(() => {
-    console.log('remove')
+    //console.log('remove')
 
     app.destroy()
   })

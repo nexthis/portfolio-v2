@@ -22,8 +22,10 @@ const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.v
                 v-shared-element:[item.slug]
                 data-cursor-hover
                 class="w-full h-80 object-cover transition duration-300 ease-in hover:saturate-150 hover:blur-sm"
-                width="420"
-                height="450"
+                width="1020"
+                height="1080"
+                sizes="100vw sm:100vw md:100vw lg:450px"
+                quality="80"
                 format="webp"
                 :alt="item.title"
                 :src="item.image"
