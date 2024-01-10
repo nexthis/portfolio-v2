@@ -186,7 +186,6 @@ export function useSuperExtraCanvas () {
 
     function internalDraw() {
       const max = Math.round( (app.renderer.width * app.renderer.height) / (5 * 5 * 300) )
-      console.log(max);
       
       for (let index = 0; index < max; index++) {
         const star = new PIXI.Graphics()
