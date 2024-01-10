@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import { DropShadowFilter } from 'pixi-filters'
 import meteImage from '~/assets/images/mete.png'
+import _ from 'lodash'
 
 export function useSuperExtraCanvas () {
   let app: PIXI.Application<PIXI.ICanvas>
@@ -185,7 +186,7 @@ export function useSuperExtraCanvas () {
     }
 
     function internalDraw() {
-      const max = Math.round( (app.renderer.width * app.renderer.height) / (5 * 5 * 300) )
+      const max = _.clamp(Math.round( (app.renderer.width * app.renderer.height) / (5 * 5 * 300) ), 20, 350)
       
       for (let index = 0; index < max; index++) {
         const star = new PIXI.Graphics()
