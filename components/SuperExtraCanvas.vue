@@ -1,14 +1,15 @@
 <script setup lang="ts">
-const canvas = ref<HTMLCanvasElement>()
+const canvasContainer = ref<HTMLCanvasElement>()
 const { t } = useI18n({ useScope: 'local' })
 
-const { width, height } = useWindowSize({ includeScrollbar: false })
+// const { width, height } = useWindowSize({ includeScrollbar: false })
 const { init } = useSuperExtraCanvas()
 
 onMounted(async () => {
   await nextTick()
-  if (canvas.value) {
-    init(canvas.value)
+  if (canvasContainer.value) {
+    // @ts-ignore
+    canvasContainer.value.appendChild(init())
   }
 })
 
@@ -17,7 +18,7 @@ onMounted(async () => {
 <template>
   <div class="fit-size relative">
     <ClientOnly>
-      <canvas ref="canvas" :height="height" :width="width" />
+      <div ref="canvasContainer" class="canvas" />
     </ClientOnly>
 
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
@@ -37,6 +38,10 @@ onMounted(async () => {
   height: 100svh;
 
   width: 100%;
+}
+
+.canvas{
+overflow: hidden;
 }
 </style>
 

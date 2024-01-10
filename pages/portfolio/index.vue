@@ -31,7 +31,8 @@ useSeoGenerator({
       name: 'Paweł Romanowski',
       image: '/images/indexSEO.png',
       sameAs: [
-        'https://github.com/nexthis'
+        'https://github.com/nexthis',
+        'https://www.facebook.com/profile.php?id=100095274217155'
       ]
     })
   ]

@@ -111,6 +111,10 @@ useSeoGenerator({
     padding-left: 40px;
     margin-top: 5px;
   }
+
+  :deep(ol){
+    margin-top: 25px;
+  }
 }
 </style>
 
