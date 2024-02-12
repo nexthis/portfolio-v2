@@ -56,9 +56,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // prerender: {
-    //   ignore: ['/200', '/404']
-    // }
+    prerender: {
+      ignore: ['/200', '/404']
+    },
     static: true
   },
 
