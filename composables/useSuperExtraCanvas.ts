@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import { DropShadowFilter } from 'pixi-filters'
-import meteImage from '~/assets/images/mete.png'
 import _ from 'lodash'
+import meteImage from '~/assets/images/mete.png'
 
 export function useSuperExtraCanvas () {
   let app: PIXI.Application<PIXI.ICanvas>
@@ -10,18 +10,23 @@ export function useSuperExtraCanvas () {
   const meteoritesInstance = createMeteorites()
 
   function init () {
-   // console.log('init')
+    // console.log('init')
 
     app = new PIXI.Application({ resizeTo: window, background: 'black' })
 
     const gradient = createGradTexture()
-    
+
     app.stage.addChild(gradient)
     app.stage.addChild(starsInstance.draw())
     app.stage.addChild(meteoritesInstance.draw())
 
     app.stage.eventMode = 'static'
     app.stage.hitArea = app.screen
+
+    if (app.renderer.view.style) {
+      app.renderer.view.style.touchAction = 'auto'
+    }
+
     app.stage.on('mousemove', (event) => {
       const { left, top } = app.stage.getBounds()
 
@@ -31,12 +36,12 @@ export function useSuperExtraCanvas () {
     })
 
     app.renderer.on('resize', (width, height) => {
-      gradient.width = width;
+      gradient.width = width
       gradient.height = height
       starsInstance.reDraw()
     })
 
-    app.ticker.add((delta) => {
+    app.ticker.add(() => {
       meteoritesInstance.tick()
       starsInstance.tick()
     })
@@ -118,7 +123,7 @@ export function useSuperExtraCanvas () {
           const index = meteorites.indexOf(item)
           container.removeChild(item.meteorite)
           meteorites.splice(index, 1)
-          //console.log('end')
+          // console.log('end')
         }
 
         const A = { x, y }
@@ -156,7 +161,6 @@ export function useSuperExtraCanvas () {
   }
 
   function createStars () {
-   
     const range = 150
     // const speed = 0.08
     const container = new PIXI.Container()
@@ -170,11 +174,9 @@ export function useSuperExtraCanvas () {
       offset: { x: 0, y: 0 }
     })
 
-
-
-    function reDraw(){
+    function reDraw () {
       container.removeChildren()
-      stars.splice(0,stars.length)
+      stars.splice(0, stars.length)
       internalDraw()
     }
 
@@ -185,9 +187,9 @@ export function useSuperExtraCanvas () {
       return container
     }
 
-    function internalDraw() {
-      const max = _.clamp(Math.round( (app.renderer.width * app.renderer.height) / (5 * 5 * 300) ), 20, 350)
-      
+    function internalDraw () {
+      const max = _.clamp(Math.round((app.renderer.width * app.renderer.height) / (5 * 5 * 300)), 20, 350)
+
       for (let index = 0; index < max; index++) {
         const star = new PIXI.Graphics()
         const x = Math.random() * app.renderer.width
@@ -260,7 +262,7 @@ export function useSuperExtraCanvas () {
   }
 
   onUnmounted(() => {
-    //console.log('remove')
+    // console.log('remove')
 
     app.destroy()
   })

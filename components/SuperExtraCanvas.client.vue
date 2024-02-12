@@ -5,7 +5,7 @@ const { t } = useI18n({ useScope: 'local' })
 // const { width, height } = useWindowSize({ includeScrollbar: false })
 const { init } = useSuperExtraCanvas()
 
-function scroll() {
+function scroll () {
   window.scrollTo({
     behavior: 'smooth',
     top: window.innerHeight
@@ -39,9 +39,9 @@ onMounted(async () => {
       </div>
 
       <div class="mt-5 text-center touch-only z-20">
-          <button @click="scroll" class="inline-block py-3 px-10 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" data-cursor-hover>
-            {{ t('explore') }}
-          </button>
+        <button class="inline-block py-3 px-10 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" data-cursor-hover @click="scroll">
+          {{ t('explore') }}
+        </button>
       </div>
     </div>
   </div>

@@ -24,7 +24,7 @@ useSeoGenerator({
     <div class="fit-size">
       <SuperExtraCanvas />
     </div>
-    
+
     <SectionPortfolioList />
     <SectionAboutMe />
     <NavigationFooter />

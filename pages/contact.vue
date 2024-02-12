@@ -2,10 +2,9 @@
 const { t } = useI18n({ useScope: 'local' })
 const localePath = useLocalePath()
 
-
 useHead({
   script: [
-    {src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true}
+    { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true }
   ]
 })
 useSeoGenerator({
@@ -38,7 +37,6 @@ useSeoGenerator({
         </p>
       </div>
       <form action="https://submit-form.com/revwzlYl" method="POST">
-
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-1/2">
@@ -61,7 +59,7 @@ useSeoGenerator({
             </div>
 
             <div class="flex justify-center items-center w-full my-3">
-              <div class="g-recaptcha" data-sitekey="6LfJMkkpAAAAAKglQ1YKPZNaRGWS-DkIJc9qXNWc"></div>
+              <div class="g-recaptcha" data-sitekey="6LfJMkkpAAAAAKglQ1YKPZNaRGWS-DkIJc9qXNWc" />
             </div>
 
             <div class="p-2 w-full flex items-center justify-center gap-10">
