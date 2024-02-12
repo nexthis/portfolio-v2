@@ -55,11 +55,11 @@ export default defineNuxtConfig({
     id: 'G-73RJFSH73Z'
   },
 
-  nitro: {
-    prerender: {
-      ignore: ['/200', '/404']
-    }
-  },
+  // nitro: {
+  //   prerender: {
+  //     ignore: ['/200', '/404']
+  //   }
+  // },
 
   pwa: {
     registerType: 'autoUpdate',
