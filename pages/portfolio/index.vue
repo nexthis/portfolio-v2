@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
-const { data } = await useAsyncData('all', () => queryContent(locale.value).find())
+const { data } = await useAsyncData(`all:${locale.value}`, () => queryContent(locale.value).find())
 const elements = ref<Array<HTMLDivElement>>(undefined)
 
 useIntersectionObserver(

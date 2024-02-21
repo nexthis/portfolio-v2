@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
-const { data } = await useAsyncData('PortfolioList', () => queryContent(locale.value).limit(5).find())
+const { data } = await useAsyncData(`PortfolioList:${locale.value}`, () => queryContent(locale.value).limit(5).find())
 
 </script>
 

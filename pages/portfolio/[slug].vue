@@ -8,7 +8,7 @@ const rtf = new Intl.DateTimeFormat(locale.value, {
   timeStyle: undefined
 })
 
-const { data } = await useAsyncData(slug, () => queryContent(locale.value).where({ slug: { $eq: slug } }).findOne())
+const { data } = await useAsyncData(`${slug}:${locale.value}`, () => queryContent(locale.value).where({ slug: { $eq: slug } }).findOne())
 
 const time = computed(() => rtf.format(new Date(data.value?.datePublished)))
 
