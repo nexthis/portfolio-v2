@@ -59,7 +59,7 @@ useSeoGenerator({
             </div>
 
             <div class="flex justify-center items-center w-full my-3">
-              <div class="g-recaptcha" data-sitekey="6LfJMkkpAAAAAKglQ1YKPZNaRGWS-DkIJc9qXNWc" />
+              <div class="g-recaptcha" data-sitekey="6Lc9lgUqAAAAAKkyJSWv6uHmpoT3PIENhAcHCBnP" />
             </div>
 
             <div class="p-2 w-full flex items-center justify-center gap-10">
