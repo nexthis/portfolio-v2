@@ -71,6 +71,9 @@ export default defineNuxtConfig({
   },
 
   pwa: {
+    strategies: 'injectManifest',
+    srcDir: 'service-worker',
+    filename: 'sw.ts',
     registerType: 'autoUpdate',
     manifest: {
       name: 'Paweł Romanowski',
