@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: '2024-04-03',
   modules: [
     '@vueuse/nuxt',
     '@nuxt/image',
@@ -10,9 +11,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
-    '@nuxtjs/eslint-module',
+    '@nuxt/eslint',
     '@nuxt/content',
-    'nuxt-gtag'
+    'nuxt-gtag',
+    'vue-view-transitions/nuxt'
   ],
 
   devtools: { enabled: true },
@@ -46,6 +48,12 @@ export default defineNuxtConfig({
     url: import.meta.env.WEB_URL ?? 'http://localhost:3000/'
   },
 
+  eslint: {
+    config: {
+      stylistic: true // <---
+    }
+  },
+  
   i18n: {
     locales: ['en', 'pl'],
     defaultLocale: 'pl'
@@ -56,10 +64,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    prerender: {
-      ignore: ['/200', '/404']
-    },
-    static: true
+    // prerender: {
+    //   ignore: ['/200', '/404']
+    // },
+    static: process.env.NODE_ENV !== 'development', //wait for https://github.com/nuxt/image/issues/1397
   },
 
   pwa: {
@@ -98,11 +106,15 @@ export default defineNuxtConfig({
       ]
     },
     workbox: {
-      navigateFallback: null,
+      // navigateFallback: null,
       globPatterns: ['**/*.{js,css,html,png,svg,ico,webp}']
     },
     devOptions: {
       enabled: false
     }
+  },
+
+  experimental: {
+      viewTransition: true
   }
 })

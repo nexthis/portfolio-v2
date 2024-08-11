@@ -1,18 +1,21 @@
 import * as PIXI from 'pixi.js'
 import { DropShadowFilter } from 'pixi-filters'
 import _ from 'lodash'
-import meteImage from '~/assets/images/mete.png'
+import meteoriteImage from '~/assets/images/mete.png'
 
-export function useSuperExtraCanvas () {
-  let app: PIXI.Application<PIXI.ICanvas>
+export async function useSuperExtraCanvas () {
+  let app: PIXI.Application<PIXI.WebGLRenderer<HTMLCanvasElement>>
   let mouseposition: {x:number, y: number}
   const starsInstance = createStars()
   const meteoritesInstance = createMeteorites()
+  const meteoriteAsset = await PIXI.Assets.load(meteoriteImage);
 
-  function init () {
+  async function init () {
     // console.log('init')
 
-    app = new PIXI.Application({ resizeTo: window, background: 'black' })
+    app = new PIXI.Application()
+
+    await app.init({ resizeTo: window, background: 'black' })
 
     const gradient = createGradTexture()
 
@@ -23,16 +26,12 @@ export function useSuperExtraCanvas () {
     app.stage.eventMode = 'static'
     app.stage.hitArea = app.screen
 
-    if (app.renderer.view.style) {
-      app.renderer.view.style.touchAction = 'auto'
-    }
 
     app.stage.on('mousemove', (event) => {
-      const { left, top } = app.stage.getBounds()
 
       mouseposition = mouseposition || { x: 0, y: 0 }
-      mouseposition.x = event.clientX - left
-      mouseposition.y = event.clientY - top
+      mouseposition.x = event.pageX - app.canvas.offsetLeft
+      mouseposition.y = event.pageY - app.canvas.offsetTop
     })
 
     app.renderer.on('resize', (width, height) => {
@@ -46,7 +45,7 @@ export function useSuperExtraCanvas () {
       starsInstance.tick()
     })
 
-    return app.view
+    return app.canvas
   }
 
   function createGradTexture () {
@@ -95,7 +94,8 @@ export function useSuperExtraCanvas () {
       const dy = (Math.random() * 10) + 5
       const speed = (Math.random() * 10) + 2
 
-      const meteorite = PIXI.Sprite.from(meteImage)
+
+      const meteorite = PIXI.Sprite.from(meteoriteAsset)
 
       meteorite.height = radius
       meteorite.width = radius
@@ -197,9 +197,8 @@ export function useSuperExtraCanvas () {
         const radius = Math.random() * 3
 
         // star.filters = [dropShadowFilter]
-        star.beginFill('white')
         star.arc(0, 0, radius, 0, Math.PI * 2, false)
-        star.endFill()
+        star.fill('white')
         star.x = x
         star.y = y
 
@@ -224,20 +223,19 @@ export function useSuperExtraCanvas () {
           const forceDirectionX = dx / distance
           const forceDirectionY = dy / distance
           const force = (distance - 100) * 0.07 // Adjust the strength by changing the factor
-          if (star.fill.color === 16777215) {
+
+          if (star.tint === 16777215) {
             star.clear()
-            star.beginFill('#00da89')
             star.arc(0, 0, radius, 0, Math.PI * 2, false)
-            star.endFill()
+            star.fill('#00da89')
           }
           star.x -= forceDirectionX * force
           star.y -= forceDirectionY * force
         } else if (star.x !== x || star.y !== y) {
-          if (star.fill.color === 16777215) {
+          if (star.tint === 16777215) {
             star.clear()
-            star.beginFill('white')
             star.arc(0, 0, radius, 0, Math.PI * 2, false)
-            star.endFill()
+            star.fill('white')
           }
 
           if (star.x.toFixed(0) === x.toFixed(0)) {

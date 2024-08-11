@@ -3,7 +3,7 @@ const canvasContainer = ref<HTMLCanvasElement>()
 const { t } = useI18n({ useScope: 'local' })
 
 // const { width, height } = useWindowSize({ includeScrollbar: false })
-const { init } = useSuperExtraCanvas()
+const { init } = await useSuperExtraCanvas()
 
 function scroll () {
   window.scrollTo({
@@ -16,7 +16,7 @@ onMounted(async () => {
   await nextTick()
   if (canvasContainer.value) {
     // @ts-ignore
-    canvasContainer.value.appendChild(init())
+    canvasContainer.value.appendChild( await init())
   }
 })
 

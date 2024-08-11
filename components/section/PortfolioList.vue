@@ -18,19 +18,19 @@ const { data } = await useAsyncData(`PortfolioList:${locale.value}`, () => query
         <div class="flex flex-wrap -m-4">
           <div v-for="(item, index) in data " :key="index" class="w-full p-4" :class="{'lg:w-1/2': index <= 1, 'lg:w-1/3': index > 1}">
             <NuxtLink :href="localePath(`/portfolio/${item.slug}`)">
-              <NuxtImg
-                v-shared-element:[item.slug]
-                data-cursor-hover
-                class="w-full h-80 object-cover transition duration-300 ease-in hover:saturate-150 hover:blur-sm"
-                width="1020"
-                height="1080"
-                sizes="100vw sm:100vw md:100vw lg:450px"
-                quality="80"
-                format="webp"
-                prefetch
-                :alt="item.title"
-                :src="item.image"
-              />
+                <!-- v-view-transition-name="item.slug" -->
+                <NuxtImg
+                  data-cursor-hover
+                  class="w-full h-80 object-cover transition duration-300 ease-in hover:saturate-150 hover:blur-sm"
+                  width="1020"
+                  height="1080"
+                  sizes="100vw sm:100vw md:100vw lg:450px"
+                  quality="80"
+                  format="webp"
+                  prefetch
+                  :alt="item.title"
+                  :src="item.image"
+                />
             </NuxtLink>
           </div>
         </div>

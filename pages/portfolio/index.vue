@@ -16,7 +16,6 @@ useIntersectionObserver(
     rootMargin: '0px 0px -20% 0px',
     immediate: true,
     threshold: 0.5
-
   }
 )
 

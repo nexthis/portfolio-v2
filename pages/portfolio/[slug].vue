@@ -47,7 +47,7 @@ useSeoGenerator({
           <header class="mb-4 lg:mb-6 not-format">
             <NuxtImg
               v-if="data"
-              v-shared-element:[data.slug]
+              v-view-transition-name="data.slug"
               :alt="data.title"
               :src="data.image"
               width="700"

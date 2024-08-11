@@ -3,5 +3,6 @@
         "source.fixAll.eslint": "explicit"
     },
     "eslint.format.enable": true,
+    "eslint.experimental.useFlatConfig": true,
     "typescript.tsdk": "node_modules/typescript/lib",
 }
