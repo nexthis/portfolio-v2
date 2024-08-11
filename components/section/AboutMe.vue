@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const { t, tm, rt } = useI18n({ useScope: 'local' })
 const localePath = useLocalePath()
 </script>
@@ -17,11 +16,19 @@ const localePath = useLocalePath()
         </p>
         <div class="inline-flex pt-14 mb-14 items-center border-t w-64 border-gray-500" />
         <div class="max-w-xl mx-auto">
-          <p v-for="(item, index) in tm('description')" :key="index" class="mb-6 text-justify text-xl text-gray-200">
+          <p
+            v-for="(item, index) in tm('description')"
+            :key="index"
+            class="mb-6 text-justify text-xl text-gray-200"
+          >
             {{ rt(item) }}
           </p>
           <div class="mt-20 text-center">
-            <NuxtLink data-cursor-hover class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="localePath('/contact')">
+            <NuxtLink
+              data-cursor-hover
+              class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full"
+              :href="localePath('/contact')"
+            >
               {{ t('contact') }}
             </NuxtLink>
           </div>

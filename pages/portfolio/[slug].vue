@@ -5,7 +5,7 @@ const slug = route.params.slug as string
 
 const rtf = new Intl.DateTimeFormat(locale.value, {
   dateStyle: 'long',
-  timeStyle: undefined
+  timeStyle: undefined,
 })
 
 const { data } = await useAsyncData(`${slug}:${locale.value}`, () => queryContent(locale.value).where({ slug: { $eq: slug } }).findOne())
@@ -16,26 +16,26 @@ useSeoGenerator({
   title: data.value?.title,
   description: data.value?.description,
   image: {
-    src: data.value?.image
+    src: data.value?.image,
   },
   schemaOrg: [
     defineArticle({
     // name and description can usually be inferred
       '@type': 'BlogPosting',
-      headline: data.value?.title,
-      image: data.value?.image,
-      datePublished: data.value?.datePublished,
-      dateModified: data.value?.dateModified,
-      author: [
+      'headline': data.value?.title,
+      'image': data.value?.image,
+      'datePublished': data.value?.datePublished,
+      'dateModified': data.value?.dateModified,
+      'author': [
         {
-          name: 'Paweł Romanowski'
-        }
-      ]
+          name: 'Paweł Romanowski',
+        },
+      ],
     }),
     defineWebPage({
-      '@type': 'CollectionPage'
-    })
-  ]
+      '@type': 'CollectionPage',
+    }),
+  ],
 })
 </script>
 
@@ -57,9 +57,19 @@ useSeoGenerator({
             />
             Utworzono: <span class="text-primary">{{ time }}</span>
           </header>
-          <ContentRendererMarkdown v-if="data" class="content" :value="data" />
+          <ContentRendererMarkdown
+            v-if="data"
+            class="content"
+            :value="data"
+          />
           <div class="mt-20 text-center">
-            <NuxtLink v-if="data && data.url" data-cursor-hover class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full" :href="data.url" target="_blank">
+            <NuxtLink
+              v-if="data && data.url"
+              data-cursor-hover
+              class="inline-block py-4 px-12 text-white font-bold bg-primary hover:bg-primary-600 rounded-full"
+              :href="data.url"
+              target="_blank"
+            >
               {{ t('show') }}
             </NuxtLink>
           </div>

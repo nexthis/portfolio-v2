@@ -12,21 +12,21 @@ interface Props {
   schemaOrg?: Array<any>
 }
 
-function getCurrentUrl () {
+function getCurrentUrl() {
   const config = useRuntimeConfig()
   const route = useRoute()
 
   try {
     const url = new URL(route.path, config.public.SITE_URL)
     return url.href
-  } catch (e) {
-    // eslint-disable-next-line no-console
+  }
+  catch (e) {
     console.error('Filed to get full site url', e)
     return ''
   }
 }
 
-export function useSeoGenerator (props: Props) {
+export function useSeoGenerator(props: Props) {
   const { locale } = useI18n()
   const img = useImage()
   const url = getCurrentUrl()
@@ -35,7 +35,7 @@ export function useSeoGenerator (props: Props) {
   const meta = props.meta ?? []
   const defaultOgType = !meta.find(item => _.get(item, 'property') === 'og:type')
 
-  function createImage (image: Props['image'], props: { width: number; height: number }) {
+  function createImage(image: Props['image'], props: { width: number, height: number }) {
     if (!image) { return undefined }
 
     const imageUrl = img.getImage(image.src, { modifiers: { format: 'png', width: props.width, height: props.height, quality: 90 } }).url
@@ -46,7 +46,7 @@ export function useSeoGenerator (props: Props) {
   useHead({
     title: props.title,
     htmlAttrs: {
-      lang: locale.value
+      lang: locale.value,
     },
     meta: [
       { name: 'description', content: props.description },
@@ -75,13 +75,13 @@ export function useSeoGenerator (props: Props) {
       // @ts-expect-error
       { name: 'mask-icon', content: '/pwa.svg', color: '#316CE8' },
 
-      ...meta
+      ...meta,
     ],
     link: [
       { rel: 'icon', href: '/favicon.ico' },
       { rel: 'canonical', href: url },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon-180x180.png' }
-    ]
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon-180x180.png' },
+    ],
   })
 
   useSchemaOrg([
@@ -89,10 +89,10 @@ export function useSeoGenerator (props: Props) {
     // (props.article !== undefined) && article.fn,
     // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
     defineWebSite({
-      image: createImage(props.image, { width: 1200, height: 675 })
+      image: createImage(props.image, { width: 1200, height: 675 }),
     }),
     defineWebPage(),
 
-    ...schema
+    ...schema,
   ])
 }

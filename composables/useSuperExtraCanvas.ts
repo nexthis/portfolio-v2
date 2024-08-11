@@ -3,14 +3,20 @@ import { DropShadowFilter } from 'pixi-filters'
 import _ from 'lodash'
 import meteoriteImage from '~/assets/images/mete.png'
 
-export async function useSuperExtraCanvas () {
+export async function useSuperExtraCanvas() {
+  onUnmounted(() => {
+    // console.log('remove')
+
+    app.destroy()
+  })
+
   let app: PIXI.Application<PIXI.WebGLRenderer<HTMLCanvasElement>>
-  let mouseposition: {x:number, y: number}
+  let mouseposition: { x: number, y: number }
   const starsInstance = createStars()
   const meteoritesInstance = createMeteorites()
-  const meteoriteAsset = await PIXI.Assets.load(meteoriteImage);
+  const meteoriteAsset = await PIXI.Assets.load(meteoriteImage)
 
-  async function init () {
+  async function init() {
     // console.log('init')
 
     app = new PIXI.Application()
@@ -26,9 +32,7 @@ export async function useSuperExtraCanvas () {
     app.stage.eventMode = 'static'
     app.stage.hitArea = app.screen
 
-
     app.stage.on('mousemove', (event) => {
-
       mouseposition = mouseposition || { x: 0, y: 0 }
       mouseposition.x = event.pageX - app.canvas.offsetLeft
       mouseposition.y = event.pageY - app.canvas.offsetTop
@@ -48,7 +52,7 @@ export async function useSuperExtraCanvas () {
     return app.canvas
   }
 
-  function createGradTexture () {
+  function createGradTexture() {
     const container = new PIXI.Container()
     // adjust it if somehow you need better quality for very very big images
     // const quality = 256
@@ -71,7 +75,7 @@ export async function useSuperExtraCanvas () {
     return container
   }
 
-  function createMeteorites () {
+  function createMeteorites() {
     const gravity = 0.5
     let timer = 0
     let randomSpawnRate = 150
@@ -83,17 +87,16 @@ export async function useSuperExtraCanvas () {
       blur: 4,
       quality: 4,
       alpha: 0.7,
-      offset: { x: 0, y: 0 }
+      offset: { x: 0, y: 0 },
     })
 
-    function createMeteorite () {
+    function createMeteorite() {
       const radius = (Math.random() * 50) + 5
       const x = radius + (app.renderer.width - radius * 2) * Math.random()
       const y = -10
       const dx = (Math.random() - 0.5) * 20
       const dy = (Math.random() * 10) + 5
       const speed = (Math.random() * 10) + 2
-
 
       const meteorite = PIXI.Sprite.from(meteoriteAsset)
 
@@ -107,7 +110,7 @@ export async function useSuperExtraCanvas () {
       return { meteorite }
     }
 
-    function draw () {
+    function draw() {
       container.filters = [dropShadowFilter, dropShadowFilter]
 
       const meteorite = createMeteorite()
@@ -115,7 +118,7 @@ export async function useSuperExtraCanvas () {
       return container
     }
 
-    function tick () {
+    function tick() {
       for (const item of meteorites) {
         const { meteorite, speed, x, y, dx, dy, radius } = item
 
@@ -160,7 +163,7 @@ export async function useSuperExtraCanvas () {
     return { draw, tick }
   }
 
-  function createStars () {
+  function createStars() {
     const range = 150
     // const speed = 0.08
     const container = new PIXI.Container()
@@ -171,23 +174,23 @@ export async function useSuperExtraCanvas () {
       blur: 4,
       quality: 4,
       alpha: 0.7,
-      offset: { x: 0, y: 0 }
+      offset: { x: 0, y: 0 },
     })
 
-    function reDraw () {
+    function reDraw() {
       container.removeChildren()
       stars.splice(0, stars.length)
       internalDraw()
     }
 
-    function draw () {
+    function draw() {
       internalDraw()
 
       container.filters = [dropShadowFilter, dropShadowFilter]
       return container
     }
 
-    function internalDraw () {
+    function internalDraw() {
       const max = _.clamp(Math.round((app.renderer.width * app.renderer.height) / (5 * 5 * 300)), 20, 350)
 
       for (let index = 0; index < max; index++) {
@@ -207,7 +210,7 @@ export async function useSuperExtraCanvas () {
       }
     }
 
-    function tick () {
+    function tick() {
       if (!mouseposition) {
         return
       }
@@ -231,7 +234,8 @@ export async function useSuperExtraCanvas () {
           }
           star.x -= forceDirectionX * force
           star.y -= forceDirectionY * force
-        } else if (star.x !== x || star.y !== y) {
+        }
+        else if (star.x !== x || star.y !== y) {
           if (star.tint === 16777215) {
             star.clear()
             star.arc(0, 0, radius, 0, Math.PI * 2, false)
@@ -255,15 +259,9 @@ export async function useSuperExtraCanvas () {
   }
 
   // Utils
-  function distance (p1: { x: number, y: number }, p2: { x: number, y: number }) {
+  function distance(p1: { x: number, y: number }, p2: { x: number, y: number }) {
     return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
   }
-
-  onUnmounted(() => {
-    // console.log('remove')
-
-    app.destroy()
-  })
 
   return { init }
 }

@@ -5,17 +5,17 @@ useSeoGenerator({
   title: t('title'),
   description: t('description'),
   image: {
-    src: '/images/indexSEO.png'
+    src: '/images/indexSEO.png',
   },
   schemaOrg: [
     definePerson({
       name: 'Paweł Romanowski',
       image: '/images/indexSEO.png',
       sameAs: [
-        'https://github.com/nexthis'
-      ]
-    })
-  ]
+        'https://github.com/nexthis',
+      ],
+    }),
+  ],
 })
 </script>
 

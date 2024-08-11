@@ -10,22 +10,34 @@ const localePath = useLocalePath()
   >
     <div class="container pt-9">
       <div class="mb-9 flex gap-4 justify-center">
-        <NuxtLink data-cursor-hover :href="localePath('/')">
+        <NuxtLink
+          data-cursor-hover
+          :href="localePath('/')"
+        >
           {{ t('home') }}
         </NuxtLink>
-        <NuxtLink data-cursor-hover :href="localePath('/contact')">
+        <NuxtLink
+          data-cursor-hover
+          :href="localePath('/contact')"
+        >
           {{ t('contact') }}
         </NuxtLink>
-        <NuxtLink data-cursor-hover :href="localePath('/portfolio')">
+        <NuxtLink
+          data-cursor-hover
+          :href="localePath('/portfolio')"
+        >
           {{ t('portfolio') }}
         </NuxtLink>
-        <NuxtLink data-cursor-hover :href="switchLocalePath( locale === 'en' ? 'pl' : 'en')">
+        <NuxtLink
+          data-cursor-hover
+          :href="switchLocalePath(locale === 'en' ? 'pl' : 'en')"
+        >
           {{ t('locale') }}
         </NuxtLink>
       </div>
     </div>
 
-    <!--Copyright section-->
+    <!-- Copyright section -->
     <div
       class="w-full p-4 text-center bg-black text-neutral-200"
     >

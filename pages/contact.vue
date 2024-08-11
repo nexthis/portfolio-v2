@@ -4,24 +4,24 @@ const localePath = useLocalePath()
 
 useHead({
   script: [
-    { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true }
-  ]
+    { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true },
+  ],
 })
 useSeoGenerator({
   title: t('seoTitle'),
   description: t('seoDescription'),
   image: {
-    src: '/images/indexSEO.png'
+    src: '/images/indexSEO.png',
   },
   schemaOrg: [
     definePerson({
       name: 'Paweł Romanowski',
       image: '/images/indexSEO.png',
       sameAs: [
-        'https://github.com/nexthis'
-      ]
-    })
-  ]
+        'https://github.com/nexthis',
+      ],
+    }),
+  ],
 })
 </script>
 
@@ -36,45 +36,92 @@ useSeoGenerator({
           {{ t('description') }}
         </p>
       </div>
-      <form action="https://submit-form.com/revwzlYl" method="POST">
+      <form
+        action="https://submit-form.com/revwzlYl"
+        method="POST"
+      >
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-1/2">
               <div class="relative">
-                <label for="name" class="leading-7 text-sm text-background-50">{{ t('name') }}</label>
-                <input id="name" type="text" name="name" class="w-full bg-background-200 rounded border border-background-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-background-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <label
+                  for="name"
+                  class="leading-7 text-sm text-background-50"
+                >{{ t('name') }}</label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  class="w-full bg-background-200 rounded border border-background-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-background-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                >
               </div>
             </div>
             <div class="p-2 w-1/2">
               <div class="relative">
-                <label for="email" class="leading-7 text-sm text-background-50">{{ t('email') }}</label>
-                <input id="email" type="email" name="email" required class="w-full bg-background-200 rounded border border-background-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-background-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <label
+                  for="email"
+                  class="leading-7 text-sm text-background-50"
+                >{{ t('email') }}</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  class="w-full bg-background-200 rounded border border-background-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-background-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                >
               </div>
             </div>
             <div class="p-2 w-full">
               <div class="relative">
-                <label for="message" class="leading-7 text-sm text-background-50">{{ t('message') }}</label>
-                <textarea id="message" name="message" required class="w-full bg-background-200 rounded border border-background-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 h-32 text-base outline-none text-background-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" />
+                <label
+                  for="message"
+                  class="leading-7 text-sm text-background-50"
+                >{{ t('message') }}</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  class="w-full bg-background-200 rounded border border-background-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 h-32 text-base outline-none text-background-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                />
               </div>
             </div>
 
             <div class="flex justify-center items-center w-full my-3">
-              <div class="g-recaptcha" data-sitekey="6Lc9lgUqAAAAAKkyJSWv6uHmpoT3PIENhAcHCBnP" />
+              <div
+                class="g-recaptcha"
+                data-sitekey="6Lc9lgUqAAAAAKkyJSWv6uHmpoT3PIENhAcHCBnP"
+              />
             </div>
 
             <div class="p-2 w-full flex items-center justify-center gap-10">
-              <NuxtLink data-cursor-hover :href="localePath('/')" class="flex text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
+              <NuxtLink
+                data-cursor-hover
+                :href="localePath('/')"
+                class="flex text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg"
+              >
                 {{ t('home') }}
               </NuxtLink>
-              <button data-cursor-hover type="submit" class="flex text-white bg-primary-500 border-0 py-2 px-8 focus:outline-none hover:bg-primary-600 rounded text-lg">
+              <button
+                data-cursor-hover
+                type="submit"
+                class="flex text-white bg-primary-500 border-0 py-2 px-8 focus:outline-none hover:bg-primary-600 rounded text-lg"
+              >
                 {{ t('send') }}
               </button>
             </div>
             <div class="p-2 w-full pt-8 mt-8 border-t border-white text-center">
-              <NuxtLink data-cursor-hover href="mailto:pawel.romanowski000@gmail.com" class="text-primary-500 block">
+              <NuxtLink
+                data-cursor-hover
+                href="mailto:pawel.romanowski000@gmail.com"
+                class="text-primary-500 block"
+              >
                 pawel.romanowski000@gmail.com
               </NuxtLink>
-              <NuxtLink data-cursor-hover href="tel:+48502572544" class="leading-normal text-primary-500 block my-5">
+              <NuxtLink
+                data-cursor-hover
+                href="tel:+48502572544"
+                class="leading-normal text-primary-500 block my-5"
+              >
                 502 572 544
               </NuxtLink>
             </div>

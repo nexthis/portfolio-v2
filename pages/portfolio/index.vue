@@ -15,15 +15,15 @@ useIntersectionObserver(
   {
     rootMargin: '0px 0px -20% 0px',
     immediate: true,
-    threshold: 0.5
-  }
+    threshold: 0.5,
+  },
 )
 
 useSeoGenerator({
   title: t('title'),
   description: t('description'),
   image: {
-    src: '/images/indexSEO.png'
+    src: '/images/indexSEO.png',
   },
   schemaOrg: [
     definePerson({
@@ -31,12 +31,11 @@ useSeoGenerator({
       image: '/images/indexSEO.png',
       sameAs: [
         'https://github.com/nexthis',
-        'https://www.facebook.com/profile.php?id=100095274217155'
-      ]
-    })
-  ]
+        'https://www.facebook.com/profile.php?id=100095274217155',
+      ],
+    }),
+  ],
 })
-
 </script>
 
 <template>
@@ -48,8 +47,18 @@ useSeoGenerator({
             Portfolio
           </h1>
 
-          <div v-for="(item, index) in data" :key="index" ref="elements" :class="{'lg:flex-row-reverse': index % 2 }" class="flex flex-wrap lg:flex-nowrap justify-between items-center mt-20 animation">
-            <NuxtLink class="contents" prefetch :href="localePath(`/portfolio/${item.slug}`)">
+          <div
+            v-for="(item, index) in data"
+            :key="index"
+            ref="elements"
+            :class="{ 'lg:flex-row-reverse': index % 2 }"
+            class="flex flex-wrap lg:flex-nowrap justify-between items-center mt-20 animation"
+          >
+            <NuxtLink
+              class="contents"
+              prefetch
+              :href="localePath(`/portfolio/${item.slug}`)"
+            >
               <NuxtImg
                 data-cursor-hover
                 width="450"
@@ -61,7 +70,10 @@ useSeoGenerator({
               />
             </NuxtLink>
 
-            <div :class="{'lg:pr-16': index % 2, 'lg:pl-16': !(index % 2) }" class="w-100 max-w-[450px] mx-auto mt-5 lg:mt-0 transition delay-200 duration-300 text-md text">
+            <div
+              :class="{ 'lg:pr-16': index % 2, 'lg:pl-16': !(index % 2) }"
+              class="w-100 max-w-[450px] mx-auto mt-5 lg:mt-0 transition delay-200 duration-300 text-md text"
+            >
               {{ item.description }}
             </div>
           </div>
@@ -73,7 +85,6 @@ useSeoGenerator({
 </template>
 
 <style scoped lang="scss">
-
 .animation{
 
   .text{
