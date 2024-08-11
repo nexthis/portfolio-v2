@@ -67,7 +67,7 @@ export default defineNuxtConfig({
     // prerender: {
     //   ignore: ['/200', '/404']
     // },
-    static: process.env.NODE_ENV !== 'development', // wait for https://github.com/nuxt/image/issues/1397
+    // static: process.env.NODE_ENV !== 'development', // wait for https://github.com/nuxt/image/issues/1397
   },
 
   pwa: {
