@@ -22,5 +22,14 @@ registerRoute(new NavigationRoute(
   { allowlist },
 ))
 
+self.addEventListener('fetch', function (event) {
+  if (event.request.url.indexOf('/404/') !== -1) {
+    return false
+  }
+  if (event.request.url.indexOf('/200/') !== -1) {
+    return false
+  }
+  // **** rest of your service worker code ****
+})
 self.skipWaiting()
 clientsClaim()
