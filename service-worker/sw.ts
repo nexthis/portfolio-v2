@@ -23,6 +23,8 @@ registerRoute(new NavigationRoute(
 ))
 
 self.addEventListener('fetch', function (event) {
+  console.log(event.request.url)
+
   if (event.request.url.indexOf('/404') !== -1) {
     return false
   }
