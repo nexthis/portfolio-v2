@@ -10,10 +10,10 @@ const blacklist = [
   '/200',
   '/404',
 ]
-console.log(self.__WB_MANIFEST)
+console.log(self.__WB_MANIFEST, self.__WB_MANIFEST.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
 
 // self.__WB_MANIFEST is default injection point
-precacheAndRoute(self.__WB_MANIFEST.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
+precacheAndRoute(self.__WB_MANIFEST)
 
 // clean old assets
 cleanupOutdatedCaches()
