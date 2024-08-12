@@ -7,16 +7,17 @@ import { NavigationRoute, registerRoute } from 'workbox-routing'
 declare let self: ServiceWorkerGlobalScope
 
 const blacklist = [
-  '/200',
-  '/404',
+  '200',
+  '404',
 ]
 
 const manifest = self.__WB_MANIFEST
 
-console.log(manifest, manifest.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
+// Test
+// console.log(manifest, manifest.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
 
 // self.__WB_MANIFEST is default injection point
-precacheAndRoute(manifest)
+precacheAndRoute(manifest.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
 
 // clean old assets
 cleanupOutdatedCaches()
