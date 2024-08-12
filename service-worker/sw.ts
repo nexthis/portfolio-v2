@@ -10,10 +10,13 @@ const blacklist = [
   '/200',
   '/404',
 ]
-console.log(self.__WB_MANIFEST, self.__WB_MANIFEST.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
+
+const manifest = self.__WB_MANIFEST
+
+console.log(manifest, manifest.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
 
 // self.__WB_MANIFEST is default injection point
-precacheAndRoute(self.__WB_MANIFEST)
+precacheAndRoute(manifest)
 
 // clean old assets
 cleanupOutdatedCaches()
