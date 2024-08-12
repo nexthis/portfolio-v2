@@ -6,8 +6,14 @@ import { NavigationRoute, registerRoute } from 'workbox-routing'
 
 declare let self: ServiceWorkerGlobalScope
 
+const blacklist = [
+  '/200',
+  '/404',
+]
+console.log(self.__WB_MANIFEST)
+
 // self.__WB_MANIFEST is default injection point
-precacheAndRoute(self.__WB_MANIFEST)
+precacheAndRoute(self.__WB_MANIFEST.filter(item => !blacklist.includes(typeof item === 'string' ? item : item.url)))
 
 // clean old assets
 cleanupOutdatedCaches()
@@ -22,16 +28,5 @@ registerRoute(new NavigationRoute(
   { allowlist },
 ))
 
-self.addEventListener('fetch', function (event) {
-  console.log(event.request.url)
-
-  if (event.request.url.indexOf('/404') !== -1) {
-    return false
-  }
-  if (event.request.url.indexOf('/200') !== -1) {
-    return false
-  }
-  // **** rest of your service worker code ****
-})
 self.skipWaiting()
 clientsClaim()
