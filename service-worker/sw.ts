@@ -9,7 +9,10 @@ declare let self: ServiceWorkerGlobalScope
 const blacklist = [
   '200',
   '404',
-  '__sitemap__/index.xml',
+  'sitemap.xml',
+  'index-sitemap.xml',
+  'en-sitemap.xml',
+  'pl-sitemap.xml',
 ]
 
 const manifest = self.__WB_MANIFEST
